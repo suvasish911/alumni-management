@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AlumniApprovalController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,8 +17,37 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
 });
 
-Route::get('admin/panel',[AdminController::class, 'index'])->name('admin.panel');
+Route::middleware(['auth'])->group(function () {
+    
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+    Route::middleware(['role:account_officer'])->group(function () {
+        Route::post('/invoices', [InvoiceController::class, 'store']);
+        Route::patch('/invoices/{id}/collect', [InvoiceController::class, 'updateStatus']);
+    });
+
+
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/admin/approvals', [AlumniApprovalController::class, 'index']);
+        Route::post('/admin/approvals/{user}/approve', [AlumniApprovalController::class, 'approve']);
+    });
+
+    
+    Route::get('/events', [EventController::class, 'index']); 
+    
+    Route::post('/events/{id}/join', [EventController::class, 'join'])
+        ->middleware('role:alumni');
+        
+    Route::post('/events/create', [EventController::class, 'store'])
+        ->middleware('role:admin'); 
+});
+
+
+
 
 require __DIR__.'/auth.php';

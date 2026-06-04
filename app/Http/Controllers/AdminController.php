@@ -9,6 +9,6 @@ class AdminController extends Controller
     //
     public function index()
     {
-        return view('panel.pages.admin_dashboard');
+        return view('panel.pages.dashboard');
     }
 }
