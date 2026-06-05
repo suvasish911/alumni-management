@@ -10,12 +10,18 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('events', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+        {
+            Schema::create('events', function (Blueprint $table) {
+                $table->id();
+            
+                $table->foreignId('category_id')->nullable()->constrained('events_categories')->onDelete('set null');
+                $table->string('name');
+                $table->string('place');
+                $table->string('organized_by');
+                $table->dateTime('event_date')->nullable();
+                $table->timestamps();
+            });
+        }
 
     /**
      * Reverse the migrations.

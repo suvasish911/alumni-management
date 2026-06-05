@@ -3,6 +3,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlumniApprovalController;
+use App\Http\Controllers\Admin\EventController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,19 +33,23 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-    Route::middleware(['role:admin'])->group(function () {
-        Route::get('/admin/approvals', [AlumniApprovalController::class, 'index']);
-        Route::post('/admin/approvals/{user}/approve', [AlumniApprovalController::class, 'approve']);
+    Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
+        
+        Route::get('/approvals', [AlumniApprovalController::class, 'index']);
+        Route::post('/approvals/{user}/approve', [AlumniApprovalController::class, 'approve']);
+
+
+       Route::resource('events',EventController::class);
+        
+        
     });
 
     
-    Route::get('/events', [EventController::class, 'index']); 
+    Route::get('/events', [EventController::class, 'index'])->name('public.events.index'); 
     
     Route::post('/events/{id}/join', [EventController::class, 'join'])
-        ->middleware('role:alumni');
+        ->middleware('role:alumni')->name('events.join');
         
-    Route::post('/events/create', [EventController::class, 'store'])
-        ->middleware('role:admin'); 
 });
 
 

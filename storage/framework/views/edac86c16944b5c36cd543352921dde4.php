@@ -1,0 +1,84 @@
+
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+  
+
+  <div class="menu_section">
+    <h3>General</h3>
+    <ul class="nav side-menu">
+      <li>
+        <a href="<?php echo e(url('/dashboard')); ?>"><i class="fa fa-home"></i> Dashboard</a>
+      </li>
+      <li>
+        <a href="<?php echo e(url('/events')); ?>"><i class="fa fa-calendar"></i> Events List</a>
+      </li>
+    </ul>
+  </div>
+
+
+  <?php if(Auth::user()->role === 'admin'): ?>
+  <div class="menu_section">
+    <h3>Administration</h3>
+    <ul class="nav side-menu">
+      <li><a><i class="fa fa-users"></i> Alumni Control <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="<?php echo e(url('/admin/approvals')); ?>">Pending Approvals</a></li>
+          <li><a href="#">Manage Batches</a></li>
+          <li><a href="#">All Members Registry</a></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-cogs"></i> System Settings <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="#">Configuration</a></li>
+          <li><a href="#">Backup Logs</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <?php endif; ?>
+
+
+  <?php if(Auth::user()->role === 'account_officer'): ?>
+  <div class="menu_section">
+    <h3>Financial Control</h3>
+    <ul class="nav side-menu">
+      <li><a><i class="fa fa-money"></i> Invoice Management <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="<?php echo e(url('/invoices')); ?>">All Invoices</a></li>
+          <li><a href="#">Create New Bill</a></li>
+          <li><a href="#">Payment Approvals</a></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-bar-chart"></i> Accounts Reports <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="#">Collection Logs</a></li>
+          <li><a href="#">Donation Summary</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <?php endif; ?>
+
+
+  <?php if(Auth::user()->role === 'alumni'): ?>
+  <div class="menu_section">
+    <h3>Alumni Desk</h3>
+    <ul class="nav side-menu">
+      <li>
+        <a href="<?php echo e(url('/my-invoices')); ?>"><i class="fa fa-credit-card"></i> My Bills & Fees</a>
+      </li>
+      <li><a><i class="fa fa-briefcase"></i> Career Hub <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="#">Job Openings</a></li>
+          <li><a href="#">Post a Job</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-user"></i> Profile Settings</a>
+      </li>
+    </ul>
+  </div>
+  <?php endif; ?>
+
+</div>
+<!-- /sidebar menu -->
+<?php /**PATH C:\xampp\htdocs\alumni-management\resources\views/panel/includes/sidebar.blade.php ENDPATH**/ ?>
