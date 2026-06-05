@@ -15,7 +15,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category_name">Event Category</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
             <input type="text" id="category_name" name="category_name" 
-                value="<?php echo e(old('category_name', $events->category->name ?? '')); ?>" 
+                value="<?php echo e(old('category_name', $event->category->name ?? '')); ?>" 
                 list="category_list" class="form-control col-md-7 col-xs-12" 
                 placeholder="Type to search or enter a new category">
             
@@ -61,4 +61,4 @@
 </form>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('panel.layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\xampp\htdocs\alumni-management\resources\views/admin/events/edit.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('panel.layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\xampp\htdocs\alumni-management\resources\views\admin\events\edit.blade.php ENDPATH**/ ?>

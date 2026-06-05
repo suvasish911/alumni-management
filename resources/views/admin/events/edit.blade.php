@@ -15,7 +15,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category_name">Event Category</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
             <input type="text" id="category_name" name="category_name" 
-                value="{{ old('category_name', $event->category->name ?? '') }}" 
+                value="{{ old('category_name', $events->category->name ?? '') }}" 
                 list="category_list" class="form-control col-md-7 col-xs-12" 
                 placeholder="Type to search or enter a new category">
             

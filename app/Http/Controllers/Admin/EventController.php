@@ -32,18 +32,26 @@ class EventController extends Controller {
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'category_id' => 'nullable|exists:events_categories,id',
+            'category_name' => 'nullable|string|max:255',
             'name'        => 'required|string|max:255',
             'place'       => 'required|string|max:255',
             'organized_by'=> 'required|string|max:255',
             'event_date'  => 'nullable|date',
         ]);
+        $categoryId = null;
+        if (!empty($request->category_name)) {
+            $category = EventCategory::firstOrCreate([
+                'name' => trim($request->category_name)
+            ]);
+            $categoryId = $category->id;
+        }
 
         if (!empty($validated['event_date'])) {
         $validated['event_date'] = date('Y-m-d H:i:s', strtotime($validated['event_date']));
-    }
-
-        Event::create($validated);
+        }
+        $eventData = array_merge($validated, ['category_id' => $categoryId]);
+        unset($eventData['category_name']);
+        Event::create($eventData);
 
         return redirect()->route('admin.events.index')->with('success', 'Event created successfully!');
     }
@@ -78,19 +86,29 @@ class EventController extends Controller {
         $events = Event::findOrFail($id);
 
         $validated = $request->validate([
-            'category_id' => 'nullable|exists:events_categories,id',
+            'category_name' => 'nullable|string|max:255',
             'name'        => 'required|string|max:255',
             'place'       => 'required|string|max:255',
             'organized_by'=> 'required|string|max:255',
             'event_date'  => 'nullable|date',
 
         ]);
-        
+        $categoryId = null;
+        if (!empty($request->category_name)) {
+            $category = EventCategory::firstOrCreate([
+                'name' => trim($request->category_name)
+            ]);
+            $categoryId = $category->id;
+        }
+
         if (!empty($validated['event_date'])) {
         $validated['event_date'] = date('Y-m-d H:i:s', strtotime($validated['event_date']));
         }
-        $events = Event::findOrFail($id);
-        $events->update($validated);
+
+        $eventData = array_merge($validated, ['category_id' => $categoryId]);
+        unset($eventData['category_name']);
+
+        $events->update($eventData);
 
         return redirect()->route('admin.events.index')->with('success', 'Event updated successfully!');
     }

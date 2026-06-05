@@ -11,7 +11,7 @@
         <div class="clearfix"></div>
         
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-10 col-sm-10 col-xs-10">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Form Design <small>Create a new event listing</small></h2>
@@ -31,14 +31,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category_id">Event Category</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category_name">Event Category</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select id="category_id" name="category_id" class="form-control col-md-7 col-xs-12">
-                                        <option value="">Choose option / Category</option>
+                                    <input type="text" id="category_name" name="category_name" list="category_list" class="form-control col-md-7 col-xs-12" placeholder="Type to search or enter a new category">
+                                    
+                                    <datalist id="category_list">
                                         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                            <option value="<?php echo e($category->name); ?>">
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </select>
+                                    </datalist>
                                 </div>
                             </div>
 
