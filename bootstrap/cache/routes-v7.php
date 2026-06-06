@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::zWKyTWPjQXGMaRiN',
+            '_route' => 'generated::U0XOcAKu1zbURDYJ',
           ),
           1 => NULL,
           2 => 
@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::W4xYa8SvvWwlTONN',
+            '_route' => 'generated::vIa2kqnuyYYiKfCd',
           ),
           1 => NULL,
           2 => 
@@ -119,45 +119,6 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/invoices' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::V1Agd1aOVvqWy783',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/admin/approvals' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
       '/admin/events' => 
       array (
         0 => 
@@ -220,7 +181,27 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'public.events.index',
+            '_route' => 'general.events.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/alumni/events' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'alumni.events.index',
           ),
           1 => NULL,
           2 => 
@@ -257,7 +238,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::8wldzsOVsZejYxwD',
+            '_route' => 'generated::tqp5KOGsc3mBCWeo',
           ),
           1 => NULL,
           2 => 
@@ -293,7 +274,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::3g7eI1MbQZcEMEUZ',
+            '_route' => 'generated::xfaojxkJ87rzQIA2',
           ),
           1 => NULL,
           2 => 
@@ -423,7 +404,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::fzIBjcJHmTf4CAC5',
+            '_route' => 'generated::3yasnvzfWWe2f1rp',
           ),
           1 => NULL,
           2 => 
@@ -477,55 +458,11 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/invoices/([^/]++)/collect(*:33)|/admin/(?|approvals/([^/]++)/approve(*:76)|events/([^/]++)(?|(*:101)|/edit(*:114)|(*:122)))|/events/([^/]++)/join(*:153)|/reset\\-password/([^/]++)(*:186)|/verify\\-email/([^/]++)/([^/]++)(*:226)|/storage/(.*)(?|(*:250)))/?$}sDu',
+      0 => '{^(?|/a(?|dmin/events/([^/]++)(?|(*:35)|/edit(*:47)|(*:54))|lumni/events/([^/]++)/register(*:92))|/reset\\-password/([^/]++)(*:125)|/verify\\-email/([^/]++)/([^/]++)(*:165)|/storage/(.*)(?|(*:189)))/?$}sDu',
     ),
     3 => 
     array (
-      33 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::5N2TPJUwkyv40cFj',
-          ),
-          1 => 
-          array (
-            0 => 'id',
-          ),
-          2 => 
-          array (
-            'PATCH' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      76 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.generated::9TQQc83eUV6nsJ0N',
-          ),
-          1 => 
-          array (
-            0 => 'user',
-          ),
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      101 => 
+      35 => 
       array (
         0 => 
         array (
@@ -548,7 +485,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      114 => 
+      47 => 
       array (
         0 => 
         array (
@@ -571,7 +508,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      122 => 
+      54 => 
       array (
         0 => 
         array (
@@ -613,13 +550,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      153 => 
+      92 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'events.join',
+            '_route' => 'alumni.events.register',
           ),
           1 => 
           array (
@@ -627,7 +564,8 @@ app('router')->setCompiledRoutes(
           ),
           2 => 
           array (
-            'POST' => 0,
+            'GET' => 0,
+            'HEAD' => 1,
           ),
           3 => NULL,
           4 => false,
@@ -635,7 +573,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      186 => 
+      125 => 
       array (
         0 => 
         array (
@@ -658,7 +596,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      226 => 
+      165 => 
       array (
         0 => 
         array (
@@ -682,7 +620,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      250 => 
+      189 => 
       array (
         0 => 
         array (
@@ -739,7 +677,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::zWKyTWPjQXGMaRiN' => 
+    'generated::U0XOcAKu1zbURDYJ' => 
     array (
       'methods' => 
       array (
@@ -768,7 +706,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000004e00000000000000000";}}',
-        'as' => 'generated::zWKyTWPjQXGMaRiN',
+        'as' => 'generated::U0XOcAKu1zbURDYJ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -784,7 +722,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::W4xYa8SvvWwlTONN' => 
+    'generated::vIa2kqnuyYYiKfCd' => 
     array (
       'methods' => 
       array (
@@ -806,7 +744,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::W4xYa8SvvWwlTONN',
+        'as' => 'generated::vIa2kqnuyYYiKfCd',
       ),
       'fallback' => false,
       'defaults' => 
@@ -957,159 +895,6 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'dashboard',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::V1Agd1aOVvqWy783' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'invoices',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-          2 => 'role:account_officer',
-        ),
-        'uses' => 'InvoiceController@store',
-        'controller' => 'InvoiceController@store',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::V1Agd1aOVvqWy783',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::5N2TPJUwkyv40cFj' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'PATCH',
-      ),
-      'uri' => 'invoices/{id}/collect',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-          2 => 'role:account_officer',
-        ),
-        'uses' => 'InvoiceController@updateStatus',
-        'controller' => 'InvoiceController@updateStatus',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::5N2TPJUwkyv40cFj',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'admin.' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'admin/approvals',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-          2 => 'role:admin',
-        ),
-        'uses' => 'App\\Http\\Controllers\\AlumniApprovalController@index',
-        'controller' => 'App\\Http\\Controllers\\AlumniApprovalController@index',
-        'as' => 'admin.',
-        'namespace' => NULL,
-        'prefix' => '/admin',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'admin.generated::9TQQc83eUV6nsJ0N' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'admin/approvals/{user}/approve',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-          2 => 'role:admin',
-        ),
-        'uses' => 'App\\Http\\Controllers\\AlumniApprovalController@approve',
-        'controller' => 'App\\Http\\Controllers\\AlumniApprovalController@approve',
-        'as' => 'admin.generated::9TQQc83eUV6nsJ0N',
-        'namespace' => NULL,
-        'prefix' => '/admin',
-        'where' => 
-        array (
-        ),
       ),
       'fallback' => false,
       'defaults' => 
@@ -1396,7 +1181,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'public.events.index' => 
+    'general.events.index' => 
     array (
       'methods' => 
       array (
@@ -1411,14 +1196,14 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\Admin\\EventController@index',
-        'controller' => 'App\\Http\\Controllers\\Admin\\EventController@index',
+        'uses' => 'App\\Http\\Controllers\\Alumni\\EventController@generalIndex',
+        'controller' => 'App\\Http\\Controllers\\Alumni\\EventController@generalIndex',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'public.events.index',
+        'as' => 'general.events.index',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1434,13 +1219,14 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'events.join' => 
+    'alumni.events.index' => 
     array (
       'methods' => 
       array (
-        0 => 'POST',
+        0 => 'GET',
+        1 => 'HEAD',
       ),
-      'uri' => 'events/{id}/join',
+      'uri' => 'alumni/events',
       'action' => 
       array (
         'middleware' => 
@@ -1449,14 +1235,53 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'role:alumni',
         ),
-        'uses' => 'App\\Http\\Controllers\\Admin\\EventController@join',
-        'controller' => 'App\\Http\\Controllers\\Admin\\EventController@join',
+        'uses' => 'App\\Http\\Controllers\\Alumni\\EventController@index',
+        'controller' => 'App\\Http\\Controllers\\Alumni\\EventController@index',
+        'as' => 'alumni.events.index',
         'namespace' => NULL,
-        'prefix' => '',
+        'prefix' => '/alumni',
         'where' => 
         array (
         ),
-        'as' => 'events.join',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'alumni.events.register' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'alumni/events/{id}/register',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'role:alumni',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Alumni\\EventController@register',
+        'controller' => 'App\\Http\\Controllers\\Alumni\\EventController@register',
+        'as' => 'alumni.events.register',
+        'namespace' => NULL,
+        'prefix' => '/alumni',
+        'where' => 
+        array (
+        ),
       ),
       'fallback' => false,
       'defaults' => 
@@ -1510,7 +1335,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::8wldzsOVsZejYxwD' => 
+    'generated::tqp5KOGsc3mBCWeo' => 
     array (
       'methods' => 
       array (
@@ -1531,7 +1356,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::8wldzsOVsZejYxwD',
+        'as' => 'generated::tqp5KOGsc3mBCWeo',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1585,7 +1410,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::3g7eI1MbQZcEMEUZ' => 
+    'generated::xfaojxkJ87rzQIA2' => 
     array (
       'methods' => 
       array (
@@ -1606,7 +1431,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::3g7eI1MbQZcEMEUZ',
+        'as' => 'generated::xfaojxkJ87rzQIA2',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1926,7 +1751,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::fzIBjcJHmTf4CAC5' => 
+    'generated::3yasnvzfWWe2f1rp' => 
     array (
       'methods' => 
       array (
@@ -1947,7 +1772,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::fzIBjcJHmTf4CAC5',
+        'as' => 'generated::3yasnvzfWWe2f1rp',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2086,7 +1911,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007b20000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007af0000000000000000";}}',
         'as' => 'storage.local.upload',
       ),
       'fallback' => false,

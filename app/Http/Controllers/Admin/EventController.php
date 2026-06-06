@@ -36,6 +36,7 @@ class EventController extends Controller {
             'name'        => 'required|string|max:255',
             'place'       => 'required|string|max:255',
             'organized_by'=> 'required|string|max:255',
+            'amount'      => 'required|numeric|max:255',
             'event_date'  => 'nullable|date',
         ]);
         $categoryId = null;
@@ -90,6 +91,7 @@ class EventController extends Controller {
             'name'        => 'required|string|max:255',
             'place'       => 'required|string|max:255',
             'organized_by'=> 'required|string|max:255',
+            'amount'        => 'required|numeric|min:0',
             'event_date'  => 'nullable|date',
 
         ]);

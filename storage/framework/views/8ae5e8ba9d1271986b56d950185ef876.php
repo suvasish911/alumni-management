@@ -6,10 +6,10 @@
     <h3>General</h3>
     <ul class="nav side-menu">
       <li>
-        <a href="<?php echo e(url('/dashboard')); ?>"><i class="fa fa-home"></i> Dashboard</a>
+        <a href="<?php echo e(route('dashboard')); ?>"><i class="fa fa-home"></i> Dashboard</a>
       </li>
       <li>
-        <a href="<?php echo e(url('/events')); ?>"><i class="fa fa-calendar"></i> Events List</a>
+        <a href="<?php echo e(route('general.events.index')); ?>"><i class="fa fa-calendar"></i> Events List</a>
       </li>
     </ul>
   </div>
@@ -19,19 +19,22 @@
   <div class="menu_section">
     <h3>Administration</h3>
     <ul class="nav side-menu">
+      <li>
+        <a href="<?php echo e(route('admin.events.index')); ?>"><i class="fa fa-calendar"></i> Events Management</a>
+      </li>
       <li><a><i class="fa fa-users"></i> Alumni Control <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="<?php echo e(url('/admin/approvals')); ?>">Pending Approvals</a></li>
-          <li><a href="#">Manage Batches</a></li>
+          <li><a href="#">Pending Approvals</a></li>
+
           <li><a href="#">All Members Registry</a></li>
         </ul>
       </li>
-      <li><a><i class="fa fa-cogs"></i> System Settings <span class="fa fa-chevron-down"></span></a>
+      <!-- <li><a><i class="fa fa-cogs"></i> System Settings <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="#">Configuration</a></li>
           <li><a href="#">Backup Logs</a></li>
         </ul>
-      </li>
+      </li> --> 
     </ul>
   </div>
   <?php endif; ?>
@@ -43,7 +46,7 @@
     <ul class="nav side-menu">
       <li><a><i class="fa fa-money"></i> Invoice Management <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="<?php echo e(url('/invoices')); ?>">All Invoices</a></li>
+          <li><a href="#">All Invoices</a></li>
           <li><a href="#">Create New Bill</a></li>
           <li><a href="#">Payment Approvals</a></li>
         </ul>
@@ -64,7 +67,10 @@
     <h3>Alumni Desk</h3>
     <ul class="nav side-menu">
       <li>
-        <a href="<?php echo e(url('/my-invoices')); ?>"><i class="fa fa-credit-card"></i> My Bills & Fees</a>
+        <a href="<?php echo e(route('alumni.events.index')); ?>"><i class="fa fa-ticket"></i> Join Events / RSVP</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-credit-card"></i> My Bills & Fees</a>
       </li>
       <li><a><i class="fa fa-briefcase"></i> Career Hub <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">

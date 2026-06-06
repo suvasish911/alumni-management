@@ -3,7 +3,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlumniApprovalController;
-use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\EventController as AdminEventController;
+use App\Http\Controllers\Alumni\EventController as AlumniEventController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,28 +28,29 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
-    Route::middleware(['role:account_officer'])->group(function () {
-        Route::post('/invoices', [InvoiceController::class, 'store']);
-        Route::patch('/invoices/{id}/collect', [InvoiceController::class, 'updateStatus']);
-    });
 
 
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
         
-        Route::get('/approvals', [AlumniApprovalController::class, 'index']);
-        Route::post('/approvals/{user}/approve', [AlumniApprovalController::class, 'approve']);
+        // Route::get('/approvals', [AlumniApprovalController::class, 'index']);
+        // Route::post('/approvals/{user}/approve', [AlumniApprovalController::class, 'approve']);
 
 
-       Route::resource('events',EventController::class);
+       Route::resource('events',AdminEventController::class);
         
         
     });
 
     
-    Route::get('/events', [EventController::class, 'index'])->name('public.events.index'); 
+    Route::get('/events', [AlumniEventController::class, 'generalIndex'])->name('general.events.index'); 
     
-    Route::post('/events/{id}/join', [EventController::class, 'join'])
-        ->middleware('role:alumni')->name('events.join');
+    Route::middleware(['role:alumni'])->prefix('alumni')->name('alumni.')->group(function () {
+        
+        Route::get('/events',[ AlumniEventController::class, 'index'])->name('events.index');
+        Route::get('/events/{id}/register',[AlumniEventController::class, 'register'])->name('events.register');
+        
+        
+    });
         
 });
 

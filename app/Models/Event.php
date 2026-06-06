@@ -23,6 +23,9 @@ class Event extends Model
     //     'event_date' => 'dateTime',
     // ];
 
+    public function attendees() {
+        return $this->belongsToMany(User::class, 'event_registrations')->withPivot('payment_status', 'transaction_id', 'amount_paid')->withTimestamps();
+    }
     public function category():BelongsTo
     {
         return $this->belongsTo(EventCategory::class, 'category_id');

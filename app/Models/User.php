@@ -7,6 +7,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -35,6 +36,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function registeredEvents(){
+
+    return $this->belongsToMany(Event::class, 'event_registrations')->withPivot('payment_status', 'transaction_id', 'amount_paid')->withTimestamps();
+
+    }
 
     /**
      * Get the attributes that should be cast.

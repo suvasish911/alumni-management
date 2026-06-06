@@ -28,6 +28,7 @@
                                         <th class="column-title text-center" style="padding: 12px 8px; width: 15%;">Category</th>
                                         <th class="column-title" style="padding: 12px 8px; width: 18%;">Place</th>
                                         <th class="column-title" style="padding: 12px 8px; width: 15%;">Organized By</th>
+                                        <th class="column-title text-center" style="padding: 12px 8px;">Reg Fee</th> 
                                         <th class="column-title text-center" style="padding: 12px 8px; width: 17%;">Date</th>
                                         <th class="column-title text-center" style="padding: 12px 8px; width: 15%;">Action</th>
                                     </tr>
@@ -54,6 +55,13 @@
                                                 </td>
                                                 <td style="vertical-align: middle; padding: 12px 8px; color: #555;">{{ $event->place }}</td>
                                                 <td style="vertical-align: middle; padding: 12px 8px; color: #555;">{{ $event->organized_by }}</td>
+                                                <td class="text-center" style="vertical-align: middle; font-weight: bold;">
+                                                    @if($event->amount > 0)
+                                                        <span style="color: #E74C3C;">{{ number_format($event->amount, 2) }} TK</span>
+                                                    @else
+                                                        <span class="label label-success" style="font-size: 10px;">FREE</span>
+                                                    @endif
+                                                </td>
                                                 <td class="text-center" style="vertical-align: middle; padding: 12px 8px; color: #555; font-size: 13px;">
                                                     {{ $event->event_date ? date('d M, Y (h:i A)', strtotime($event->event_date)) : 'N/A' }}
                                                 </td>

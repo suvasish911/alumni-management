@@ -64,6 +64,21 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="amount">
+                                    Registration Fee (TK) <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="input-group" style="margin-bottom: 0;">
+                                        <span class="input-group-addon" style="background: #F2F5F7; font-weight: bold;">TK</span>
+                                        <input type="number" id="amount" name="amount" step="0.01" min="0" 
+                                            value="<?php echo e(isset($event) ? $event->amount : old('amount', '0.00')); ?>" 
+                                            class="form-control col-md-7 col-xs-12" required>
+                                    </div>
+                                    <small class="text-muted">Set to 0.00 if this is a free event.</small>
+                                </div>
+                            </div>
+
                             <div class="ln_solid"></div>
                             
                             <div class="form-group">
