@@ -2,6 +2,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AlumniApprovalController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Alumni\EventController as AlumniEventController;
@@ -48,9 +49,11 @@ Route::middleware(['auth'])->group(function () {
         
         Route::get('/events',[ AlumniEventController::class, 'index'])->name('events.index');
         Route::get('/events/{id}/register',[AlumniEventController::class, 'register'])->name('events.register');
-        
+         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
         
     });
+
+   
         
 });
 

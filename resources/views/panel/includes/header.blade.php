@@ -4,6 +4,6 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Shabnam Edris</h2>
+                <h2>{{ Auth::user()->name }}</h2>
               </div>
             </div>
