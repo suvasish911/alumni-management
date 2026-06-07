@@ -41,7 +41,6 @@
                 <option value="" disabled selected>Choose your role</option>
                 <option value="alumni">Alumni</option>
                 <option value="accounts_officer">Accounts Officer</option>
-                <option value="admin">Admin</option> </select>
             </select>
             <x-input-error :messages="$errors->get('usertype')" class="mt-2" />
         </div>
