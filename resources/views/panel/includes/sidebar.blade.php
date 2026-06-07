@@ -19,53 +19,48 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Admin Dashboard</a></li>
-                      <li><a href="index2.html">Alumni Dashboard</a></li>
-                      <li><a href="index3.html">Accounts Dashboard</a></li>
+                        <li><a href="chartjs.html">Admin Dashboard</a></li>
+                           <li><a href="chartjs.html">Alumni Dashboard</a></li>
+                              <li><a href="chartjs.html">Account_officer Dashboard</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Events <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-desktop"></i> Donation Management<span class="fa fa-chevron-down"></span></a>
+    <ul class="nav child_menu">
+          <li><a href="/admin/donations">Donation Dashboard</a></li>
+                                  <li><a href="/admin/donations/history">My Donations/History</a></li>
+                           <li><a href="/admin/donation-projects">Donation Projects</a></li>
+                            <li><a href="/admin/donations/report">Donations report</a></li>
+   
+    </ul>
+</li>
+                  <li><a><i class="fa fa-table"></i>Events & Programs  <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Event Create</a></li>
-                      <li><a href="form_advanced.html">Event Edit </a></li>
-                      <li><a href="form_validation.html">Event Update</a></li>
-                      <li><a href="form_wizards.html">Event delete</a></li>
-                      <li><a href="form_upload.html">Event List</a></li>
+                      <li><a href="chartjs.html">Upcoming Events</a></li>
+                           <li><a href="chartjs.html">Past Events</a></li>
+                              <li><a href="chartjs.html">Registration History</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> Donation <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bar-chart-o"></i>My Membership/Profile  <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="general_elements.html">Donation Category</a></li>
-                      <li><a href="media_gallery.html">Donor List</a></li>
-                      <li><a href="typography.html">Donor Add</a></li>
-                      <li><a href="icons.html">Donation report</a></li>
+                      <li><a href="chartjs.html">Profile Information</a></li>
+                           <li><a href="chartjs.html">Membership Details</a><li>
+                              <li><a href="chartjs.html">Change Password</a></li>
+                               <li><a href="chartjs.html">Update Documents</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-table"></i> Accounts <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-clone"></i>Notice Board<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="tables.html">Income</a></li>
-                      <li><a href="tables_dynamic.html">Expense</a></li>
-                           <li><a href="tables_dynamic.html">Revenue</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Directory <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Browse Alumni</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-clone"></i>commit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">President</a></li>
-                      <li><a href="fixed_footer.html">Treasurer</a></li>
-                      <li><a href="fixed_footer.html">Member</a></li>
+                      <li><a href="chartjs.html">Latest Notices</a></li>
+                           <li><a href="chartjs.html">Archived Notices</a></li>
+                              <li><a href="chartjs.html">Important Documents</a></li>
                     </ul>
                   </li>
                        </li>
-                  <li><a><i class="fa fa-clone"></i> Basic Setup <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html"> Role setup </a></li>
-                      <li><a href="fixed_footer.html"> Committee Setup </a></li>
-                      <li><a href="fixed_footer.html"> Category Setup </a></li>
+                  <li><a><i class="fa fa-clone"></i> Settings / Logout <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu"></ul>
+                    <li><a href="chartjs.html">System Settings</a></li>
+                           <li><a href="chartjs.html">Privacy & Security</a></li>
+                              <li><a href="chartjs.html">Logout</a></li>
                     </ul>
                   </li>
                 </ul>
