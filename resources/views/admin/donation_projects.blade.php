@@ -1,9 +1,8 @@
 @extends('panel.layout')
 
 @section('content')
-<div class="right_col" role="main" style="min-height: auto; padding: 20px 30px;">
-    
-    <div class="page-title">
+
+ <div class="page-title">
         <div class="title_left">
             <h3 style="color: #4a5f73; font-size: 22px; font-weight: 500;">Donation Projects</h3>
         </div>
@@ -24,7 +23,6 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <!-- ডেসক্রিপশন বাদ দিয়ে শুধু সিম্পল টেক্সট -->
                         <p style="color: #73879C; font-size: 13px; height: 50px;">
                             Help us reach our goal by contributing to this project.
                         </p>

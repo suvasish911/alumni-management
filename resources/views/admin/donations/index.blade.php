@@ -1,9 +1,8 @@
 @extends('panel.layout')
 
 @section('content')
-<div class="right_col" role="main" style="min-height: auto; padding: 20px 30px;">
-    
-    <div class="page-title">
+
+        <div class="page-title">
         <div class="title_left">
             <h3 style="color: #4a5f73; font-size: 22px; font-weight: 500;">Donation Management</h3>
         </div>

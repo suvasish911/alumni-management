@@ -2,16 +2,11 @@
 
 @section('content')
 
-
-
-<form method="GET" action="{{ route('admin.donations.report') }}">
-
-    <input type="date" name="start_date">
-
-    <input type="date" name="end_date">
+<form action="{{ route('admin.donations.report') }}" method="GET">
+    <input type="date" name="start_date" id="start_date" value="{{ request('start_date') }}" required>
+    <input type="date" name="end_date" id="end_date" value="{{ request('end_date') }}" required>
 
     <button type="submit">Filter Report</button>
-
 </form>
 
 

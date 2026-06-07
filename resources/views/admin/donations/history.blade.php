@@ -1,7 +1,6 @@
 @extends('panel.layout')
 
 @section('content')
-<div class="right_col" role="main" style="padding: 20px 30px;">
     
     <div class="page-title">
         <div class="title_left">

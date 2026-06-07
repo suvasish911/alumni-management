@@ -101,5 +101,4 @@
             </div>
         </div>
     </div>
-    <!--end::App Content-->
 @endsection

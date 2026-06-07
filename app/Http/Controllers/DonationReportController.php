@@ -7,12 +7,15 @@ use App\Models\DonationHistory;
 
 class DonationReportController extends Controller
 {
-    public function report(Request $request)
-    {
-        $query = DonationHistory::query();
-        
-        if ($request->has('start_date') && $request->has('end_date')) {
-        $query->whereBetween('created_at', [$request->start_date, $request->end_date]);
+   public function report(Request $request)
+{
+    $query = DonationHistory::query();
+    
+    if ($request->filled(['start_date', 'end_date'])) {
+        $startDate = $request->start_date . ' 00:00:00';
+        $endDate = $request->end_date . ' 23:59:59';
+
+        $query->whereBetween('created_at', [$startDate, $endDate]);
     }
 
     $donations = $query->with('project')->latest()->get();
