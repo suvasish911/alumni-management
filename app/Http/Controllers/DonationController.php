@@ -64,8 +64,4 @@ public function destroy($id)
 
     return redirect()->route('admin.donations.index')->with('success', 'Donation deleted successfully!');
 } 
-public function show($id) 
-{
-    return abort(404); 
-}
 }
