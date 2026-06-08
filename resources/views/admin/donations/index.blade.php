@@ -59,12 +59,10 @@
                                                 <i class="fa fa-pencil"></i>
                                             </a>
 
-                                            <form action="{{ route('admin.donations.destroy', $donation->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this donation?');">
+                                            <form action="{{ route('admin.donations.destroy', $donation->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-xs" style="padding: 2px 6px; border: none;" title="Delete">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
+                                                <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
