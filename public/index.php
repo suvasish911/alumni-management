@@ -1,9 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-=======
 use Illuminate\Foundation\Application;
->>>>>>> dev_laxmi
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
@@ -13,20 +10,10 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
     require $maintenance;
 }
 
-<<<<<<< HEAD
 // Register the Suite Auto Loader...
 require __DIR__.'/../vendor/autoload.php';
 
 // Bootstrap Laravel and handle the request...
 (require_once __DIR__.'/../bootstrap/app.php')
     ->handleRequest(Request::capture());
-=======
-// Register the Composer autoloader...
-require __DIR__.'/../vendor/autoload.php';
 
-// Bootstrap Laravel and handle the request...
-/** @var Application $app */
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
-$app->handleRequest(Request::capture());
->>>>>>> dev_laxmi

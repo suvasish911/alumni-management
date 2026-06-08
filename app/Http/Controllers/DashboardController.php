@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $upcoming_events = collect();
         $pending_alumni_count = User::where('role','LIKE','%alumni%')->where('status','LIKE','%pending%')->count();
 
-        return view('panel.pages.dashboard', compact(
+        return view('panel.pages.dashboard', compact( 
             'totalUsers',
             'allInvoices',
             'allEvents',
