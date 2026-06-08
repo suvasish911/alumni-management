@@ -1,3 +1,4 @@
+
             <div class="profile clearfix">
               <div class="profile_pic">
                 <img src="{{asset('assets/build/images/image.jpg')}}" alt="..." class="img-circle profile_img">

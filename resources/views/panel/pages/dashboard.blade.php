@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <!-- IF ALUMNI IS PENDING VERIFICATION -->
     @if(Auth::user()->role === 'alumni' && strtolower(trim(Auth::user()->status)) === 'pending')
         <div class="row">
@@ -421,6 +420,4 @@
             </div> 
         </div>
     @endif
-
-
 @endsection

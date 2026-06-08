@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "d5b57ea83b8b7753f51487b1384d9feb",
+
     "packages": [
         {
             "name": "brick/math",
@@ -1336,6 +1337,7 @@
             "time": "2026-05-19T00:47:18+00:00"
         },
         {
+
             "name": "laravel/serializable-closure",
             "version": "v2.0.13",
             "source": {
