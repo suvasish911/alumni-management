@@ -36,13 +36,13 @@ Route::resource('admin/donations', DonationController::class)
         'destroy' => 'admin.donations.destroy',
     ]);
 
-Route::get('/admin/donations/{id}/edit', [DonationController::class, 'edit'])->name('admin.donations.edit');
+// Route::get('/admin/donations/{id}/edit', [DonationController::class, 'edit'])->name('admin.donations.edit');
 
-Route::put('/admin/donations/{id}', [DonationController::class, 'update'])->name('admin.donations.update');
+// Route::put('/admin/donations/{id}', [DonationController::class, 'update'])->name('admin.donations.update');
 
-Route::delete('/admin/donations/{id}', [DonationController::class, 'destroy'])->name('admin.donations.destroy');
+// Route::delete('/admin/donations/{id}', [DonationController::class, 'destroy'])->name('admin.donations.destroy');
 
-Route::get('/admin/donation-projects', [DonationProjectController::class, 'index'])->name('admin.projects.index');
+// Route::get('/admin/donation-projects', [DonationProjectController::class, 'index'])->name('admin.projects.index');
 
 Route::middleware(['auth', 'verified'])->group(function () {
   
@@ -69,8 +69,24 @@ Route::middleware(['auth'])->group(function () {
         // Route::post('/approvals/{user}/approve', [AlumniApprovalController::class, 'approve']);
 
 
-       Route::resource('events',AdminEventController::class);
-        
+        Route::resource('events',AdminEventController::class);
+       
+       
+       // Donation Part
+        Route::get('/donations/history', [DonationHistoryController::class, 'history'])->name('donations.history');
+        Route::get('/donations/report', [DonationReportController::class, 'report'])->name('donations.report');
+        Route::get('/donation-projects', [DonationProjectController::class, 'index'])->name('projects.index');
+
+        Route::resource('donations', DonationController::class)
+                ->except(['show'])
+                ->names([
+                        'index'   => 'donations.index',
+                        'create'  => 'donations.create',
+                        'store'   => 'donations.store',
+                        'edit'    => 'donations.edit',
+                        'update'  => 'donations.update',
+                        'destroy' => 'donations.destroy',
+                    ]);
         
     });
 

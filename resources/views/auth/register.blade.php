@@ -2,30 +2,21 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-<<<<<<< HEAD
         <!-- Name -->
-=======
->>>>>>> dev_laxmi
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-<<<<<<< HEAD
         <!-- Email Address -->
-=======
->>>>>>> dev_laxmi
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-<<<<<<< HEAD
         <!-- Password -->
-=======
->>>>>>> dev_laxmi
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
 
@@ -37,10 +28,7 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-<<<<<<< HEAD
         <!-- Confirm Password -->
-=======
->>>>>>> dev_laxmi
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
@@ -51,7 +39,6 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-<<<<<<< HEAD
         <!-- Role Selection Dropdown -->
         <div class="mt-4">
             <label for="role" class="block font-medium text-sm text-gray-700">Register As:</label>
@@ -59,16 +46,6 @@
                 <option value="alumni">alumni</option>
                 <option value="account_officer">account officer</option>
             </select>
-=======
-        <div class="mt-4">
-            <x-input-label for="usertype" :value="__('Register As')" />
-            <select id="usertype" name="usertype" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required>
-                <option value="" disabled selected>Choose your role</option>
-                <option value="alumni">Alumni</option>
-                <option value="accounts_officer">Accounts Officer</option>
-            </select>
-            <x-input-error :messages="$errors->get('usertype')" class="mt-2" />
->>>>>>> dev_laxmi
         </div>
 
         <div class="flex items-center justify-end mt-4">
@@ -81,8 +58,4 @@
             </x-primary-button>
         </div>
     </form>
-<<<<<<< HEAD
 </x-guest-layout>
-=======
-</x-guest-layout>
->>>>>>> dev_laxmi

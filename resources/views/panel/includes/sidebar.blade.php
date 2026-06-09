@@ -15,26 +15,29 @@
   </div>
 
 
-  @if(Auth::user()->role === 'admin')
+@if(Auth::user()?->role === 'admin')
   <div class="menu_section">
     <h3>Administration</h3>
     <ul class="nav side-menu">
       <li>
         <a href="{{ route('admin.events.index') }}"><i class="fa fa-calendar"></i> Events Management</a>
       </li>
+      
+      <li><a><i class="fa fa-hand-holding-usd"></i> Donations Control <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="{{ route('admin.donations.index') }}">Manage Donations</a></li>
+          <li><a href="{{ route('admin.projects.index') }}">Donation Projects</a></li>
+          <li><a href="{{ route('admin.donations.history') }}">History Logs</a></li>
+          <li><a href="{{ route('admin.donations.report') }}">Financial Reports</a></li>
+        </ul>
+      </li>
+
       <li><a><i class="fa fa-users"></i> Alumni Control <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="#">Pending Approvals</a></li>
-
           <li><a href="#">All Members Registry</a></li>
         </ul>
       </li>
-      <!-- <li><a><i class="fa fa-cogs"></i> System Settings <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="#">Configuration</a></li>
-          <li><a href="#">Backup Logs</a></li>
-        </ul>
-      </li> --> 
     </ul>
   </div>
   @endif
