@@ -4,7 +4,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Shabnam Edris</h2>
+                <h2><?php echo e(Auth::user()->name ?? 'Guest'); ?></h2>
               </div>
             </div>
 <?php /**PATH C:\xampp\htdocs\alumni-management\resources\views\panel\includes\header.blade.php ENDPATH**/ ?>

@@ -7,7 +7,7 @@
         <li class="">
             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 <img src="<?php echo e(asset('assets/build/images/image.jpg')); ?>" alt="">
-                <?php echo e(Auth::user()->name); ?>
+                <?php echo e(Auth::user()->name ?? 'Guest'); ?>
 
                 <span class=" fa fa-angle-down"></span>
             </a>
@@ -45,7 +45,7 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <span class="image"><img src="<?php echo e(asset('assets/panel/images/img.jpg')); ?>" alt="Profile Image" /></span>
                         <span>
-                            <?php echo e(Auth::user()->name); ?>
+                            <?php echo e(Auth::user()->name ?? 'Guest'); ?>
 
                             <span class=" fa fa-angle-down"></span>
                             <span class="time">3 mins ago</span>

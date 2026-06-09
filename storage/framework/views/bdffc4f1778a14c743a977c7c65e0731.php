@@ -6,7 +6,9 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="">
             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <img src="<?php echo e(asset('assets/build/images/image.jpg')); ?>" alt="">Shabnam Edris
+                <img src="<?php echo e(asset('assets/build/images/image.jpg')); ?>" alt="">
+                <?php echo e(Auth::user()->name ?? 'Guest'); ?>
+
                 <span class=" fa fa-angle-down"></span>
             </a>
             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -40,10 +42,12 @@
             </a>
             <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                 <li>
-                    <a>
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <span class="image"><img src="<?php echo e(asset('assets/panel/images/img.jpg')); ?>" alt="Profile Image" /></span>
                         <span>
-                            <span>John Smith</span>
+                            <?php echo e(Auth::user()->name ?? 'Guest'); ?>
+
+                            <span class=" fa fa-angle-down"></span>
                             <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
