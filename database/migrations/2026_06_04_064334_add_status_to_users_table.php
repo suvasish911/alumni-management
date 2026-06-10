@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
+<<<<<<< HEAD
             $table->string('status')->default('active');
+=======
+            $table->string('status')->default('active')->after('role');
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
         });
     }
 

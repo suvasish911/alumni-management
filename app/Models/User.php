@@ -26,6 +26,10 @@ class User extends Authenticatable
         'password',
         'role',
         'status',
+<<<<<<< HEAD
+=======
+        'usertype',
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
 
     ];
 

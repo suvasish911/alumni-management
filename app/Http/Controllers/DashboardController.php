@@ -44,8 +44,24 @@ class DashboardController extends Controller
         $totalUsers = User::count();
     } 
     
+<<<<<<< HEAD
     elseif ($user->role === 'account officer') {
         $allInvoices = Invoice::latest()->get();
+=======
+    elseif ($user->role === 'account_officer') {
+        $allInvoices = Invoice::latest()->get();
+
+        $pending_payments_count = DB::table('event_registrations')->where('status', 'pending')->count();
+
+        return view('panel.pages.dashboard', compact(
+            'totalUser',
+            'allInvoices',
+            'myInvoices',
+            'upcoming_events',
+            'pending_alumni_count',
+            'pending_payments_count'
+        ));
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
     } 
     
     elseif ($user->role === 'alumni') {

@@ -22,6 +22,27 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+    @elseif (Auth::user()->role === 'alumni' && strtolower(trim(Auth::user()->status)) === 'rejected')
+        <div class="row text-center" style="padding: 50px 20px;">
+            <div class="x_content">
+                <div style="font-size: 56px; color: #d9534f; margin-bottom: 20px;">
+                    <i class="fa fa-times-circle"></i>
+                </div>
+                <h2 style="font-size: 24px; font-weight: bold; color: #d9534f;">Application Status: Declined</h2>
+                <p style="color: #73879C; font-size: 15px; max-width: 600px; margin: 0 auto 25px auto;">
+                    Hello, <strong>{{ auth()->user()->name }}</strong>. Thank you for your interest in the Alumni System. We regret to inform you that after reviewing your submitted credentials, the institutional Admin board has <strong>declined</strong> your application request.
+                </p>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-default">
+                        <i class="fa fa-sign-out"></i> Return to Login
+                    </button>
+                </form>
+            </div>
+        </div>
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
     @else
         <!-- top tiles --> 
         <div class="row tile_count"> 

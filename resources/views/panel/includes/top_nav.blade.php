@@ -7,7 +7,7 @@
         <li class="">
             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 <img src="{{ asset('assets/build/images/image.jpg')}}" alt="">
-                {{ Auth::user()->name }}
+                {{ Auth::user()->name ?? 'Guest' }}
                 <span class=" fa fa-angle-down"></span>
             </a>
             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -22,12 +22,12 @@
                 
                 <li>
                     <a href="javascript:void(0);" 
-                       onclick="event.preventDefault(); document.getElementById('top-logout-form').submit();"
-                       style="cursor: pointer;">
+                    onclick="event.preventDefault(); document.getElementById('top-nav-logout-form').submit();"
+                    style="cursor: pointer;">
                         <i class="fa fa-sign-out pull-right"></i> Log Out
                     </a>
 
-                    <form id="top-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="top-nav-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </li>
@@ -44,7 +44,7 @@
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <span class="image"><img src="{{ asset('assets/panel/images/img.jpg')}}" alt="Profile Image" /></span>
                         <span>
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->name ?? 'Guest' }}
                             <span class=" fa fa-angle-down"></span>
                             <span class="time">3 mins ago</span>
                         </span>

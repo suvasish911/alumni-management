@@ -16,6 +16,9 @@ class Event extends Model
         'name',
         'place',
         'organized_by',
+        'amount',
+        'event_type',
+        'raised-amount',
         'event_date'
     ];
 
@@ -29,5 +32,10 @@ class Event extends Model
     public function category():BelongsTo
     {
         return $this->belongsTo(EventCategory::class, 'category_id');
+    }
+
+    public function donations()
+    {
+        return $this->hasMany(\App\Models\Donation::class, 'event_id');
     }
 }

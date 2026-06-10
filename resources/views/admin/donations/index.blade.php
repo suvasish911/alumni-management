@@ -15,16 +15,12 @@
             {{ session('success') }}
         </div>
     @endif
-     <div class="row" style="width: 100%; margin: 0; padding: 0;">
+    <div class="row" style="width: 100%; margin: 0; padding: 0;">
     <div class="col-md-12 col-sm-12 col-xs-12" style="width: 100%; padding: 0; float: none;">
         <div class="x_panel" style="background: #fff; border: 1px solid #e6e9ed; padding: 20px; border-radius: 4px; width: 100%; float: left; display: block;"></div>
                 <div class="x_title" style="border-bottom: 2px solid #E6E9ED; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="font-size: 16px; font-weight: bold; color: #2a3f54; display: inline-block;">All Donations <br><small>List of registered donations</small></h2>
-                    <div class="pull-right" style="float: right;">
-                        <a href="{{ route('admin.donations.create') }}" class="btn btn-sm text-white" style="background-color: #26b99a; border-color: #169f85;">
-                            <i class="fa fa-plus"></i> Create New Donation
-                        </a>
-                    </div>
+
                     <div class="clearfix"></div>
                 </div>
 
