@@ -1,13 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AlumniApprovalController extends Controller
 {
-    
     public function index()
     {
         $pendingAlumni = User::where('role', 'alumni')
@@ -15,9 +14,8 @@ class AlumniApprovalController extends Controller
                              ->latest()
                              ->get();
 
-        return view('panel.pages.approvals', compact('pendingAlumni'));
+        return view('admin.approvals', compact('pendingAlumni'));
     }
-
 
     public function approve($id)
     {
@@ -27,9 +25,20 @@ class AlumniApprovalController extends Controller
         return redirect()->back()->with('success', 'Alumni account approved successfully!');
     }
 
-    //Account Officer
+    public function reject($id) 
+    {
+        $user = User::findOrFail($id);
+        $user->update([
+            'status' => 'rejected'
+        ]);
 
-    public function paymentIndex() {
+        // FIX: Swapped single quotes to double quotes so the variable name reads correctly in the alert
+        return redirect()->back()->with('success', "Account for {$user->name} has been rejected");
+    }
+
+    // Account Officer Methods
+    public function paymentIndex() 
+    {
         $registrations = DB::table('event_registrations')
                 ->join('users', 'event_registrations.user_id', '=', 'users.id')
                 ->join('events', 'event_registrations.event_id', '=', 'events.id')
@@ -42,6 +51,7 @@ class AlumniApprovalController extends Controller
                 )
                 ->latest('event_registrations.created_at')
                 ->paginate(5);
+
         return view('panel.pages.payment_approvals', compact('registrations'));
     }
 

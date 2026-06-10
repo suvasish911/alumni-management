@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','isActive'])->group(function () {
     
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -41,8 +41,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
         
-        // Route::get('/approvals', [AlumniApprovalController::class, 'index']);
-        // Route::post('/approvals/{user}/approve', [AlumniApprovalController::class, 'approve']);
+        Route::get('/approvals', [AlumniApprovalController::class, 'index'])->name('approvals.index');
+        Route::post('/approvals/{id}/approve', [AlumniApprovalController::class, 'approve'])->name('approvals.approve');
+        Route::post('/approvals/{id}/reject', [AlumniApprovalController::class, 'reject'])->name('approvals.reject');
 
         //Event Managemnet
         Route::resource('events',AdminEventController::class);

@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::nlxmyExyLq0ETWEf',
+            '_route' => 'generated::c2VKZVxjKHfYWwJn',
           ),
           1 => NULL,
           2 => 
@@ -53,7 +53,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::3ab6zqR7VXilCUob',
+            '_route' => 'generated::UdiXX9ZTSU8WWj8t',
           ),
           1 => NULL,
           2 => 
@@ -126,6 +126,26 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'dashboard',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/admin/approvals' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.approvals.index',
           ),
           1 => NULL,
           2 => 
@@ -409,7 +429,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::cHSTVXm4PZ06JkTe',
+            '_route' => 'generated::OXqCxyEWfRXYU0Dv',
           ),
           1 => NULL,
           2 => 
@@ -445,7 +465,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::0OQeOCdZM6qktY4c',
+            '_route' => 'generated::aiLVO6oWWAANVDCn',
           ),
           1 => NULL,
           2 => 
@@ -575,7 +595,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::3HbClZyYmd1f35oc',
+            '_route' => 'generated::gVEyi8vV8hjTtzvO',
           ),
           1 => NULL,
           2 => 
@@ -629,11 +649,55 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/a(?|dmin/(?|events/(?|([^/]++)(?|(*:41)|/(?|edit(*:56)|donors(*:69))|(*:77))|donors/([^/]++)/approve(*:108))|donations/([^/]++)(?|/edit(*:143)|(*:151)))|lumni/events/([^/]++)/register(*:191))|/events/([^/]++)/register(*:225)|/reset\\-password/([^/]++)(*:258)|/verify\\-email/([^/]++)/([^/]++)(*:298)|/storage/(.*)(?|(*:322)))/?$}sDu',
+      0 => '{^(?|/a(?|dmin/(?|approvals/([^/]++)/(?|approve(*:49)|reject(*:62))|events/(?|([^/]++)(?|(*:91)|/(?|edit(*:106)|donors(*:120))|(*:129))|donors/([^/]++)/approve(*:161))|donations/([^/]++)(?|/edit(*:196)|(*:204)))|lumni/events/([^/]++)/register(*:244))|/events/([^/]++)/register(*:278)|/reset\\-password/([^/]++)(*:311)|/verify\\-email/([^/]++)/([^/]++)(*:351)|/storage/(.*)(?|(*:375)))/?$}sDu',
     ),
     3 => 
     array (
-      41 => 
+      49 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.approvals.approve',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      62 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.approvals.reject',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      91 => 
       array (
         0 => 
         array (
@@ -656,7 +720,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      56 => 
+      106 => 
       array (
         0 => 
         array (
@@ -679,7 +743,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      69 => 
+      120 => 
       array (
         0 => 
         array (
@@ -702,7 +766,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      77 => 
+      129 => 
       array (
         0 => 
         array (
@@ -744,7 +808,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      108 => 
+      161 => 
       array (
         0 => 
         array (
@@ -766,7 +830,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      143 => 
+      196 => 
       array (
         0 => 
         array (
@@ -789,7 +853,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      151 => 
+      204 => 
       array (
         0 => 
         array (
@@ -831,7 +895,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      191 => 
+      244 => 
       array (
         0 => 
         array (
@@ -854,7 +918,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      225 => 
+      278 => 
       array (
         0 => 
         array (
@@ -876,7 +940,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      258 => 
+      311 => 
       array (
         0 => 
         array (
@@ -899,7 +963,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      298 => 
+      351 => 
       array (
         0 => 
         array (
@@ -923,7 +987,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      322 => 
+      375 => 
       array (
         0 => 
         array (
@@ -1017,7 +1081,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::nlxmyExyLq0ETWEf' => 
+    'generated::c2VKZVxjKHfYWwJn' => 
     array (
       'methods' => 
       array (
@@ -1046,7 +1110,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000050d0000000000000000";}}',
-        'as' => 'generated::nlxmyExyLq0ETWEf',
+        'as' => 'generated::c2VKZVxjKHfYWwJn',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1062,7 +1126,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::3ab6zqR7VXilCUob' => 
+    'generated::UdiXX9ZTSU8WWj8t' => 
     array (
       'methods' => 
       array (
@@ -1084,7 +1148,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::3ab6zqR7VXilCUob',
+        'as' => 'generated::UdiXX9ZTSU8WWj8t',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1234,6 +1298,7 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
+          4 => 'isActive',
         ),
         'uses' => 'App\\Http\\Controllers\\DashboardController@index',
         'controller' => 'App\\Http\\Controllers\\DashboardController@index',
@@ -1243,6 +1308,130 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'dashboard',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.approvals.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/approvals',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'verified',
+          3 => 'auth',
+          4 => 'isActive',
+          5 => 'role:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AlumniApprovalController@index',
+        'controller' => 'App\\Http\\Controllers\\AlumniApprovalController@index',
+        'as' => 'admin.approvals.index',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.approvals.approve' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/approvals/{id}/approve',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'verified',
+          3 => 'auth',
+          4 => 'isActive',
+          5 => 'role:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AlumniApprovalController@approve',
+        'controller' => 'App\\Http\\Controllers\\AlumniApprovalController@approve',
+        'as' => 'admin.approvals.approve',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'admin.approvals.reject' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/approvals/{id}/reject',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'verified',
+          3 => 'auth',
+          4 => 'isActive',
+          5 => 'role:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AlumniApprovalController@reject',
+        'controller' => 'App\\Http\\Controllers\\AlumniApprovalController@reject',
+        'as' => 'admin.approvals.reject',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
       ),
       'fallback' => false,
       'defaults' => 
@@ -1274,7 +1463,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.events.index',
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@index',
@@ -1315,7 +1505,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.events.create',
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@create',
@@ -1355,7 +1546,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.events.store',
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@store',
@@ -1396,7 +1588,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.events.show',
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@show',
@@ -1437,7 +1630,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.events.edit',
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@edit',
@@ -1478,7 +1672,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.events.update',
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@update',
@@ -1518,7 +1713,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.events.destroy',
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@destroy',
@@ -1559,7 +1755,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@donorList',
         'controller' => 'App\\Http\\Controllers\\Admin\\EventController@donorList',
@@ -1599,7 +1796,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@approveDonor',
         'controller' => 'App\\Http\\Controllers\\Admin\\EventController@approveDonor',
@@ -1640,7 +1838,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\DonationHistoryController@history',
         'controller' => 'App\\Http\\Controllers\\DonationHistoryController@history',
@@ -1681,7 +1880,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\DonationReportController@report',
         'controller' => 'App\\Http\\Controllers\\DonationReportController@report',
@@ -1722,7 +1922,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\DonationProjectController@index',
         'controller' => 'App\\Http\\Controllers\\Admin\\DonationProjectController@index',
@@ -1762,7 +1963,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\DonationProjectController@store',
         'controller' => 'App\\Http\\Controllers\\Admin\\DonationProjectController@store',
@@ -1803,7 +2005,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.donations.index',
         'uses' => 'App\\Http\\Controllers\\DonationController@index',
@@ -1844,7 +2047,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.donations.create',
         'uses' => 'App\\Http\\Controllers\\DonationController@create',
@@ -1884,7 +2088,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.donations.store',
         'uses' => 'App\\Http\\Controllers\\DonationController@store',
@@ -1925,7 +2130,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.donations.edit',
         'uses' => 'App\\Http\\Controllers\\DonationController@edit',
@@ -1966,7 +2172,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.donations.update',
         'uses' => 'App\\Http\\Controllers\\DonationController@update',
@@ -2006,7 +2213,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:admin',
+          4 => 'isActive',
+          5 => 'role:admin',
         ),
         'as' => 'admin.donations.destroy',
         'uses' => 'App\\Http\\Controllers\\DonationController@destroy',
@@ -2047,6 +2255,7 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
+          4 => 'isActive',
         ),
         'uses' => 'App\\Http\\Controllers\\Alumni\\EventController@generalIndex',
         'controller' => 'App\\Http\\Controllers\\Alumni\\EventController@generalIndex',
@@ -2086,6 +2295,7 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
+          4 => 'isActive',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\EventController@storeRegistration',
         'controller' => 'App\\Http\\Controllers\\Admin\\EventController@storeRegistration',
@@ -2126,7 +2336,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:alumni',
+          4 => 'isActive',
+          5 => 'role:alumni',
         ),
         'uses' => 'App\\Http\\Controllers\\Alumni\\EventController@index',
         'controller' => 'App\\Http\\Controllers\\Alumni\\EventController@index',
@@ -2167,7 +2378,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:alumni',
+          4 => 'isActive',
+          5 => 'role:alumni',
         ),
         'uses' => 'App\\Http\\Controllers\\Alumni\\EventController@register',
         'controller' => 'App\\Http\\Controllers\\Alumni\\EventController@register',
@@ -2207,7 +2419,8 @@ app('router')->setCompiledRoutes(
           1 => 'auth',
           2 => 'verified',
           3 => 'auth',
-          4 => 'role:alumni',
+          4 => 'isActive',
+          5 => 'role:alumni',
         ),
         'uses' => 'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy',
         'controller' => 'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy',
@@ -2270,7 +2483,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::cHSTVXm4PZ06JkTe' => 
+    'generated::OXqCxyEWfRXYU0Dv' => 
     array (
       'methods' => 
       array (
@@ -2291,7 +2504,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::cHSTVXm4PZ06JkTe',
+        'as' => 'generated::OXqCxyEWfRXYU0Dv',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2345,7 +2558,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::0OQeOCdZM6qktY4c' => 
+    'generated::aiLVO6oWWAANVDCn' => 
     array (
       'methods' => 
       array (
@@ -2366,7 +2579,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::0OQeOCdZM6qktY4c',
+        'as' => 'generated::aiLVO6oWWAANVDCn',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2686,7 +2899,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::3HbClZyYmd1f35oc' => 
+    'generated::gVEyi8vV8hjTtzvO' => 
     array (
       'methods' => 
       array (
@@ -2707,7 +2920,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::3HbClZyYmd1f35oc',
+        'as' => 'generated::gVEyi8vV8hjTtzvO',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2846,7 +3059,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007e80000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007eb0000000000000000";}}',
         'as' => 'storage.local.upload',
       ),
       'fallback' => false,

@@ -22,12 +22,12 @@
                 
                 <li>
                     <a href="javascript:void(0);" 
-                       onclick="event.preventDefault(); document.getElementById('top-logout-form').submit();"
-                       style="cursor: pointer;">
+                    onclick="event.preventDefault(); document.getElementById('top-nav-logout-form').submit();"
+                    style="cursor: pointer;">
                         <i class="fa fa-sign-out pull-right"></i> Log Out
                     </a>
 
-                    <form id="top-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="top-nav-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </li>
