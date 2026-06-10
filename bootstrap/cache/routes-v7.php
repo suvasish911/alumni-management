@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::pdclzgSLvFuVPCql',
+            '_route' => 'generated::nlxmyExyLq0ETWEf',
           ),
           1 => NULL,
           2 => 
@@ -53,7 +53,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::7tA5FsgYcGH3HWRx',
+            '_route' => 'generated::3ab6zqR7VXilCUob',
           ),
           1 => NULL,
           2 => 
@@ -254,6 +254,22 @@ app('router')->setCompiledRoutes(
           5 => false,
           6 => NULL,
         ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.projects.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
       ),
       '/admin/donations' => 
       array (
@@ -393,7 +409,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::xlz8vJP1vDYOfbtZ',
+            '_route' => 'generated::cHSTVXm4PZ06JkTe',
           ),
           1 => NULL,
           2 => 
@@ -429,7 +445,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::dzUkbEx2ZUKuVrlx',
+            '_route' => 'generated::0OQeOCdZM6qktY4c',
           ),
           1 => NULL,
           2 => 
@@ -559,7 +575,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::HHFls1otMcX6IyBJ',
+            '_route' => 'generated::3HbClZyYmd1f35oc',
           ),
           1 => NULL,
           2 => 
@@ -1001,7 +1017,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::pdclzgSLvFuVPCql' => 
+    'generated::nlxmyExyLq0ETWEf' => 
     array (
       'methods' => 
       array (
@@ -1030,7 +1046,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000050d0000000000000000";}}',
-        'as' => 'generated::pdclzgSLvFuVPCql',
+        'as' => 'generated::nlxmyExyLq0ETWEf',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1046,7 +1062,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::7tA5FsgYcGH3HWRx' => 
+    'generated::3ab6zqR7VXilCUob' => 
     array (
       'methods' => 
       array (
@@ -1068,7 +1084,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::7tA5FsgYcGH3HWRx',
+        'as' => 'generated::3ab6zqR7VXilCUob',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1731,6 +1747,46 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'admin.projects.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/donation-projects',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'verified',
+          3 => 'auth',
+          4 => 'role:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\DonationProjectController@store',
+        'controller' => 'App\\Http\\Controllers\\Admin\\DonationProjectController@store',
+        'as' => 'admin.projects.store',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'admin.donations.index' => 
     array (
       'methods' => 
@@ -2214,7 +2270,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::xlz8vJP1vDYOfbtZ' => 
+    'generated::cHSTVXm4PZ06JkTe' => 
     array (
       'methods' => 
       array (
@@ -2235,7 +2291,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::xlz8vJP1vDYOfbtZ',
+        'as' => 'generated::cHSTVXm4PZ06JkTe',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2289,7 +2345,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::dzUkbEx2ZUKuVrlx' => 
+    'generated::0OQeOCdZM6qktY4c' => 
     array (
       'methods' => 
       array (
@@ -2310,7 +2366,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::dzUkbEx2ZUKuVrlx',
+        'as' => 'generated::0OQeOCdZM6qktY4c',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2630,7 +2686,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::HHFls1otMcX6IyBJ' => 
+    'generated::3HbClZyYmd1f35oc' => 
     array (
       'methods' => 
       array (
@@ -2651,7 +2707,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::HHFls1otMcX6IyBJ',
+        'as' => 'generated::3HbClZyYmd1f35oc',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2790,7 +2846,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007e70000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007e80000000000000000";}}',
         'as' => 'storage.local.upload',
       ),
       'fallback' => false,

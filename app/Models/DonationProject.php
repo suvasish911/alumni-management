@@ -8,6 +8,7 @@ class DonationProject extends Model
 {
     protected $fillable = [
         'name', 
+        'description',
         'goal_amount', 
         'raised_amount', 
         'status'

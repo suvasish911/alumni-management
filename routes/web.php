@@ -52,7 +52,11 @@ Route::middleware(['auth'])->group(function () {
        // Donation Management
         Route::get('/donations/history', [DonationHistoryController::class, 'history'])->name('donations.history');
         Route::get('/donations/report', [DonationReportController::class, 'report'])->name('donations.report');
-        Route::get('/donation-projects', [DonationProjectController::class, 'index'])->name('projects.index');
+
+
+    // Donation Projects 
+       Route::get('/donation-projects', [DonationProjectController::class, 'index'])->name('projects.index');
+       Route::post('/donation-projects', [DonationProjectController::class, 'store'])->name('projects.store');
 
         Route::resource('donations', DonationController::class)
                 ->except(['show'])
