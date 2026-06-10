@@ -18,7 +18,7 @@ class Event extends Model
         'organized_by',
         'amount',
         'event_type',
-        'raised-amount',
+        'raised_amount',
         'event_date'
     ];
 

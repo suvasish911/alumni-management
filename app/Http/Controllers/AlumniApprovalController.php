@@ -46,7 +46,7 @@ class AlumniApprovalController extends Controller
                     'event_registrations.*',
                     'users.name as alumni_name',
                     'users.email as alumni_email',
-                    'events.title as event_title',
+                    'events.name as event_title',
                     'events.amount as event_fee'
                 )
                 ->latest('event_registrations.created_at')

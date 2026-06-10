@@ -82,7 +82,7 @@ Route::middleware(['auth','isActive'])->group(function () {
     Route::middleware(['role:alumni'])->prefix('alumni')->name('alumni.')->group(function () {
         
         Route::get('/events',[ AlumniEventController::class, 'index'])->name('events.index');
-        Route::get('/events/{id}/register',[AlumniEventController::class, 'register'])->name('events.register');
+        Route::post('/events/{id}/register',[AlumniEventController::class, 'register'])->name('events.register');
          Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
         
     });
