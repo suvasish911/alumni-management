@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin/dashboard', function () {
+    return view('admin_dashboard');
+})->name('admin.dashboard');
+
 Route::get('/admin/donations/history', [DonationHistoryController::class, 'history'])->name('admin.donations.history');
 Route::get('/admin/donations/report', [DonationReportController::class, 'report'])->name('admin.donations.report');
 Route::get('/admin/donation-projects', [DonationProjectController::class, 'index'])->name('admin.projects.index');
