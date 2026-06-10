@@ -47,7 +47,21 @@
                                 </select>
                             </div>
                         </div>
-
+                        <div class="form-group row mb-3">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="event_id">
+                                Link to Event <small class="text-muted">(Optional)</small>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select name="event_id" class="form-control">
+                                    <option value="">-- None (General Institutional Donation) --</option>
+                                    @foreach($events as $event)
+                                        <option value="{{ $event->id }}" {{ request('event_id') == $event->id ? 'selected' : '' }}>
+                                            {{ $event->name }} [{{ ucfirst($event->event_type) }}]
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group row mb-3">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Payment Method <span class="required text-danger">*</span></label>
                             <div class="col-md-6 col-sm-6 col-xs-12">

@@ -16,52 +16,60 @@ class DonationController extends Controller
     public function create()
     {
         $categories = DonationCategory::all(); 
-        return view('admin.donations.create', compact('categories'));
+        $events= \App\Models\Event::all();
+        return view('admin.donations.create', compact('categories', 'events'));
     }
     public function store(Request $request)
-{
-    $request->validate([
-        'donor_name' => 'required|string|max:255',
-        'donation_amount' => 'required|numeric|min:1',
-        
-        'donation_category_id' => 'nullable|exists:donations_categories,id',
-        
-        'payment_method' => 'required|in:Cash,Bank,MFS',
-        'receiver_name' => 'required|string|max:255',
-    ]);
+    {
+        $request->validate([
+            'donor_name' => 'required|string|max:255',
+            'donation_amount' => 'required|numeric|min:1',
+            
+            'donation_category_id' => 'nullable|exists:donations_categories,id',
+            'event_id' => 'nullable|exists:donations_category,id',
+            'payment_method' => 'required|in:Cash,Bank,MFS',
+            'receiver_name' => 'required|string|max:255',
+        ]);
 
-    Donation::create($request->all());
+        $donation = Donation::create($request->all());
 
-    return redirect()->route('admin.donations.index')->with('success', 'Donation added successfully!');
-}
+        if ($donation->event_id) {
+            $event = $donation->event;
+            if ($event && $event->event_type === 'fundraiser') {
+                $event->increment('raised_amount', $donation->donation_amount);
+            }
+        }
 
-public function edit($id)
-{
-     $donation = Donation::findOrFail($id);
-    $categories = DonationCategory::all(); 
+        return redirect()->route('admin.donations.index')->with('success', 'Donation added successfully!');
+    }
 
-    return view('admin.donations.edit', compact('donation', 'categories'));
-}
-public function update(Request $request, $id)
-{
-    $request->validate([
-        'donor_name' => 'required|string|max:255',
-        'donation_amount' => 'required|numeric|min:1',
-        'donation_category_id' => 'nullable|exists:donations_categories,id',
-        'payment_method' => 'required|in:Cash,Bank,MFS',
-        'receiver_name' => 'required|string|max:255',
-    ]);
+    public function edit($id)
+    {
+        $donation = Donation::findOrFail($id);
+        $categories = DonationCategory::all(); 
 
-    $donation = Donation::findOrFail($id);
-    $donation->update($request->all());
+        return view('admin.donations.edit', compact('donation', 'categories'));
+    }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'donor_name' => 'required|string|max:255',
+            'donation_amount' => 'required|numeric|min:1',
+            'donation_category_id' => 'nullable|exists:donations_categories,id',
+            'payment_method' => 'required|in:Cash,Bank,MFS',
+            'receiver_name' => 'required|string|max:255',
+        ]);
 
-    return redirect()->route('admin.donations.index')->with('success', 'Donation updated successfully!');
-}
-public function destroy($id)
-{
-    $donation = Donation::findOrFail($id);
-    $donation->delete();
+        $donation = Donation::findOrFail($id);
+        $donation->update($request->all());
 
-    return redirect()->route('admin.donations.index')->with('success', 'Donation deleted successfully!');
-} 
+        return redirect()->route('admin.donations.index')->with('success', 'Donation updated successfully!');
+    }
+    public function destroy($id)
+    {
+        $donation = Donation::findOrFail($id);
+        $donation->delete();
+
+        return redirect()->route('admin.donations.index')->with('success', 'Donation deleted successfully!');
+    } 
 }

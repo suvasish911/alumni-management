@@ -36,7 +36,8 @@ class EventController extends Controller {
             'name'        => 'required|string|max:255',
             'place'       => 'required|string|max:255',
             'organized_by'=> 'required|string|max:255',
-            'amount'      => 'required|numeric|max:255',
+            'amount'      => 'required|numeric|min:0',
+            'event_type'  => 'required|in:ticketed,fundraiser',
             'event_date'  => 'nullable|date',
         ]);
         $categoryId = null;
@@ -50,7 +51,14 @@ class EventController extends Controller {
         if (!empty($validated['event_date'])) {
         $validated['event_date'] = date('Y-m-d H:i:s', strtotime($validated['event_date']));
         }
-        $eventData = array_merge($validated, ['category_id' => $categoryId]);
+
+
+        $eventData = array_merge($validated, [
+            'category_id' => $categoryId,
+            'raised_amount' => 0.00
+            ]);
+
+
         unset($eventData['category_name']);
         Event::create($eventData);
 
@@ -92,6 +100,7 @@ class EventController extends Controller {
             'place'       => 'required|string|max:255',
             'organized_by'=> 'required|string|max:255',
             'amount'        => 'required|numeric|min:0',
+            'event_type'  => 'required|in:ticketed,fundraiser',
             'event_date'  => 'nullable|date',
 
         ]);
@@ -125,5 +134,21 @@ class EventController extends Controller {
 
         $events->delete();
         return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully!');
+    }
+
+    public function donorlist(string $id)
+    {
+        $events = Event::with(['category'])->findOrFail($id);
+
+        $registrations = \App\Models\EventRegistration::where('event_id', $id)->latest()->get();
+
+        return view('admin.events.donors', compact('events', 'registrations'));
+    }
+
+    public function approveDonor(string $id){
+        $registrations = \App\Models\EventRegistration::findOrFail($id);
+        $registrations->update(['status' => 'approved']);
+
+        return redirect()->back()->with('succcess','Transaction approved and confirmed successfully!');
     }
 }
