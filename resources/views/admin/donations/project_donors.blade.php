@@ -1,7 +1,7 @@
 @extends('panel.layout')
 
 @section('content')
-<div class="right_col" role="main">
+<div class="" role="main">
     <div class="page-title">
         <div class="title_left">
             <h3 style="color: #4a5f73; font-size: 22px; font-weight: 500;">

@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::LkX2Rr9jaI2dDrD4',
+            '_route' => 'generated::VFrdQMYMiJKRH7sJ',
           ),
           1 => NULL,
           2 => 
@@ -53,7 +53,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::AZTUWnBNE37CPDYj',
+            '_route' => 'generated::oerP72fyNBMchZUO',
           ),
           1 => NULL,
           2 => 
@@ -432,7 +432,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::xmbOqyJd2cHsdeC4',
+            '_route' => 'generated::6OI6h4l7OVgI29rY',
           ),
           1 => NULL,
           2 => 
@@ -468,7 +468,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::eOhZsiiOghYBFCn1',
+            '_route' => 'generated::KWQAZ6cQcIm0lzIi',
           ),
           1 => NULL,
           2 => 
@@ -598,7 +598,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::gXkvIfq1zSVzOyx1',
+            '_route' => 'generated::zELe4RcmPPrtwvhv',
           ),
           1 => NULL,
           2 => 
@@ -652,7 +652,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/a(?|dmin/(?|approvals/([^/]++)/(?|approve(*:49)|reject(*:62))|events/([^/]++)(?|(*:88)|/(?|edit(*:103)|donors(*:117)|approve(*:132))|(*:141))|donations/(?|project/([^/]++)/donors(*:186)|([^/]++)(?|/edit(*:210)|(*:218))))|lumni/(?|events/([^/]++)/register(*:262)|donate\\-(?|event/([^/]++)(*:295)|project/([^/]++)(*:319))))|/events/([^/]++)/register(*:355)|/reset\\-password/([^/]++)(*:388)|/verify\\-email/([^/]++)/([^/]++)(*:428)|/storage/(.*)(?|(*:452)))/?$}sDu',
+      0 => '{^(?|/a(?|dmin/(?|approvals/([^/]++)/(?|approve(*:49)|reject(*:62))|events/([^/]++)(?|(*:88)|/(?|edit(*:103)|donors(*:117)|approve(*:132))|(*:141))|donation(?|s/(?|project/([^/]++)/donors(*:189)|([^/]++)(?|/edit(*:213)|(*:221)))|\\-projects/([^/]++)(*:250)))|lumni/(?|events/([^/]++)/register(*:293)|donate\\-(?|event/([^/]++)(*:326)|project/([^/]++)(*:350))))|/events/([^/]++)/register(*:386)|/reset\\-password/([^/]++)(*:419)|/verify\\-email/([^/]++)/([^/]++)(*:459)|/storage/(.*)(?|(*:483)))/?$}sDu',
     ),
     3 => 
     array (
@@ -833,7 +833,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      186 => 
+      189 => 
       array (
         0 => 
         array (
@@ -856,7 +856,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      210 => 
+      213 => 
       array (
         0 => 
         array (
@@ -879,7 +879,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      218 => 
+      221 => 
       array (
         0 => 
         array (
@@ -921,7 +921,29 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      262 => 
+      250 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.projects.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      293 => 
       array (
         0 => 
         array (
@@ -943,7 +965,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      295 => 
+      326 => 
       array (
         0 => 
         array (
@@ -965,7 +987,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      319 => 
+      350 => 
       array (
         0 => 
         array (
@@ -987,7 +1009,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      355 => 
+      386 => 
       array (
         0 => 
         array (
@@ -1009,7 +1031,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      388 => 
+      419 => 
       array (
         0 => 
         array (
@@ -1032,7 +1054,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      428 => 
+      459 => 
       array (
         0 => 
         array (
@@ -1056,7 +1078,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      452 => 
+      483 => 
       array (
         0 => 
         array (
@@ -1150,7 +1172,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::LkX2Rr9jaI2dDrD4' => 
+    'generated::VFrdQMYMiJKRH7sJ' => 
     array (
       'methods' => 
       array (
@@ -1179,7 +1201,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000050d0000000000000000";}}',
-        'as' => 'generated::LkX2Rr9jaI2dDrD4',
+        'as' => 'generated::VFrdQMYMiJKRH7sJ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1195,7 +1217,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::AZTUWnBNE37CPDYj' => 
+    'generated::oerP72fyNBMchZUO' => 
     array (
       'methods' => 
       array (
@@ -1217,7 +1239,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::AZTUWnBNE37CPDYj',
+        'as' => 'generated::oerP72fyNBMchZUO',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2100,6 +2122,47 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'admin.projects.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'admin/donation-projects/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'verified',
+          3 => 'auth',
+          4 => 'isActive',
+          5 => 'role:admin',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Admin\\DonationProjectController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Admin\\DonationProjectController@destroy',
+        'as' => 'admin.projects.destroy',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'admin.donations.create' => 
     array (
       'methods' => 
@@ -2675,7 +2738,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::xmbOqyJd2cHsdeC4' => 
+    'generated::6OI6h4l7OVgI29rY' => 
     array (
       'methods' => 
       array (
@@ -2696,7 +2759,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::xmbOqyJd2cHsdeC4',
+        'as' => 'generated::6OI6h4l7OVgI29rY',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2750,7 +2813,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::eOhZsiiOghYBFCn1' => 
+    'generated::KWQAZ6cQcIm0lzIi' => 
     array (
       'methods' => 
       array (
@@ -2771,7 +2834,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::eOhZsiiOghYBFCn1',
+        'as' => 'generated::KWQAZ6cQcIm0lzIi',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3091,7 +3154,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::gXkvIfq1zSVzOyx1' => 
+    'generated::zELe4RcmPPrtwvhv' => 
     array (
       'methods' => 
       array (
@@ -3112,7 +3175,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::gXkvIfq1zSVzOyx1',
+        'as' => 'generated::zELe4RcmPPrtwvhv',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3251,7 +3314,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007ee0000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007ef0000000000000000";}}',
         'as' => 'storage.local.upload',
       ),
       'fallback' => false,

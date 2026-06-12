@@ -62,7 +62,7 @@ Route::middleware(['auth','isActive'])->group(function () {
         Route::get('/donation-projects', [AdminDonationProjectController::class, 'index'])->name('projects.index');
         Route::post('/donation-projects', [AdminDonationProjectController::class, 'store'])->name('projects.store');
         Route::get('/donations/project/{id}/donors', [AdminDonationProjectController::class, 'projectDonors'])->name('project.donors');
-
+        Route::delete('/donation-projects/{id}', [AdminDonationProjectController::class, 'destroy'])->name('projects.destroy');
 
         Route::resource('donations', AdminDonationController::class)
                 ->except(['show','index'])

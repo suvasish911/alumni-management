@@ -1,7 +1,7 @@
 @extends('panel.layout')
 
 @section('content')
-<div class="right_col" role="main">
+<div class="" role="main">
     <div class="page-title">
         <div class="title_left">
             <h3>Donations & Giving Dashboard</h3>

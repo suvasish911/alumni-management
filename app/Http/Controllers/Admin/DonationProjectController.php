@@ -57,4 +57,13 @@ class DonationProjectController extends Controller
        
         return view('admin.donations.project_donors', compact('project', 'donors', 'totalRaisedDynamic'));
     }
+
+    public function destroy($id)
+    {
+        $project = Donationproject::findOrFail($id);
+
+        $project->delete();
+
+        return redirect()->back()->with('success','Donation project deleted successfully');
+    }
 }
