@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::cBriBjFCfYEnXmuP',
+            '_route' => 'generated::PCKW2DSYjzM33JbY',
           ),
           1 => NULL,
           2 => 
@@ -53,7 +53,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Z8N4Oi6ERjniS23J',
+            '_route' => 'generated::Ej9TxwiHRS3bgmlx',
           ),
           1 => NULL,
           2 => 
@@ -406,6 +406,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/alumni/make-donation' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'alumni.donations.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/register' => 
       array (
         0 => 
@@ -429,7 +449,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ZKYCeLsAQchxxJ3M',
+            '_route' => 'generated::3QE0eKXmToIvTxqj',
           ),
           1 => NULL,
           2 => 
@@ -465,7 +485,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Ewyy3SfapEp5C5iQ',
+            '_route' => 'generated::oeW1CYxx03tQ3WiV',
           ),
           1 => NULL,
           2 => 
@@ -595,7 +615,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::VufHq14Rg0xGDgi5',
+            '_route' => 'generated::eorPtw0xQEe2zEK3',
           ),
           1 => NULL,
           2 => 
@@ -649,7 +669,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/a(?|dmin/(?|approvals/([^/]++)/(?|approve(*:49)|reject(*:62))|events/(?|([^/]++)(?|(*:91)|/(?|edit(*:106)|donors(*:120))|(*:129))|donors/([^/]++)/approve(*:161))|donations/([^/]++)(?|/edit(*:196)|(*:204)))|lumni/events/([^/]++)/register(*:244))|/events/([^/]++)/register(*:278)|/reset\\-password/([^/]++)(*:311)|/verify\\-email/([^/]++)/([^/]++)(*:351)|/storage/(.*)(?|(*:375)))/?$}sDu',
+      0 => '{^(?|/a(?|dmin/(?|approvals/([^/]++)/(?|approve(*:49)|reject(*:62))|events/([^/]++)(?|(*:88)|/(?|edit(*:103)|donors(*:117)|approve(*:132))|(*:141))|donations/([^/]++)(?|/edit(*:176)|(*:184)))|lumni/(?|events/([^/]++)/register(*:227)|donate\\-(?|event/([^/]++)(*:260)|project/([^/]++)(*:284))))|/events/([^/]++)/register(*:320)|/reset\\-password/([^/]++)(*:353)|/verify\\-email/([^/]++)/([^/]++)(*:393)|/storage/(.*)(?|(*:417)))/?$}sDu',
     ),
     3 => 
     array (
@@ -697,7 +717,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      91 => 
+      88 => 
       array (
         0 => 
         array (
@@ -720,7 +740,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      106 => 
+      103 => 
       array (
         0 => 
         array (
@@ -743,7 +763,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      120 => 
+      117 => 
       array (
         0 => 
         array (
@@ -766,7 +786,29 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      129 => 
+      132 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'admin.events.approve',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'PATCH' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      141 => 
       array (
         0 => 
         array (
@@ -808,29 +850,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      161 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'admin.events.approve',
-          ),
-          1 => 
-          array (
-            0 => 'id',
-          ),
-          2 => 
-          array (
-            'PATCH' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      196 => 
+      176 => 
       array (
         0 => 
         array (
@@ -853,7 +873,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      204 => 
+      184 => 
       array (
         0 => 
         array (
@@ -895,7 +915,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      244 => 
+      227 => 
       array (
         0 => 
         array (
@@ -917,7 +937,51 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      278 => 
+      260 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'alumni.donations.storeEvent',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      284 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'alumni.donations.storeProject',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      320 => 
       array (
         0 => 
         array (
@@ -939,7 +1003,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      311 => 
+      353 => 
       array (
         0 => 
         array (
@@ -962,7 +1026,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      351 => 
+      393 => 
       array (
         0 => 
         array (
@@ -986,7 +1050,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      375 => 
+      417 => 
       array (
         0 => 
         array (
@@ -1080,7 +1144,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::cBriBjFCfYEnXmuP' => 
+    'generated::PCKW2DSYjzM33JbY' => 
     array (
       'methods' => 
       array (
@@ -1109,7 +1173,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000050d0000000000000000";}}',
-        'as' => 'generated::cBriBjFCfYEnXmuP',
+        'as' => 'generated::PCKW2DSYjzM33JbY',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1125,7 +1189,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Z8N4Oi6ERjniS23J' => 
+    'generated::Ej9TxwiHRS3bgmlx' => 
     array (
       'methods' => 
       array (
@@ -1147,7 +1211,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Z8N4Oi6ERjniS23J',
+        'as' => 'generated::Ej9TxwiHRS3bgmlx',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1786,7 +1850,7 @@ app('router')->setCompiledRoutes(
       array (
         0 => 'PATCH',
       ),
-      'uri' => 'admin/events/donors/{id}/approve',
+      'uri' => 'admin/events/{id}/approve',
       'action' => 
       array (
         'middleware' => 
@@ -2008,8 +2072,8 @@ app('router')->setCompiledRoutes(
           5 => 'role:admin',
         ),
         'as' => 'admin.donations.index',
-        'uses' => 'App\\Http\\Controllers\\DonationController@index',
-        'controller' => 'App\\Http\\Controllers\\DonationController@index',
+        'uses' => 'App\\Http\\Controllers\\Admin\\DonationController@index',
+        'controller' => 'App\\Http\\Controllers\\Admin\\DonationController@index',
         'namespace' => NULL,
         'prefix' => '/admin',
         'where' => 
@@ -2050,8 +2114,8 @@ app('router')->setCompiledRoutes(
           5 => 'role:admin',
         ),
         'as' => 'admin.donations.create',
-        'uses' => 'App\\Http\\Controllers\\DonationController@create',
-        'controller' => 'App\\Http\\Controllers\\DonationController@create',
+        'uses' => 'App\\Http\\Controllers\\Admin\\DonationController@create',
+        'controller' => 'App\\Http\\Controllers\\Admin\\DonationController@create',
         'namespace' => NULL,
         'prefix' => '/admin',
         'where' => 
@@ -2091,8 +2155,8 @@ app('router')->setCompiledRoutes(
           5 => 'role:admin',
         ),
         'as' => 'admin.donations.store',
-        'uses' => 'App\\Http\\Controllers\\DonationController@store',
-        'controller' => 'App\\Http\\Controllers\\DonationController@store',
+        'uses' => 'App\\Http\\Controllers\\Admin\\DonationController@store',
+        'controller' => 'App\\Http\\Controllers\\Admin\\DonationController@store',
         'namespace' => NULL,
         'prefix' => '/admin',
         'where' => 
@@ -2133,8 +2197,8 @@ app('router')->setCompiledRoutes(
           5 => 'role:admin',
         ),
         'as' => 'admin.donations.edit',
-        'uses' => 'App\\Http\\Controllers\\DonationController@edit',
-        'controller' => 'App\\Http\\Controllers\\DonationController@edit',
+        'uses' => 'App\\Http\\Controllers\\Admin\\DonationController@edit',
+        'controller' => 'App\\Http\\Controllers\\Admin\\DonationController@edit',
         'namespace' => NULL,
         'prefix' => '/admin',
         'where' => 
@@ -2175,8 +2239,8 @@ app('router')->setCompiledRoutes(
           5 => 'role:admin',
         ),
         'as' => 'admin.donations.update',
-        'uses' => 'App\\Http\\Controllers\\DonationController@update',
-        'controller' => 'App\\Http\\Controllers\\DonationController@update',
+        'uses' => 'App\\Http\\Controllers\\Admin\\DonationController@update',
+        'controller' => 'App\\Http\\Controllers\\Admin\\DonationController@update',
         'namespace' => NULL,
         'prefix' => '/admin',
         'where' => 
@@ -2216,8 +2280,8 @@ app('router')->setCompiledRoutes(
           5 => 'role:admin',
         ),
         'as' => 'admin.donations.destroy',
-        'uses' => 'App\\Http\\Controllers\\DonationController@destroy',
-        'controller' => 'App\\Http\\Controllers\\DonationController@destroy',
+        'uses' => 'App\\Http\\Controllers\\Admin\\DonationController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Admin\\DonationController@destroy',
         'namespace' => NULL,
         'prefix' => '/admin',
         'where' => 
@@ -2443,6 +2507,130 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'alumni.donations.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'alumni/make-donation',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'verified',
+          3 => 'auth',
+          4 => 'isActive',
+          5 => 'role:alumni',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Alumni\\DonationController@index',
+        'controller' => 'App\\Http\\Controllers\\Alumni\\DonationController@index',
+        'as' => 'alumni.donations.index',
+        'namespace' => NULL,
+        'prefix' => '/alumni',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'alumni.donations.storeEvent' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'alumni/donate-event/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'verified',
+          3 => 'auth',
+          4 => 'isActive',
+          5 => 'role:alumni',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Alumni\\DonationController@storeEventDonation',
+        'controller' => 'App\\Http\\Controllers\\Alumni\\DonationController@storeEventDonation',
+        'as' => 'alumni.donations.storeEvent',
+        'namespace' => NULL,
+        'prefix' => '/alumni',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'alumni.donations.storeProject' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'alumni/donate-project/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'verified',
+          3 => 'auth',
+          4 => 'isActive',
+          5 => 'role:alumni',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Alumni\\DonationController@storeProjectDonation',
+        'controller' => 'App\\Http\\Controllers\\Alumni\\DonationController@storeProjectDonation',
+        'as' => 'alumni.donations.storeProject',
+        'namespace' => NULL,
+        'prefix' => '/alumni',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'register' => 
     array (
       'methods' => 
@@ -2481,7 +2669,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ZKYCeLsAQchxxJ3M' => 
+    'generated::3QE0eKXmToIvTxqj' => 
     array (
       'methods' => 
       array (
@@ -2502,7 +2690,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ZKYCeLsAQchxxJ3M',
+        'as' => 'generated::3QE0eKXmToIvTxqj',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2556,7 +2744,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Ewyy3SfapEp5C5iQ' => 
+    'generated::oeW1CYxx03tQ3WiV' => 
     array (
       'methods' => 
       array (
@@ -2577,7 +2765,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Ewyy3SfapEp5C5iQ',
+        'as' => 'generated::oeW1CYxx03tQ3WiV',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2897,7 +3085,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::VufHq14Rg0xGDgi5' => 
+    'generated::eorPtw0xQEe2zEK3' => 
     array (
       'methods' => 
       array (
@@ -2918,7 +3106,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::VufHq14Rg0xGDgi5',
+        'as' => 'generated::eorPtw0xQEe2zEK3',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3057,7 +3245,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007eb0000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007ee0000000000000000";}}',
         'as' => 'storage.local.upload',
       ),
       'fallback' => false,

@@ -3,7 +3,7 @@
 @section('content')
 <div class="" role="main">
     <div class="container"> <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-md-offset-0 col-sm-12 col-xs-12">
                 
                 <div class="x_panel" style="box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-radius: 4px; padding: 15px 20px;">
                     

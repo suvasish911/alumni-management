@@ -19,6 +19,7 @@ class EventController extends Controller
         $user = Auth::user();
 
         $participatedEvents = $user->registeredEvents()
+                                   ->where('event_type', '!=', 'fundraiser')
                                    ->with('category')
                                    ->latest('event_registrations.created_at')
                                    ->paginate(10, ['*'], 'participated_page');
@@ -26,71 +27,49 @@ class EventController extends Controller
         // $participatedIds = $participatedEvents->pluck('id')->toArray();
         
        
-        $upcomingEvents = Event::where(function($query) use ($user){
-            $query->where(function($q) use ($user) {
-            $q->where('event_type', 'ticketed')
-              ->whereDoesntHave('attendees', function($subQ) use ($user){
-                  $subQ->where('user_id', $user->id);
-              });
-        })
-        ->orWhere(function($q){
-            $q->where('event_type', 'fundraiser')
-              ;
-        });
-        })
-        ->where(function($query){
-            $query->where('event_date', '>=', now())
-                  ->orWhereNull('event_date');
-        })
-        ->with('category')
-        ->latest()
-        ->paginate(10, ['*'], 'upcoming_page');
+        $upcomingEvents = Event::where('event_type', 'ticketed') 
+            ->whereDoesntHave('attendees', function($subQ) use ($user){
+                $subQ->where('user_id', $user->id);
+            })
+            ->where(function($query){
+                $query->where('event_date', '>=', now())
+                      ->orWhereNull('event_date');
+            })
+            ->with('category')
+            ->latest()
+            ->paginate(10, ['*'], 'upcoming_page');
 
         return view('alumni.events.index', compact('upcomingEvents', 'participatedEvents'));
     }
 
     public function register(Request $request, $id) {
-        $events = Event::findOrFail($id); 
+        
+        $event = Event::where('event_type', 'ticketed')->findOrFail($id); 
         $user = Auth::user();
 
-
-        if ($events->event_type === 'ticketed' && $user->registeredEvents()->where('event_id', $id)->exists()) {
+       
+        if ($user->registeredEvents()->where('event_id', $id)->exists()) {
             return redirect()->back()->with('error', 'You have already registered for this event!');
         }
 
-        if ($events->event_type === 'fundraiser' && $events->raised_amount >= $events->amount) {
-        return redirect()->back()->with('error', 'This fundraising campaign has already achieved its goal! Thank you for your support.');
-        }
+        
+        $amountToPay = $event->amount;
 
-        if ($events->event_type === 'ticketed') {
-            $amountToPay = $events->amount;
-
-            if ($amountToPay > 0) {
-                $request->validate([
-                    'transaction_id' => 'required|string|max:255|unique:event_registrations,transaction_id',
-                ], [
-                    'transaction_id.required' => 'This is a paid event. Please provide a Transaction ID to register.'
-                ]);
-                $status = 'pending';
-            } else {
-                $status = 'free';
-            }
-        } else {
-            // It's a Fundraiser: Require a custom donation amount input field
+        if ($amountToPay > 0) {
+           
             $request->validate([
-                'amount_paid'    => 'required|numeric|min:1',
                 'transaction_id' => 'required|string|max:255|unique:event_registrations,transaction_id',
             ], [
-                'amount_paid.required'    => 'Please enter the amount you wish to contribute.',
-                'transaction_id.required' => 'Please provide a Transaction ID for your donation.'
+                'transaction_id.required' => 'This is a paid event. Please provide a Transaction ID to register.',
+                'transaction_id.unique'   => 'This Transaction ID has already been used.'
             ]);
-
-            $amountToPay = $request->amount_paid;
-            $status = 'pending'; // Contributions always require verification
+            $status = 'pending'; 
+        } else {
+            $status = 'free'; 
         }
 
-        // 3. Attach data record via your relationship pivot mapping table
-        $user->registeredEvents()->attach($events->id, [
+        
+        $user->registeredEvents()->attach($event->id, [
             'payment_status' => $status,
             'transaction_id' => $amountToPay > 0 ? $request->transaction_id : null,
             'amount_paid'    => $amountToPay,

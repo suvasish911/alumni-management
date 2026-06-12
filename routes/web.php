@@ -8,7 +8,8 @@ use App\Http\Controllers\AlumniApprovalController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Alumni\EventController as AlumniEventController;
 // use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DonationController;
+use App\Http\Controllers\Admin\DonationController as AdminDonationController;
+use App\Http\Controllers\Alumni\DonationController as AlumniDonationController;
 use App\Http\Controllers\DonationHistoryController;
 use App\Http\Controllers\Admin\DonationProjectController;
 use Illuminate\Support\Facades\Route;
@@ -48,7 +49,8 @@ Route::middleware(['auth','isActive'])->group(function () {
         //Event Managemnet
         Route::resource('events',AdminEventController::class);
         Route::get('/events/{id}/donors', [AdminEventController::class, 'donorList'])->name('events.donors');
-        Route::patch('/events/donors/{id}/approve', [AdminEventController::class, 'approveDonor'])->name('events.approve');
+        Route::patch('/events/{id}/approve', [AdminEventController::class, 'approveDonor'])->name('events.approve');
+        // Route::patch('/events/donors/{id}/approve', [AdminEventController::class, 'approveDonor'])->name('events.approve');
        
        // Donation Management
         Route::get('/donations/history', [DonationHistoryController::class, 'history'])->name('donations.history');
@@ -59,7 +61,7 @@ Route::middleware(['auth','isActive'])->group(function () {
        Route::get('/donation-projects', [DonationProjectController::class, 'index'])->name('projects.index');
        Route::post('/donation-projects', [DonationProjectController::class, 'store'])->name('projects.store');
 
-        Route::resource('donations', DonationController::class)
+        Route::resource('donations', AdminDonationController::class)
                 ->except(['show'])
                 ->names([
                         'index'   => 'donations.index',
@@ -83,8 +85,12 @@ Route::middleware(['auth','isActive'])->group(function () {
         
         Route::get('/events',[ AlumniEventController::class, 'index'])->name('events.index');
         Route::post('/events/{id}/register',[AlumniEventController::class, 'register'])->name('events.register');
-         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-        
+        Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+        //Donation part
+        Route::get('/make-donation', [AlumniDonationController::class, 'index'])->name('donations.index');
+        Route::post('/donate-event/{id}', [AlumniDonationController::class, 'storeEventDonation'])->name('donations.storeEvent');
+        Route::post('/donate-project/{id}', [AlumniDonationController::class, 'storeProjectDonation'])->name('donations.storeProject');
     });
 
    
