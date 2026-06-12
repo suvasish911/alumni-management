@@ -121,7 +121,7 @@
         }
     }
     
-    // Safety check: triggers matching view configuration layout immediately on document load initialization
+  
     document.addEventListener("DOMContentLoaded", function() {
         toggleAmountLabel();
     });

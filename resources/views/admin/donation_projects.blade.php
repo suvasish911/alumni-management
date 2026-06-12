@@ -66,7 +66,7 @@
                         <div class="ln_solid" style="border-top: 1px solid #e5e5e5; margin: 15px 0 10px 0;"></div>
                         
                         <div style="text-align: center;">
-                            <a href="{{ route('admin.donations.index', ['project_id' => $project->id]) }}" class="btn btn-default btn-sm" style="width: 100%; border-radius: 3px; color: #2A3F54; font-weight: bold; border-color: #ccc;">
+                            <a href="{{ route('admin.project.donors',  $project->id) }}" class="btn btn-default btn-sm" style="width: 100%; border-radius: 3px; color: #2A3F54; font-weight: bold; border-color: #ccc;">
                                 <i class="fa fa-list"></i> View Donor Transactions
                             </a>
                         </div>

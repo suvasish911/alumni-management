@@ -7,11 +7,10 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AlumniApprovalController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Alumni\EventController as AlumniEventController;
-// use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DonationController as AdminDonationController;
 use App\Http\Controllers\Alumni\DonationController as AlumniDonationController;
 use App\Http\Controllers\DonationHistoryController;
-use App\Http\Controllers\Admin\DonationProjectController;
+use App\Http\Controllers\Admin\DonationProjectController as AdminDonationProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -57,14 +56,18 @@ Route::middleware(['auth','isActive'])->group(function () {
         Route::get('/donations/report', [DonationReportController::class, 'report'])->name('donations.report');
 
 
-    // Donation Projects 
-       Route::get('/donation-projects', [DonationProjectController::class, 'index'])->name('projects.index');
-       Route::post('/donation-projects', [DonationProjectController::class, 'store'])->name('projects.store');
+
+
+        // Donation Projects 
+        Route::get('/donation-projects', [AdminDonationProjectController::class, 'index'])->name('projects.index');
+        Route::post('/donation-projects', [AdminDonationProjectController::class, 'store'])->name('projects.store');
+        Route::get('/donations/project/{id}/donors', [AdminDonationProjectController::class, 'projectDonors'])->name('project.donors');
+
 
         Route::resource('donations', AdminDonationController::class)
-                ->except(['show'])
+                ->except(['show','index'])
                 ->names([
-                        'index'   => 'donations.index',
+                       
                         'create'  => 'donations.create',
                         'store'   => 'donations.store',
                         'edit'    => 'donations.edit',

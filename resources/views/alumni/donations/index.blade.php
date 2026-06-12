@@ -64,40 +64,13 @@
                                             @if($event->raised_amount >= $event->amount)
                                                 <button class="btn btn-success btn-block disabled" style="border-radius: 3px; font-weight: 600;"><i class="fa fa-check-circle"></i> Campaign Goal Met!</button>
                                             @else
-                                                <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#eventModal{{ $event->id }}" style="background-color: #2A3F54; border-color: #1F2E3D; border-radius: 3px; font-weight: 600;">
+                                                <button class="btn btn-primary btn-block open-donate-event-modal" 
+                                                        style="background-color: #2A3F54; border-color: #1F2E3D; border-radius: 3px; font-weight: 600;"
+                                                        data-id="{{ $event->id }}"
+                                                        data-name="{{ $event->name }}">
                                                     <i class="fa fa-heart"></i> Contribute Funds
                                                 </button>
                                             @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="eventModal{{ $event->id }}" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content" style="border-radius: 4px;">
-                                            <div class="modal-header" style="background-color: #F2F5F7;">
-                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                                                <h4 class="modal-title" style="font-weight: 600; font-size: 15px; color: #2A3F54;">Event Fund Donation</h4>
-                                            </div>
-                                            <form action="{{ route('alumni.donations.storeEvent', $event->id) }}" method="POST">
-                                                @csrf
-                                                <div class="modal-body">
-                                                    <p style="font-size: 13px;">Campaign: <strong>{{ $event->name }}</strong></p>
-                                                    
-                                                    <div class="form-group">
-                                                        <label style="font-size: 12px; font-weight: 600; color: #555;">Donation Amount (TK) <span style="color:red;">*</span></label>
-                                                        <input type="number" name="amount_paid" class="form-control" min="1" step="0.01" required placeholder="e.g. 5000">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label style="font-size: 12px; font-weight: 600; color: #555;">Transaction ID <span style="color:red;">*</span></label>
-                                                        <input type="text" name="transaction_id" class="form-control" required placeholder="bKash / Nagad Trx ID">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer" style="background-color: #F9FAFB;">
-                                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-success btn-sm" style="font-weight: 600;">Submit Contribution</button>
-                                                </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -130,47 +103,13 @@
                                                 {{ $project->description ?? 'Contribute anytime to support our lifelong institutional welfare program and student aids.' }}
                                             </p>
                                             
-                                            <button class="btn btn-sm btn-block" data-toggle="modal" data-target="#projectModal{{ $project->id }}" style="background-color: #9B59B6; color: white; font-weight: 600; border-radius: 3px; position: absolute; bottom: 12px; left: 0; width: calc(100% - 24px); margin: 0 12px;">
+                                            <button type="button" 
+                                                    class="btn btn-sm btn-block open-donate-project-modal" 
+                                                    style="background-color: #9B59B6; color: white; font-weight: 600; border-radius: 3px; position: absolute; bottom: 12px; left: 0; width: calc(100% - 24px); margin: 0 12px;"
+                                                    data-id="{{ $project->id }}"
+                                                    data-name="{{ $project->name }}">
                                                 <i class="fa fa-gift"></i> Donate to This Fund
                                             </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="projectModal{{ $project->id }}" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content" style="border-radius: 4px;">
-                                            <div class="modal-header" style="background-color: #F2F5F7;">
-                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                                                <h4 class="modal-title" style="font-weight: 600; font-size: 15px; color: #2A3F54;">General Fund Contribution</h4>
-                                            </div>
-                                            <form action="{{ route('alumni.donations.storeProject', $project->id) }}" method="POST">
-                                                @csrf
-                                                <div class="modal-body">
-                                                    <p style="font-size: 13px;">Allocating to: <strong style="color: #9B59B6;">{{ $project->name }}</strong></p>
-                                                    
-                                                    <div class="form-group">
-                                                        <label style="font-size: 12px; font-weight: 600; color: #555;">Donation Amount (TK) <span style="color:red;">*</span></label>
-                                                        <input type="number" name="donation_amount" class="form-control" min="1" required placeholder="e.g. 1000">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label style="font-size: 12px; font-weight: 600; color: #555;">Payment Gateway Method <span style="color:red;">*</span></label>
-                                                        <select name="payment_method" class="form-control" required style="border-radius: 3px;">
-                                                            <option value="MFS">Mobile Financial Services (bKash/Nagad)</option>
-                                                            <option value="Bank">Direct Bank Transfer</option>
-                                                            <option value="Cash">Cash Submission</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label style="font-size: 12px; font-weight: 600; color: #555;">Transaction ID / Reference <span style="color:red;">*</span></label>
-                                                        <input type="text" name="transaction_id" class="form-control" required placeholder="Trx ID or Slip Number">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer" style="background-color: #F9FAFB;">
-                                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-success btn-sm" style="background-color: #26B99A; font-weight: 600;">Confirm Donation</button>
-                                                </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -184,8 +123,78 @@
         </div>
     </div>
 
+    <div class="modal fade" id="dynamicProjectModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" style="border-radius: 4px;">
+                <div class="modal-header" style="background-color: #F2F5F7;">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="projectModalTitle" style="font-weight: 600; font-size: 15px; color: #2A3F54;">Fund Contribution</h4>
+                </div>
+                <form id="dynamicProjectForm" method="POST" action="">
+                    @csrf
+                    <div class="modal-body">
+                        <p style="font-size: 13px;">Allocating to: <strong id="projectModalAllocatingLabel" style="color: #9B59B6;"></strong></p>
+                        
+                        <div class="form-group">
+                            <label style="font-size: 12px; font-weight: 600; color: #555;">Donation Amount (TK) <span style="color:red;">*</span></label>
+                            <input type="number" name="donation_amount" class="form-control" min="1" required placeholder="e.g. 1000">
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size: 12px; font-weight: 600; color: #555;">Payment Gateway Method <span style="color:red;">*</span></label>
+                            <select name="payment_method" class="form-control" required style="border-radius: 3px;">
+                                <option value="">-- Select Method --</option>
+                                <option value="MFS">Mobile Financial Services (bKash/Nagad)</option>
+                                <option value="Bank">Direct Bank Transfer</option>
+                                <option value="Cash">Cash Submission</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size: 12px; font-weight: 600; color: #555;">Transaction ID / Reference <span style="color:red;">*</span></label>
+                            <input type="text" name="transaction_id" class="form-control" required placeholder="Trx ID or Slip Number">
+                        </div>
+                        
+                        <input type="hidden" name="donor_name" value="{{ auth()->user()->name ?? 'Alumni Member' }}">
+                    </div>
+                    <div class="modal-footer" style="background-color: #F9FAFB;">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success btn-sm" style="background-color: #26B99A; font-weight: 600;">Confirm Donation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dynamicEventModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" style="border-radius: 4px;">
+                <div class="modal-header" style="background-color: #F2F5F7;">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" style="font-weight: 600; font-size: 15px; color: #2A3F54;">Event Fund Donation</h4>
+                </div>
+                <form id="dynamicEventForm" method="POST" action="">
+                    @csrf
+                    <div class="modal-body">
+                        <p style="font-size: 13px;">Campaign: <strong id="eventModalAllocatingLabel"></strong></p>
+                        
+                        <div class="form-group">
+                            <label style="font-size: 12px; font-weight: 600; color: #555;">Donation Amount (TK) <span style="color:red;">*</span></label>
+                            <input type="number" name="amount_paid" class="form-control" min="1" step="0.01" required placeholder="e.g. 5000">
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size: 12px; font-weight: 600; color: #555;">Transaction ID <span style="color:red;">*</span></label>
+                            <input type="text" name="transaction_id" class="form-control" required placeholder="bKash / Nagad Trx ID">
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="background-color: #F9FAFB;">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success btn-sm" style="font-weight: 600;">Submit Contribution</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="row" style="margin-top: 15px;">
-        
         <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="x_panel" style="border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                 <div class="x_title">
@@ -275,7 +284,41 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+   
+    $('.open-donate-project-modal').on('click', function(e) {
+        e.preventDefault();
+        var projectId = $(this).data('id');
+        var projectName = $(this).data('name');
+        
+       
+        var actionUrl = "{{ url('/alumni/donate-project') }}/" + projectId;
+        
+        $('#dynamicProjectForm').attr('action', actionUrl);
+        $('#projectModalTitle').text(projectName + ' Contribution');
+        $('#projectModalAllocatingLabel').text(projectName);
+        
+        $('#dynamicProjectModal').modal('show');
+    });
+
+   
+    $('.open-donate-event-modal').on('click', function(e) {
+        e.preventDefault();
+        var eventId = $(this).data('id');
+        var eventName = $(this).data('name');
+        
+        var actionUrl = "{{ url('/alumni/donate-event') }}/" + eventId;
+        
+        $('#dynamicEventForm').attr('action', actionUrl);
+        $('#eventModalAllocatingLabel').text(eventName);
+        
+        $('#dynamicEventModal').modal('show');
+    });
+});
+</script>
 @endsection

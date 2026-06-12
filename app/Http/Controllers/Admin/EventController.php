@@ -81,9 +81,7 @@ class EventController extends Controller {
         return view('admin.events.edit', compact('events','categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+  
     public function update(Request $request, string $id)
     {
         $events = Event::findOrFail($id);
@@ -117,9 +115,7 @@ class EventController extends Controller {
         return redirect()->route('admin.events.index')->with('success', 'Event updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         $events = Event::findOrFail($id);
@@ -139,12 +135,12 @@ class EventController extends Controller {
     {
         $registration = \App\Models\EventRegistration::findOrFail($id);
         
-        // Fix: Use 'payment_status' column which actually exists in your schema
+       
         $registration->update([
             'payment_status' => 'approved'
         ]);
 
-        // Automatically add to campaign total goals if fundraiser track is confirmed
+       
         $event = Event::find($registration->event_id);
         if ($event && $event->event_type === 'fundraiser') {
             if ($registration->amount_paid > 0) {
@@ -152,7 +148,7 @@ class EventController extends Controller {
             }
         }
 
-        // Fixed typo from 'succcess' to 'success'
+        
         return redirect()->back()->with('success', 'Transaction approved and confirmed successfully!');
     }
 }

@@ -25,7 +25,6 @@
       
       <li><a><i class="fa fa-hand-holding-usd"></i> Donations Control <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="{{ route('admin.donations.index') }}">Manage Donations</a></li>
           <li><a href="{{ route('admin.projects.index') }}">Donation Projects</a></li>
           <li><a href="{{ route('admin.donations.history') }}">History Logs</a></li>
           <li><a href="{{ route('admin.donations.report') }}">Financial Reports</a></li>
@@ -43,7 +42,7 @@
   @endif
 
 
-  @if(Auth::user()->role === 'account_officer')
+  <!-- @if(Auth::user()->role === 'account_officer')
   <div class="menu_section">
     <h3>Financial Control</h3>
     <ul class="nav side-menu">
@@ -62,7 +61,7 @@
       </li>
     </ul>
   </div>
-  @endif
+  @endif -->
 
 
   @if(Auth::user()->role === 'alumni')
