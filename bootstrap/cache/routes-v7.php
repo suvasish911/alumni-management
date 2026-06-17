@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::VFrdQMYMiJKRH7sJ',
+            '_route' => 'generated::C6Ekt6gLzHFHj0St',
           ),
           1 => NULL,
           2 => 
@@ -53,7 +53,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::oerP72fyNBMchZUO',
+            '_route' => 'generated::RBoCRDKMwHus71QR',
           ),
           1 => NULL,
           2 => 
@@ -370,25 +370,6 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/alumni/logout' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'alumni.logout',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
       '/alumni/make-donation' => 
       array (
         0 => 
@@ -402,6 +383,25 @@ app('router')->setCompiledRoutes(
           array (
             'GET' => 0,
             'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/logout' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'logout',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -432,7 +432,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::6OI6h4l7OVgI29rY',
+            '_route' => 'generated::AaK1OsXUZXg79h3g',
           ),
           1 => NULL,
           2 => 
@@ -468,7 +468,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::KWQAZ6cQcIm0lzIi',
+            '_route' => 'generated::F1tmYPgW1v8wHOI2',
           ),
           1 => NULL,
           2 => 
@@ -598,7 +598,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::zELe4RcmPPrtwvhv',
+            '_route' => 'generated::o9fSbzKPYHx62L8b',
           ),
           1 => NULL,
           2 => 
@@ -623,25 +623,6 @@ app('router')->setCompiledRoutes(
           2 => 
           array (
             'PUT' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/logout' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'logout',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -1172,7 +1153,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::VFrdQMYMiJKRH7sJ' => 
+    'generated::C6Ekt6gLzHFHj0St' => 
     array (
       'methods' => 
       array (
@@ -1201,7 +1182,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000050d0000000000000000";}}',
-        'as' => 'generated::VFrdQMYMiJKRH7sJ',
+        'as' => 'generated::C6Ekt6gLzHFHj0St',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1217,7 +1198,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::oerP72fyNBMchZUO' => 
+    'generated::RBoCRDKMwHus71QR' => 
     array (
       'methods' => 
       array (
@@ -1239,7 +1220,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::oerP72fyNBMchZUO',
+        'as' => 'generated::RBoCRDKMwHus71QR',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2535,47 +2516,6 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'alumni.logout' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'alumni/logout',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-          2 => 'verified',
-          3 => 'auth',
-          4 => 'isActive',
-          5 => 'role:alumni',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy',
-        'controller' => 'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy',
-        'as' => 'alumni.logout',
-        'namespace' => NULL,
-        'prefix' => '/alumni',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
     'alumni.donations.index' => 
     array (
       'methods' => 
@@ -2700,6 +2640,43 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'logout' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'logout',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'logout',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'register' => 
     array (
       'methods' => 
@@ -2738,7 +2715,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::6OI6h4l7OVgI29rY' => 
+    'generated::AaK1OsXUZXg79h3g' => 
     array (
       'methods' => 
       array (
@@ -2759,7 +2736,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::6OI6h4l7OVgI29rY',
+        'as' => 'generated::AaK1OsXUZXg79h3g',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2813,7 +2790,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::KWQAZ6cQcIm0lzIi' => 
+    'generated::F1tmYPgW1v8wHOI2' => 
     array (
       'methods' => 
       array (
@@ -2834,7 +2811,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::KWQAZ6cQcIm0lzIi',
+        'as' => 'generated::F1tmYPgW1v8wHOI2',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3154,7 +3131,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::zELe4RcmPPrtwvhv' => 
+    'generated::o9fSbzKPYHx62L8b' => 
     array (
       'methods' => 
       array (
@@ -3175,7 +3152,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::zELe4RcmPPrtwvhv',
+        'as' => 'generated::o9fSbzKPYHx62L8b',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3213,43 +3190,6 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'password.update',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'logout' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'logout',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy',
-        'controller' => 'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'logout',
       ),
       'fallback' => false,
       'defaults' => 

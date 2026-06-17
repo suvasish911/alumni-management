@@ -88,7 +88,7 @@ Route::middleware(['auth','isActive'])->group(function () {
         
         Route::get('/events',[ AlumniEventController::class, 'index'])->name('events.index');
         Route::post('/events/{id}/register',[AlumniEventController::class, 'register'])->name('events.register');
-        Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+       
 
         //Donation part
         Route::get('/make-donation', [AlumniDonationController::class, 'index'])->name('donations.index');
@@ -99,6 +99,7 @@ Route::middleware(['auth','isActive'])->group(function () {
    
         
 });
+Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 
 });
 

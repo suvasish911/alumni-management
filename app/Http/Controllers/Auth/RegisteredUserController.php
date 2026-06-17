@@ -11,16 +11,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
-use Illuminate\View\View;
+// use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create(): RedirectResponse
     {
-        return view('auth.register');
+        return redirect('/');
     }
 
     /**
@@ -34,16 +34,33 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required', 'string', 'in:alumni,account_officer']
+            // 'role' => ['required', 'string', 'in:alumni,account_officer'],
+
+            'student_id' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
+            'batch' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
+            'session' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
+            'profile_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
-        $status = ($request->role === 'alumni') ? 'pending' : 'active';
+        // $status = ($request->role === 'alumni') ? 'pending' : 'active';
+        $imagePath = null;
+
+        if($request->hasFile('profile_image')){
+            $file = $request->file('profile_image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('profile_image', $filename, 'public');
+            $imagePath = 'profile_image/' . $filename;
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role,
-            'status' => $status,
+            'role' => 'alumni',
+            'status' => 'pending',
+            'student_id' => $request->student_id,
+            'batch' => $request->batch,
+            'session' => $request->session,
+            'profile_image' => $imagePath,
         ]);
 
         event(new Registered($user));

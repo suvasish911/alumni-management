@@ -27,6 +27,10 @@ class User extends Authenticatable
         'role',
         'status',
         'usertype',
+        'student_id',
+        'batch',
+        'session',
+        'profile_image',
 
     ];
 

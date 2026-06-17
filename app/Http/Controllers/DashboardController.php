@@ -61,7 +61,7 @@ class DashboardController extends Controller
     
     elseif ($user->role === 'alumni') {
         $upcoming_events = Event::get(); 
-        $myInvoices = Invoice::where('user_id', $user->id)->get();
+        // $myInvoices = Invoice::where('user_id', $user->id)->get();
     }
 
     

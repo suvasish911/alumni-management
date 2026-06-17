@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
-    
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('student_id')->nullable()->after('email');
+            $table->string('batch')->nullable()->after('student_id');
+            $table->string('session')->nullable()->after('batch');
+            $table->string('profile_image')->nullable()->after('status');
+        });
     }
 
     /**
@@ -20,6 +24,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-      
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['student_id', 'batch', 'session', 'profile_image']);
+        });
     }
 };
