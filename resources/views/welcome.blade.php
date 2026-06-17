@@ -36,7 +36,7 @@
             padding:20px 0;
         }
 
-        /* Form styling inside modal */
+        /* Form styling inside modals */
         .form-section-title {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -102,7 +102,9 @@
                                 </li>
                             @else
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                    <button class="nav-link " data-bs-toggle="modal" data-bs-target="#loginModal">
+                                        Login
+                                    </button>
                                 </li>
                                 @if (Route::has('register'))
                                     <li class="nav-item">
@@ -254,7 +256,14 @@
         <section class="container py-5 text-center">
             <h2>Support Future Generations</h2>
             <p>Help students through scholarships and university development projects.</p>
-            <a href="{{ route('login') }}" class="btn btn-success btn-lg">Donate Now</a>
+            
+            @auth
+                <a href="{{ url('/dashboard') }}" class="btn btn-success btn-lg">Donate Now</a>
+            @else
+                <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Donate Now
+                </button>
+            @endauth
         </section>
 
 
@@ -267,7 +276,7 @@
                             <h4 class="modal-title fw-bold text-dark" id="registerModalLabel">Create Alumni Account</h4>
                             <p class="text-muted small mb-0">Please fill in your academic details to register for verification.</p>
                         </div>
-                        <button type="button" class="btn-close mb-4" data-bs-redirect="modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close mb-4" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     
                     <div class="modal-body p-4">
@@ -311,6 +320,9 @@
                                     <p class="text-muted text-xs mb-0 mt-1" style="font-size: 0.75rem;">PNG, JPG, JPEG up to 2MB</p>
                                     <input id="profile_image" type="file" name="profile_image" accept="image/*">
                                 </div>
+                                @error('profile_image')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="row g-3 mb-4">
@@ -325,12 +337,87 @@
                             </div>
 
                             <div class="d-flex align-items-center justify-content-between pt-3 border-top">
-                                <a class="text-decoration-none text-secondary small" href="{{ route('login') }}">
+                                <button type="button" class="btn btn-link text-decoration-none text-secondary small p-0" data-bs-toggle="modal" data-bs-target="#loginModal">
                                     Already registered?
-                                </a>
+                                </button>
                                 <div>
                                     <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-primary px-4 fw-semibold">Submit Registration</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
+
+        @if (!Auth::check() && Route::has('login'))
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md modal-dialog-centered">
+                <div class="modal-content rounded-4 border-0 shadow-lg">
+                    <div class="modal-header border-0 pb-0 mt-2 px-4">
+                        <div>
+                            <h4 class="modal-title fw-bold text-dark" id="loginModalLabel">Welcome Back</h4>
+                            <p class="text-muted small mb-0">Sign in to access your dashboard panel.</p>
+                        </div>
+                        <button type="button" class="btn-close mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <div class="modal-body p-4">
+                        @if (session('status'))
+                            <div class="alert alert-success small mb-3 rounded-3" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+
+                            <div class="mb-3">
+                                <label for="login_email" class="form-label small fw-bold text-secondary">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted border-end-0"><i class="fa-regular fa-envelope"></i></span>
+                                    <input id="login_email" class="form-control border-start-0 ps-0" type="email" name="email" :value="old('email')" required autofocus placeholder="name@example.com" />
+                                </div>
+                                @error('email')
+                                    <div class="text-danger small mt-1" style="font-size: 0.8rem;">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <label for="login_password" class="form-label small fw-bold text-secondary mb-0">Password</label>
+                                    @if (Route::has('password.request'))
+                                        <a class="text-decoration-none small text-primary" style="font-size: 0.75rem;" href="{{ route('password.request') }}">
+                                            Forgot your password?
+                                        </a>
+                                    @endif
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted border-end-0"><i class="fa-solid fa-lock"></i></span>
+                                    <input id="login_password" class="form-control border-start-0 ps-0" type="password" name="password" required placeholder="••••••••" autocomplete="current-password" />
+                                </div>
+                                @error('password')
+                                    <div class="text-danger small mt-1" style="font-size: 0.8rem;">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-check mb-4 mt-2">
+                                <input id="remember_me" type="checkbox" class="form-check-input rounded shadow-sm" name="remember">
+                                <label for="remember_me" class="form-check-label small text-secondary">
+                                    Keep me signed in on this computer
+                                </label>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between pt-3 border-top">
+                                <button type="button" class="btn btn-link text-decoration-none text-secondary small p-0" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                    Create an account
+                                </button>
+                                <div>
+                                    <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-primary px-4 fw-semibold">Sign In</button>
                                 </div>
                             </div>
                         </form>
@@ -351,14 +438,19 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-@if ($errors->any())
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var myModal = new bootstrap.Modal(document.getElementById('registerModal'));
-        myModal.show();
+        // Automatically reopen registration modal on validation fail
+        @if ($errors->has('student_id') || $errors->has('batch') || $errors->has('session') || $errors->has('profile_image'))
+            var regModal = new bootstrap.Modal(document.getElementById('registerModal'));
+            regModal.show();
+        @elseif ($errors->has('email') || $errors->has('password'))
+            // Automatically reopen login modal on validation fail
+            var logModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            logModal.show();
+        @endif
     });
 </script>
-@endif
 
 </body>
 </html>
