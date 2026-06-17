@@ -71,15 +71,17 @@
       <li>
         <a href="{{ route('alumni.events.index') }}"><i class="fa fa-ticket"></i> Join Events / RSVP</a>
       </li>
+
       <li>
         <a href="{{ route('alumni.donations.index') }}"><i class="fa fa-heart"></i>Donations and Giving</a>
       </li>
-      <li><a><i class="fa fa-briefcase"></i> Career Hub <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="#">Job Openings</a></li>
-          <li><a href="#">Post a Job</a></li>
-        </ul>
+
+      <li class="{{ Request::routeIs('alumni.contributions') ? 'active' : '' }}">
+            <a href="{{ route('alumni.contributions') }}"><i class="fa-solid fa-history"></i> My Contributions</a>
       </li>
+
+
+
       <li>
         <a href="#"><i class="fa fa-user"></i> Profile Settings</a>
       </li>

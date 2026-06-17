@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::OJcCOtQARp4SmSHB',
+            '_route' => 'generated::4ME21QwAN2Lwx4oX',
           ),
           1 => NULL,
           2 => 
@@ -53,7 +53,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::m1BBq72VFvjY20q5',
+            '_route' => 'generated::aL1x5XwPolxBUv4J',
           ),
           1 => NULL,
           2 => 
@@ -390,6 +390,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/alumni/alumni/my_contributions' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'alumni.contributions',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/logout' => 
       array (
         0 => 
@@ -432,7 +452,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::brgQqH7tXllNAJ3p',
+            '_route' => 'generated::cllgePhalfyHfTx8',
           ),
           1 => NULL,
           2 => 
@@ -468,7 +488,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::PeLG5cScCy58jMI9',
+            '_route' => 'generated::zBe0vno7Fr9IEMR7',
           ),
           1 => NULL,
           2 => 
@@ -598,7 +618,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::qETtyCMEPbEuEmno',
+            '_route' => 'generated::5b9zIcmjhFR5Ohd0',
           ),
           1 => NULL,
           2 => 
@@ -1153,7 +1173,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::OJcCOtQARp4SmSHB' => 
+    'generated::4ME21QwAN2Lwx4oX' => 
     array (
       'methods' => 
       array (
@@ -1181,8 +1201,8 @@ app('router')->setCompiledRoutes(
                     return response(\\Illuminate\\Support\\Facades\\View::file(\'C:\\\\xampp\\\\htdocs\\\\alumni-management\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Configuration\'.\'/../resources/health-up.blade.php\', [
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
-                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000005090000000000000000";}}',
-        'as' => 'generated::OJcCOtQARp4SmSHB',
+                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000050d0000000000000000";}}',
+        'as' => 'generated::4ME21QwAN2Lwx4oX',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1198,7 +1218,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::m1BBq72VFvjY20q5' => 
+    'generated::aL1x5XwPolxBUv4J' => 
     array (
       'methods' => 
       array (
@@ -1220,7 +1240,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::m1BBq72VFvjY20q5',
+        'as' => 'generated::aL1x5XwPolxBUv4J',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2640,6 +2660,48 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'alumni.contributions' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'alumni/alumni/my_contributions',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+          2 => 'verified',
+          3 => 'auth',
+          4 => 'isActive',
+          5 => 'role:alumni',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Alumni\\DonationController@history',
+        'controller' => 'App\\Http\\Controllers\\Alumni\\DonationController@history',
+        'as' => 'alumni.contributions',
+        'namespace' => NULL,
+        'prefix' => '/alumni',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'logout' => 
     array (
       'methods' => 
@@ -2715,7 +2777,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::brgQqH7tXllNAJ3p' => 
+    'generated::cllgePhalfyHfTx8' => 
     array (
       'methods' => 
       array (
@@ -2736,7 +2798,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::brgQqH7tXllNAJ3p',
+        'as' => 'generated::cllgePhalfyHfTx8',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2790,7 +2852,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::PeLG5cScCy58jMI9' => 
+    'generated::zBe0vno7Fr9IEMR7' => 
     array (
       'methods' => 
       array (
@@ -2811,7 +2873,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::PeLG5cScCy58jMI9',
+        'as' => 'generated::zBe0vno7Fr9IEMR7',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3131,7 +3193,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::qETtyCMEPbEuEmno' => 
+    'generated::5b9zIcmjhFR5Ohd0' => 
     array (
       'methods' => 
       array (
@@ -3152,7 +3214,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::qETtyCMEPbEuEmno',
+        'as' => 'generated::5b9zIcmjhFR5Ohd0',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3254,7 +3316,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007ef0000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000007f00000000000000000";}}',
         'as' => 'storage.local.upload',
       ),
       'fallback' => false,

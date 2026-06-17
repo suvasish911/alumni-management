@@ -21,6 +21,11 @@ class DonationController extends Controller
 
         $ongoingProjects = \App\Models\DonationProject::latest()->get();
 
+
+
+        return view('alumni.donations.index', compact('eventFundraisers', 'ongoingProjects'));
+    }
+    public function history(){
         $myEventDonations = EventRegistration::with('event')
             ->where('user_id', Auth::id())
             ->whereHas('event', function ($query) {
@@ -34,8 +39,8 @@ class DonationController extends Controller
             ->whereNull('event_id')
             ->latest()
             ->get();
-
-        return view('alumni.donations.index', compact('eventFundraisers', 'ongoingProjects', 'myEventDonations', 'myProjectDonations'));
+        
+        return view('alumni.my_contributions', compact('myEventDonations', 'myProjectDonations'));
     }
 
     public function storeEventDonation(Request $request, $id)
@@ -49,16 +54,16 @@ class DonationController extends Controller
 
         EventRegistration::create([
             'user_id' => Auth::id(),
-            'event_id' => $event->id,
+            'event_id' => $id,
             'name' => Auth::user()->name,
             
             'phone' => Auth::user()->phone ?? 'N/A',
             'email' => Auth::user()->email,
             'transaction_id' => $request->input('transaction_id'),
             'amount_paid' => $request->input('amount_paid'),
-            'amount' => $request->input('amount_paid'),
+            // 'amount' => $request->input('amount_paid'),
             'payment_status' => 'approved',
-            'status' => 'approved',
+            // 'status' => 'approved',
         ]);
 
         $event->increment('raised_amount', $request->input('amount_paid'));

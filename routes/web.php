@@ -94,6 +94,9 @@ Route::middleware(['auth','isActive'])->group(function () {
         Route::get('/make-donation', [AlumniDonationController::class, 'index'])->name('donations.index');
         Route::post('/donate-event/{id}', [AlumniDonationController::class, 'storeEventDonation'])->name('donations.storeEvent');
         Route::post('/donate-project/{id}', [AlumniDonationController::class, 'storeProjectDonation'])->name('donations.storeProject');
+
+        //Contributions
+        Route::get('alumni/my_contributions', [AlumniDonationController::class, 'history'])->name('contributions');
     });
 
    

@@ -134,7 +134,6 @@
                     @csrf
                     <div class="modal-body">
                         <p style="font-size: 13px;">Allocating to: <strong id="projectModalAllocatingLabel" style="color: #9B59B6;"></strong></p>
-                        
                         <div class="form-group">
                             <label style="font-size: 12px; font-weight: 600; color: #555;">Donation Amount (TK) <span style="color:red;">*</span></label>
                             <input type="number" name="donation_amount" class="form-control" min="1" required placeholder="e.g. 1000">
@@ -152,7 +151,6 @@
                             <label style="font-size: 12px; font-weight: 600; color: #555;">Transaction ID / Reference <span style="color:red;">*</span></label>
                             <input type="text" name="transaction_id" class="form-control" required placeholder="Trx ID or Slip Number">
                         </div>
-                        
                         <input type="hidden" name="donor_name" value="{{ auth()->user()->name ?? 'Alumni Member' }}">
                     </div>
                     <div class="modal-footer" style="background-color: #F9FAFB;">
@@ -175,14 +173,24 @@
                     @csrf
                     <div class="modal-body">
                         <p style="font-size: 13px;">Campaign: <strong id="eventModalAllocatingLabel"></strong></p>
-                        
                         <div class="form-group">
                             <label style="font-size: 12px; font-weight: 600; color: #555;">Donation Amount (TK) <span style="color:red;">*</span></label>
                             <input type="number" name="amount_paid" class="form-control" min="1" step="0.01" required placeholder="e.g. 5000">
                         </div>
+
+
                         <div class="form-group">
-                            <label style="font-size: 12px; font-weight: 600; color: #555;">Transaction ID <span style="color:red;">*</span></label>
-                            <input type="text" name="transaction_id" class="form-control" required placeholder="bKash / Nagad Trx ID">
+                            <label style="font-size: 12px; font-weight: 600; color: #555;">Payment Gateway Method <span style="color:red;">*</span></label>
+                            <select name="payment_method" class="form-control" required style="border-radius: 3px;">
+                                <option value="">-- Select Method --</option>
+                                <option value="MFS">Mobile Financial Services (bKash/Nagad)</option>
+                                <option value="Bank">Direct Bank Transfer</option>
+                                <option value="Cash">Cash Submission</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size: 12px; font-weight: 600; color: #555;">Transaction ID / Reference <span style="color:red;">*</span></label>
+                            <input type="text" name="transaction_id" class="form-control" required placeholder="Trx ID or Slip Number">
                         </div>
                     </div>
                     <div class="modal-footer" style="background-color: #F9FAFB;">
@@ -193,110 +201,16 @@
             </div>
         </div>
     </div>
-
-    <div class="row" style="margin-top: 15px;">
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="x_panel" style="border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                <div class="x_title">
-                    <h2>My Fundraising Contributions <small>Timed campaign history</small></h2>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    @if(isset($myEventDonations) && count($myEventDonations) > 0)
-                        <div class="table-responsive">
-                            <table class="table table-striped jambo_table bulk_action">
-                                <thead>
-                                    <tr class="headings">
-                                        <th>Campaign</th>
-                                        <th>Amount</th>
-                                        <th>Transaction ID</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($myEventDonations as $registration)
-                                        <tr class="even pointer">
-                                            <td>{{ $registration->event->name ?? 'Unknown Campaign' }}</td>
-                                            <td class="text-success" style="font-weight: 600;">{{ number_format($registration->amount_paid, 2) }} TK</td>
-                                            <td><code style="font-size: 11px;">{{ $registration->transaction_id }}</code></td>
-                                            <td>
-                                                @if($registration->payment_status === 'approved')
-                                                    <span class="label label-success" style="padding: 4px 8px;">
-                                                        <i class="fa fa-check-circle"></i> Verified & Added
-                                                    </span>
-                                                @else
-                                                    <span class="label label-warning">{{ ucfirst($registration->payment_status) }}</span>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <p class="text-center text-muted" style="padding: 15px;">No timed campaign contributions logged.</p>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="x_panel" style="border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                <div class="x_title">
-                    <h2>My General Fund Gifts <small>Continuous ledger history</small></h2>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    @if(isset($myProjectDonations) && count($myProjectDonations) > 0)
-                        <div class="table-responsive">
-                            <table class="table table-striped jambo_table bulk_action">
-                                <thead>
-                                    <tr class="headings">
-                                        <th>Fund Category</th>
-                                        <th>Amount</th>
-                                        <th>Transaction ID</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($myProjectDonations as $contribution)
-                                        <tr class="even pointer">
-                                            <td>{{ $contribution->category->name ?? 'General Fund' }}</td>
-                                            <td class="text-success" style="font-weight: 600;">{{ number_format($contribution->donation_amount, 2) }} TK</td>
-                                            <td><code style="font-size: 11px;">{{ $contribution->transaction_id }}</code></td>
-                                            <td>
-                                                @if($contribution->status === 'approved')
-                                                    <span class="label label-success" style="padding: 4px 8px;">
-                                                        <i class="fa fa-check-circle"></i> Verified & Added
-                                                    </span>
-                                                @else
-                                                    <span class="label label-warning">{{ ucfirst($contribution->status) }}</span>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <p class="text-center text-muted" style="padding: 15px;">No continuous fund donations logged.</p>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-   
     $('.open-donate-project-modal').on('click', function(e) {
         e.preventDefault();
         var projectId = $(this).data('id');
         var projectName = $(this).data('name');
         
-       
         var actionUrl = "{{ url('/alumni/donate-project') }}/" + projectId;
         
         $('#dynamicProjectForm').attr('action', actionUrl);
@@ -306,7 +220,6 @@ $(document).ready(function() {
         $('#dynamicProjectModal').modal('show');
     });
 
-   
     $('.open-donate-event-modal').on('click', function(e) {
         e.preventDefault();
         var eventId = $(this).data('id');

@@ -17,9 +17,9 @@ class EventRegistration extends Model
         'phone',
         'email',
         'transaction_id',
-        'amount',
+        // 'amount',
         'amount_paid',
-        'status',
+        // 'status',
         'payment_status'
     ];
 
