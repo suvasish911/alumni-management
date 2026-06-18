@@ -13,9 +13,7 @@ use App\Http\Controllers\DonationHistoryController;
 use App\Http\Controllers\Admin\DonationProjectController as AdminDonationProjectController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('welcome');
 
 
 
@@ -24,12 +22,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
   
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
-});
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        
+    });
 
 Route::middleware(['auth','isActive'])->group(function () {
     
@@ -96,7 +94,7 @@ Route::middleware(['auth','isActive'])->group(function () {
         Route::post('/donate-project/{id}', [AlumniDonationController::class, 'storeProjectDonation'])->name('donations.storeProject');
 
         //Contributions
-        Route::get('alumni/my_contributions', [AlumniDonationController::class, 'history'])->name('contributions');
+        Route::get('/my_contributions', [AlumniDonationController::class, 'history'])->name('contributions');
     });
 
    
@@ -104,7 +102,10 @@ Route::middleware(['auth','isActive'])->group(function () {
 });
 Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 
+
 });
 
 
 require __DIR__.'/auth.php';
+
+

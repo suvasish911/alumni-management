@@ -4,74 +4,53 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Invoice;
 use App\Models\Event;
+use Illuminate\Support\Facades\DB; 
 
 class DashboardController extends Controller
 {
-    //
     public function index(Request $request)
-{
-    $user = $request->user();
-    
-    if($user->role === 'alumni' && strtolower(trim($user->status)) === 'pending') {
+    {
+
+        $totalUsers = User::where('role', 'alumni')->count();
+        $eventsCount = Event::count();
+        $departmentsCount = 15; 
+
+
+        $totalGainedRaw = Event::sum('amount');
+        $totalGained = $totalGainedRaw > 0 ? number_format($totalGainedRaw) . ' TK' : '45K+';
+
+
+        $upcoming_events = Event::orderBy('event_date', 'asc')->take(3)->get();
+
+
+        $user = $request->user();
+        $allInvoices = collect(); 
+        $allEvents = Event::latest()->get();   
+        $myInvoices = collect();  
+        $pending_alumni_count = $user ? User::where('role', 'alumni')->where('status', 'pending')->count() : 0;
         
-        $totalUsers = User::count();
-        $allInvoices = collect();
-        $allEvents = collect();
-        $myInvoices = collect();
-        $upcoming_events = collect();
-        $pending_alumni_count = User::where('role','LIKE','%alumni%')->where('status','LIKE','%pending%')->count();
 
-        return view('panel.pages.dashboard', compact( 
-            'totalUsers',
-            'allInvoices',
-            'allEvents',
-            'myInvoices',
-            'upcoming_events',
-            'pending_alumni_count'
+        if ($user) {
+            if ($user->role === 'alumni' && strtolower(trim($user->status)) === 'pending') {
+                return view('welcome', compact( 
+                    'totalUsers', 'eventsCount', 'departmentsCount', 'totalGained',
+                    'allInvoices', 'allEvents', 'myInvoices', 'upcoming_events', 'pending_alumni_count'
+                ));
+            }
+            
+            if ($user->role === 'admin' || $user->role === 'alumni') {
+                return view('welcome', compact(
+                    'totalUsers', 'eventsCount', 'departmentsCount', 'totalGained',
+                    'allInvoices', 'allEvents', 'myInvoices', 'upcoming_events', 'pending_alumni_count'
+                ));
+            }
+        }
+
+
+        return view('welcome', compact(
+            'totalUsers', 'eventsCount', 'departmentsCount', 'totalGained',
+            'allInvoices', 'allEvents', 'myInvoices', 'upcoming_events', 'pending_alumni_count'
         ));
     }
-    
-    $totalUsers = User::count();
-    $allInvoices = collect(); 
-    $allEvents = collect();   
-    $myInvoices = collect();  
-    $upcoming_events = collect(); 
-    $pending_alumni_count = User::where('role','LIKE','%alumni%')->where('status','LIKE','%pending%')->count();
-    
-    if ($user->role === 'admin') {
-        $totalUsers = User::count();
-    } 
-    
-    elseif ($user->role === 'account_officer') {
-        $allInvoices = Invoice::latest()->get();
-
-        $pending_payments_count = DB::table('event_registrations')->where('status', 'pending')->count();
-
-        return view('panel.pages.dashboard', compact(
-            'totalUser',
-            'allInvoices',
-            'myInvoices',
-            'upcoming_events',
-            'pending_alumni_count',
-            'pending_payments_count'
-        ));
-    } 
-    
-    elseif ($user->role === 'alumni') {
-        $upcoming_events = Event::get(); 
-        // $myInvoices = Invoice::where('user_id', $user->id)->get();
-    }
-
-    
-    return view('panel.pages.dashboard', compact(
-        'totalUsers', 
-        'allInvoices', 
-        'allEvents', 
-        'myInvoices',
-        'upcoming_events',
-        'pending_alumni_count'
-    ));
-}
 }
