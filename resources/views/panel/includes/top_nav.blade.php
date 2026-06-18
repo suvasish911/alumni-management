@@ -6,10 +6,16 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="">
             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <img src="{{ asset('assets/build/images/image.jpg')}}" alt="">
+                @if(Auth::check() && Auth::user()->profile_image)
+                    <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="{{ Auth::user()->name }}" class="w-8 h-8 rounded-full object-cover">
+                @else
+                    <img src="{{ asset('assets/images/default-avatar.png') }}" alt="Default Avatar" class="w-8 h-8 rounded-full object-cover">
+                @endif
+                
                 {{ Auth::user()->name ?? 'Guest' }}
-                <span class=" fa fa-angle-down"></span>
+                <span class="fa fa-angle-down"></span>
             </a>
+            
             <ul class="dropdown-menu dropdown-usermenu pull-right">
                 <li><a href="javascript:;"> Profile</a></li>
                 <li>
@@ -21,81 +27,13 @@
                 <li><a href="javascript:;">Help</a></li>
                 
                 <li>
-                    <a href="javascript:void(0);" 
-                    onclick="event.preventDefault(); document.getElementById('top-nav-logout-form').submit();"
-                    style="cursor: pointer;">
-                        <i class="fa fa-sign-out pull-right"></i> Log Out
+                    <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
                     </a>
 
-                    <form id="top-nav-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                </li>
-            </ul>
-        </li>
-
-        <li role="presentation" class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-envelope-o"></i>
-                <span class="badge bg-green">6</span>
-            </a>
-            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                <li>
-                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <span class="image"><img src="{{ asset('assets/panel/images/img.jpg')}}" alt="Profile Image" /></span>
-                        <span>
-                            {{ Auth::user()->name ?? 'Guest' }}
-                            <span class=" fa fa-angle-down"></span>
-                            <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="image"><img src="{{ asset('assets/panel/images/img.jpg')}}" alt="Profile Image" /></span>
-                        <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="image"><img src="{{ asset('assets/panel/images/image.jpg')}}" alt="Profile Image" /></span>
-                        <span>
-                            <span>Shabnam Masuma</span>
-                            <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="image"><img src="{{ asset('assets/panel/images/img.jpg')}}" alt="Profile Image" /></span>
-                        <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <div class="text-center">
-                        <a>
-                            <strong>See All Alerts</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
                 </li>
             </ul>
         </li>

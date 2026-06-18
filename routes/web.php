@@ -7,25 +7,15 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AlumniApprovalController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Alumni\EventController as AlumniEventController;
-// use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DonationController;
+use App\Http\Controllers\Admin\DonationController as AdminDonationController;
+use App\Http\Controllers\Alumni\DonationController as AlumniDonationController;
 use App\Http\Controllers\DonationHistoryController;
-use App\Http\Controllers\Admin\DonationProjectController;
+use App\Http\Controllers\Admin\DonationProjectController as AdminDonationProjectController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-<<<<<<< HEAD
-Route::get('/admin/dashboard', function () {
-    return view('admin_dashboard');
-})->name('admin.dashboard');
 
-Route::get('/admin/donations/history', [DonationHistoryController::class, 'history'])->name('admin.donations.history');
-Route::get('/admin/donations/report', [DonationReportController::class, 'report'])->name('admin.donations.report');
-Route::get('/admin/donation-projects', [DonationProjectController::class, 'index'])->name('admin.projects.index');
-=======
->>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
+Route::get('/', [DashboardController::class, 'index'])->name('welcome');
+
 
 
 
@@ -34,12 +24,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
   
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
-});
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        
+    });
 
 Route::middleware(['auth','isActive'])->group(function () {
     
@@ -58,21 +48,26 @@ Route::middleware(['auth','isActive'])->group(function () {
         //Event Managemnet
         Route::resource('events',AdminEventController::class);
         Route::get('/events/{id}/donors', [AdminEventController::class, 'donorList'])->name('events.donors');
-        Route::patch('/events/donors/{id}/approve', [AdminEventController::class, 'approveDonor'])->name('events.approve');
+        Route::patch('/events/{id}/approve', [AdminEventController::class, 'approveDonor'])->name('events.approve');
+        // Route::patch('/events/donors/{id}/approve', [AdminEventController::class, 'approveDonor'])->name('events.approve');
        
        // Donation Management
         Route::get('/donations/history', [DonationHistoryController::class, 'history'])->name('donations.history');
         Route::get('/donations/report', [DonationReportController::class, 'report'])->name('donations.report');
 
 
-    // Donation Projects 
-       Route::get('/donation-projects', [DonationProjectController::class, 'index'])->name('projects.index');
-       Route::post('/donation-projects', [DonationProjectController::class, 'store'])->name('projects.store');
 
-        Route::resource('donations', DonationController::class)
-                ->except(['show'])
+
+        // Donation Projects 
+        Route::get('/donation-projects', [AdminDonationProjectController::class, 'index'])->name('projects.index');
+        Route::post('/donation-projects', [AdminDonationProjectController::class, 'store'])->name('projects.store');
+        Route::get('/donations/project/{id}/donors', [AdminDonationProjectController::class, 'projectDonors'])->name('project.donors');
+        Route::delete('/donation-projects/{id}', [AdminDonationProjectController::class, 'destroy'])->name('projects.destroy');
+
+        Route::resource('donations', AdminDonationController::class)
+                ->except(['show','index'])
                 ->names([
-                        'index'   => 'donations.index',
+                       
                         'create'  => 'donations.create',
                         'store'   => 'donations.store',
                         'edit'    => 'donations.edit',
@@ -92,16 +87,27 @@ Route::middleware(['auth','isActive'])->group(function () {
     Route::middleware(['role:alumni'])->prefix('alumni')->name('alumni.')->group(function () {
         
         Route::get('/events',[ AlumniEventController::class, 'index'])->name('events.index');
-        Route::get('/events/{id}/register',[AlumniEventController::class, 'register'])->name('events.register');
-         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-        
+        Route::post('/events/{id}/register',[AlumniEventController::class, 'register'])->name('events.register');
+       
+
+        //Donation part
+        Route::get('/make-donation', [AlumniDonationController::class, 'index'])->name('donations.index');
+        Route::post('/donate-event/{id}', [AlumniDonationController::class, 'storeEventDonation'])->name('donations.storeEvent');
+        Route::post('/donate-project/{id}', [AlumniDonationController::class, 'storeProjectDonation'])->name('donations.storeProject');
+
+        //Contributions
+        Route::get('/my_contributions', [AlumniDonationController::class, 'history'])->name('contributions');
     });
 
    
         
 });
+Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
+
 
 });
 
 
 require __DIR__.'/auth.php';
+
+

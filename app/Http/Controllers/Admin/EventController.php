@@ -49,15 +49,13 @@ class EventController extends Controller {
         }
 
         if (!empty($validated['event_date'])) {
-        $validated['event_date'] = date('Y-m-d H:i:s', strtotime($validated['event_date']));
+            $validated['event_date'] = date('Y-m-d H:i:s', strtotime($validated['event_date']));
         }
-
 
         $eventData = array_merge($validated, [
             'category_id' => $categoryId,
             'raised_amount' => 0.00
-            ]);
-
+        ]);
 
         unset($eventData['category_name']);
         Event::create($eventData);
@@ -78,20 +76,14 @@ class EventController extends Controller {
      */
     public function edit(string $id)
     {
-        //
         $events = Event::findOrFail($id);
-
         $categories = EventCategory::all();
-
         return view('admin.events.edit', compact('events','categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+  
     public function update(Request $request, string $id)
     {
-        //
         $events = Event::findOrFail($id);
 
         $validated = $request->validate([
@@ -102,7 +94,6 @@ class EventController extends Controller {
             'amount'        => 'required|numeric|min:0',
             'event_type'  => 'required|in:ticketed,fundraiser',
             'event_date'  => 'nullable|date',
-
         ]);
         $categoryId = null;
         if (!empty($request->category_name)) {
@@ -113,7 +104,7 @@ class EventController extends Controller {
         }
 
         if (!empty($validated['event_date'])) {
-        $validated['event_date'] = date('Y-m-d H:i:s', strtotime($validated['event_date']));
+            $validated['event_date'] = date('Y-m-d H:i:s', strtotime($validated['event_date']));
         }
 
         $eventData = array_merge($validated, ['category_id' => $categoryId]);
@@ -124,14 +115,10 @@ class EventController extends Controller {
         return redirect()->route('admin.events.index')->with('success', 'Event updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
         $events = Event::findOrFail($id);
-
         $events->delete();
         return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully!');
     }
@@ -139,16 +126,29 @@ class EventController extends Controller {
     public function donorlist(string $id)
     {
         $events = Event::with(['category'])->findOrFail($id);
-
         $registrations = \App\Models\EventRegistration::where('event_id', $id)->latest()->get();
 
         return view('admin.events.donors', compact('events', 'registrations'));
     }
 
-    public function approveDonor(string $id){
-        $registrations = \App\Models\EventRegistration::findOrFail($id);
-        $registrations->update(['status' => 'approved']);
+    public function approveDonor(string $id)
+    {
+        $registration = \App\Models\EventRegistration::findOrFail($id);
+        
+       
+        $registration->update([
+            'payment_status' => 'approved'
+        ]);
 
-        return redirect()->back()->with('succcess','Transaction approved and confirmed successfully!');
+       
+        $event = Event::find($registration->event_id);
+        if ($event && $event->event_type === 'fundraiser') {
+            if ($registration->amount_paid > 0) {
+                $event->increment('raised_amount', $registration->amount_paid);
+            }
+        }
+
+        
+        return redirect()->back()->with('success', 'Transaction approved and confirmed successfully!');
     }
 }

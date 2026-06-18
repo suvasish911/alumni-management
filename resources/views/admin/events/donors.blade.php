@@ -7,7 +7,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 
                 @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="border-radius: 3px; margin-bottom: 15px;">
+                    <div class="alert alert-success alert-dismissible fade in" role="alert" style="border-radius: 3px; margin-bottom: 15px; background-color: #26B99A; color: #fff; border: none; padding: 10px 15px;">
                         <strong>Success!</strong> {{ session('success') }}
                     </div>
                 @endif
@@ -49,19 +49,21 @@
                                 <thead>
                                     <tr class="headings">
                                         <th class="column-title text-center" style="padding: 12px 8px; width: 5%;">ID</th>
-                                        <th class="column-title" style="padding: 12px 8px; width: 22%;">Participant Name</th>
+                                        <th class="column-title" style="padding: 12px 8px; width: 25%;">Participant Name</th>
                                         <th class="column-title" style="padding: 12px 8px; width: 18%;">Phone</th>
                                         <th class="column-title" style="padding: 12px 8px; width: 20%;">Email</th>
                                         <th class="column-title text-center" style="padding: 12px 8px; width: 15%;">Transaction ID</th>
                                         <th class="column-title text-center" style="padding: 12px 8px; width: 12%;">Amount Provided</th> 
-                                        <th class="column-title text-center" style="padding: 12px 8px; width: 10%;">Status</th>
-                                        <th class="column-title text-center" style="padding: 12px 8px; width: 10%;">Action</th>
+                                        <th class="column-title text-center" style="padding: 12px 8px; width: 15%;">Status</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     @if(count($registrations) > 0)
                                         @foreach($registrations as $reg)
+                                            @php
+                                                $statusValue = strtolower(trim($reg->payment_status));
+                                            @endphp
                                             <tr class="even pointer" style="vertical-align: middle;">
                                                 <td class="text-center" style="vertical-align: middle; padding: 12px 8px;">{{ $reg->id }}</td>
                                                 <td style="vertical-align: middle; padding: 12px 8px; font-size: 14px; color: #333;">
@@ -73,35 +75,26 @@
                                                     {{ $reg->transaction_id ?? 'CASH/DIRECT' }}
                                                 </td>
                                                 <td class="text-center" style="vertical-align: middle; font-weight: bold; color: #27ae60;">
-                                                    {{ number_format($reg->amount, 2) }} TK
+                                                    {{ number_format($reg->amount_paid, 2) }} TK
                                                 </td>
                                                 <td class="text-center" style="vertical-align: middle; padding: 12px 8px;">
-                                                    @if($reg->status === 'approved')
-                                                        <span class="label label-success" style="font-size: 10px; padding: 3px 6px;">Approved</span>
+                                                    @if($statusValue === 'approved')
+                                                        <span class="label label-success" style="font-size: 11px; padding: 4px 8px; background-color: #26B99A;">Approved</span>
                                                     @else
-                                                        <span class="label label-warning" style="font-size: 10px; padding: 3px 6px;">Pending</span>
-                                                    @endif
-                                                </td>
-                                                <td class="text-center" style="vertical-align: middle; padding: 12px 8px; white-space: nowrap;">
-                                                    @if($reg->status === 'pending')
                                                         <form action="{{ route('admin.events.approve', $reg->id) }}" method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('PATCH')
-                                                            <button type="submit" class="btn btn-success btn-xs" style="border-radius: 3px; padding: 4px 8px;" onclick="return confirm('Confirm verification and approve this transaction?');">
-                                                                <i class="fa fa-check"></i> Approve
+                                                            <button type="submit" class="btn btn-warning btn-xs" style="border-radius: 3px; padding: 3px 8px; font-weight: 600; color: #fff; background-color: #f0ad4e; border-color: #eea236;" onclick="return confirm('Confirm verification and approve this transaction?');">
+                                                                Approve ?
                                                             </button>
                                                         </form>
-                                                    @else
-                                                        <button class="btn btn-default btn-xs" disabled style="border-radius: 3px; padding: 4px 8px;">
-                                                            <i class="fa fa-check-circle"></i> Verified
-                                                        </button>
                                                     @endif
                                                 </td>
                                             </tr>
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="8" class="text-center" style="color: #7f8c8d; padding: 40px 20px; font-size: 15px;">
+                                            <td colspan="7" class="text-center" style="color: #7f8c8d; padding: 40px 20px; font-size: 15px;">
                                                 <i class="fa fa-user-times" style="font-size: 24px; display: block; margin-bottom: 10px; color: #bdc3c7;"></i>
                                                 No registration records or transactions found for this event yet.
                                             </td>

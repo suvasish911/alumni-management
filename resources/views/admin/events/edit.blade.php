@@ -202,10 +202,10 @@
             }
         }
 
-        // Run checking synchronization immediately on page mount state
+       
         updateAmountFormLayout();
 
-        // Bind active interface checking to change event dispatchers
+
         eventTypeSelect.addEventListener('change', updateAmountFormLayout);
     });
 </script>

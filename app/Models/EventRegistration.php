@@ -13,10 +13,13 @@ class EventRegistration extends Model
         'user_id',
         'event_id',
         'name',
+        'participant_name',
         'phone',
         'email',
         'transaction_id',
+        // 'amount',
         'amount_paid',
+        // 'status',
         'payment_status'
     ];
 

@@ -29,7 +29,14 @@ class User extends Authenticatable
 <<<<<<< HEAD
 =======
         'usertype',
+<<<<<<< HEAD
 >>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
+=======
+        'student_id',
+        'batch',
+        'session',
+        'profile_image',
+>>>>>>> origin/dev_shabnam
 
     ];
 

@@ -65,10 +65,21 @@
 
                         <div class="ln_solid" style="border-top: 1px solid #e5e5e5; margin: 15px 0 10px 0;"></div>
                         
-                        <div style="text-align: center;">
-                            <a href="{{ route('admin.donations.index', ['project_id' => $project->id]) }}" class="btn btn-default btn-sm" style="width: 100%; border-radius: 3px; color: #2A3F54; font-weight: bold; border-color: #ccc;">
+
+                        <div style="margin-top: 10px; display: flex; gap: 5px; width: 100%;">
+
+                            <a href="{{ route('admin.project.donors', $project->id) }}" class="btn btn-default btn-sm" style="flex: 1; margin: 0; text-align: center;">
                                 <i class="fa fa-list"></i> View Donor Transactions
                             </a>
+                            
+
+                            <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" style="margin: 0;" onsubmit="return confirm('Are you sure you want to delete this project permanently? This action cannot be undone.')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" style="margin: 0; padding: 5px 10px; border-radius: 3px;" title="Delete Project">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
