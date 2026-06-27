@@ -32,11 +32,10 @@ class AlumniApprovalController extends Controller
             'status' => 'rejected'
         ]);
 
-        // FIX: Swapped single quotes to double quotes so the variable name reads correctly in the alert
+
         return redirect()->back()->with('success', "Account for {$user->name} has been rejected");
     }
 
-    // Account Officer Methods
     public function paymentIndex() 
     {
         $registrations = DB::table('event_registrations')

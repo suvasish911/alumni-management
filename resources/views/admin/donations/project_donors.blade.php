@@ -40,7 +40,7 @@
 
                 <div class="x_content">
                     <div class="table-responsive">
-                        <!-- Clean, spacious table layout matching your Event Management module -->
+
                         <table class="table table-striped table-bordered" style="margin-bottom: 0; width: 100%; border-collapse: separate; border-spacing: 0 10px; background-color: transparent;">
                             <thead>
                                 <tr class="headings" style="background-color: #34495e; color: #fff; font-size: 13px;">
@@ -59,24 +59,24 @@
                                         {{ $donor->id }}
                                     </td>
                                     
-                                    <!-- 2. Alumnus Full Name -->
+
                                     <td style="padding: 15px; vertical-align: middle; border: none;">
                                         <span style="font-size: 14px; font-weight: 500; color: #2A3F54;">{{ $donor->donor_name }}</span>
                                     </td>
                                     
-                                    <!-- 3. Amount formatted clearly -->
+
                                     <td style="padding: 15px; vertical-align: middle; border: none; text-align: right;">
                                         <strong style="color: #27AE60; font-size: 14px;">{{ number_format($donor->donation_amount, 2) }} TK</strong>
                                     </td>
                                     
-                                    <!-- 4. Payment Gateway Badge Type -->
+
                                     <td class="text-center" style="padding: 15px; vertical-align: middle; border: none;">
                                         <span class="label" style="background-color: #34495E; color: #fff; padding: 4px 8px; border-radius: 2px; font-size: 11px; font-weight: bold; text-transform: uppercase;">
                                             {{ $donor->payment_method }}
                                         </span>
                                     </td>
                                     
-                                    <!-- 5. Time Stamp Stacking -->
+
                                     <td class="text-center" style="padding: 15px; vertical-align: middle; border: none; font-size: 12px; color: #73879C; line-height: 1.4;">
                                         {{ $donor->created_at->format('d M, Y') }}<br>
                                         <small style="color: #95A5A6;">({{ $donor->created_at->format('h:i A') }})</small>

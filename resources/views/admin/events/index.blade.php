@@ -46,7 +46,11 @@
                                 <tbody>
                                     @if(count($events) > 0)
                                         @foreach($events as $event)
-                                            <tr class="even pointer" style="transition: background-color 0.2s ease;">
+                                            @php
+                                                // Event past or expired check validation
+                                                $isExpired = $event->event_date ? \Carbon\Carbon::parse($event->event_date)->isPast() : false;
+                                            @endphp
+                                            <tr class="even pointer" style="transition: background-color 0.2s ease; {{ $isExpired ? 'background-color: #fdf2f2 !important;' : '' }}">
                                                 <td class="text-center" style="vertical-align: middle; padding: 12px 8px;">{{ $event->id }}</td>
                                                 <td style="vertical-align: middle; padding: 12px 8px; font-size: 14px; color: #333;">
                                                     <strong>{{ $event->name }}</strong>
@@ -80,28 +84,40 @@
                                                 </td>
                                                 <td class="text-center" style="vertical-align: middle; padding: 12px 8px; color: #555; font-size: 13px;">
                                                     {{ $event->event_date ? date('d M, Y (h:i A)', strtotime($event->event_date)) : 'N/A' }}
+                                                    <div style="margin-top: 4px;">
+                                                        @if($isExpired)
+                                                            <span class="label label-danger" style="font-size: 10px; padding: 2px 6px; background-color: #d9534f;">Expired / Closed</span>
+                                                        @else
+                                                            <span class="label label-success" style="font-size: 10px; padding: 2px 6px; background-color: #5cb85c;">Active</span>
+                                                        @endif
+                                                    </div>
                                                 </td>
 
-
-
-
                                                 <td class="text-center" style="vertical-align: middle; padding: 12px 8px; white-space: nowrap;">
-                                                    <!-- Donor List Button -->
                                                     <a href="{{ route('admin.events.donors', $event->id) }}" class="btn btn-primary btn-xs" style="border-radius: 3px; padding: 4px 8px; margin-right: 2px; background-color: #34495e; border-color: #2c3e50;">
                                                         <i class="fa fa-users"></i> Donors/List
                                                     </a>
 
-                                                    <a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-info btn-xs" style="border-radius: 3px; padding: 4px 8px; margin-right: 2px;">
-                                                        <i class="fa fa-pencil"></i> Edit
-                                                    </a>
+                                                    @if($isExpired)
+                                                        <button class="btn btn-info btn-xs" style="border-radius: 3px; padding: 4px 8px; margin-right: 2px; opacity: 0.5;" disabled>
+                                                            <i class="fa fa-pencil"></i> Edit
+                                                        </button>
+                                                        <button class="btn btn-danger btn-xs" style="border-radius: 3px; padding: 4px 8px; opacity: 0.5;" disabled>
+                                                            <i class="fa fa-ban"></i> Closed
+                                                        </button>
+                                                    @else
+                                                        <a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-info btn-xs" style="border-radius: 3px; padding: 4px 8px; margin-right: 2px;">
+                                                            <i class="fa fa-pencil"></i> Edit
+                                                        </a>
 
-                                                    <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this event?');">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-xs" style="border-radius: 3px; padding: 4px 8px;">
-                                                            <i class="fa fa-trash-o"></i> Delete
-                                                        </button> 
-                                                    </form>
+                                                        <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this event?');">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-xs" style="border-radius: 3px; padding: 4px 8px;">
+                                                                <i class="fa fa-trash-o"></i> Delete
+                                                            </button> 
+                                                        </form>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

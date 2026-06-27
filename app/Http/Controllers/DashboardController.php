@@ -21,7 +21,9 @@ class DashboardController extends Controller
         $totalGained = $totalGainedRaw > 0 ? number_format($totalGainedRaw) . ' TK' : '45K+';
 
 
-        $upcoming_events = Event::orderBy('event_date', 'asc')->take(3)->get();
+        $upcoming_events = Event::where('event_date', '>=', now()->toDateString())
+                                ->orderBy('event_date', 'asc')
+                                ->get();
 
 
         $user = $request->user();

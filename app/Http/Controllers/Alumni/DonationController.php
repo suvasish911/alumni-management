@@ -6,20 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Donation;
+use App\Models\DonationProject;
 use App\Models\EventRegistration;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class DonationController extends Controller
 {
     public function index()
     {
-        $eventFundraisers = Event::where('event_type', 'fundraiser')
-            ->latest()
-            ->get();
-
-        $ongoingProjects = \App\Models\DonationProject::latest()->get();
+        $eventFundraisers = Event::where('event_type', 'fundraiser')->paginate(3, ['*'], 'events');
+        $ongoingProjects = DonationProject::paginate(3, ['*'], 'projects');
 
 
 
@@ -46,6 +45,10 @@ class DonationController extends Controller
     public function storeEventDonation(Request $request, $id)
     {
         $event = Event::where('event_type', 'fundraiser')->findOrFail($id);
+
+        if (Carbon::parse($event->event_date)->isPast()) {
+        return redirect()->back()->with('error', 'The event is not active!');
+        }
 
         $request->validate([
             'amount_paid' => 'required|numeric|min:1',

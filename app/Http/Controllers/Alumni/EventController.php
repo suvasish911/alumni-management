@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\EventRegistration;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
@@ -13,6 +14,10 @@ class EventController extends Controller
     public function generalIndex()
     {
         $events = Event::with('category')->latest()->get();
+        // return response()->json([
+        //     'status' => 'success',
+        //     'data' => $events
+        // ]);
         return view('general.events.index', compact('events'));
     }
 
@@ -45,6 +50,10 @@ class EventController extends Controller
     {
         $event = Event::where('event_type', 'ticketed')->findOrFail($id);
         $user = Auth::user();
+
+        if (Carbon::parse($event->event_date)->isPast()) {
+        return redirect()->back()->with('error', 'Event date expired!');
+        }
 
         if ($user->registeredEvents()->where('event_id', $id)->exists()) {
             return redirect()->back()->with('error', 'You have already registered for this event!');

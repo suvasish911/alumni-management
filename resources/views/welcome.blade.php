@@ -10,13 +10,13 @@
 
     <style>
         body {
-            background-color: #f8fafc; /* Soothing soft gray background */
+            background-color: #f8fafc; 
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: #334155;
         }
 
         .navbar {
-            background-color: #0f172a !important; /* Deep elegant dark slate */
+            background-color: #0f172a !important; 
             padding: 15px 0;
         }
 
@@ -25,7 +25,7 @@
             url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
             background-size: cover;
             background-position: center;
-            height: 35vh; /* Balanced, less aggressive height */
+            height: 35vh; 
             color: white;
             display: flex;
             align-items: center;
@@ -295,13 +295,13 @@
                             <div class="action-desc">Audit incoming registration records. There are currently <strong>{{ $pending_alumni_count ?? 0 }} requests</strong> awaiting moderation approval.</div>
                         </a>
                     </div>
-                    <!-- <div class="col-md-4">
-                        <a href="/admin/donations/project_donors" class="action-card">
+                    <div class="col-md-4">
+                        <a href="{{ route('admin.projects.index') }}" class="action-card">
                             <div class="action-icon"><i class="fa-solid fa-users-gear"></i></div>
                             <div class="action-title">Manage Donations</div>
                             <div class="action-desc">Review system credentials, network registries, and overall profile parameters (<strong>{{ $totalUsers ?? 0 }} profiles active</strong>).</div>
                         </a>
-                    </div> -->
+                    </div>
                     <div class="col-md-4">
                         <a href="/admin/events/create" class="action-card">
                             <div class="action-icon"><i class="fa-solid fa-calendar-plus"></i></div>
