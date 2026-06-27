@@ -37,6 +37,7 @@ class RegisteredUserController extends Controller
             // 'role' => ['required', 'string', 'in:alumni,account_officer'],
 
             'student_id' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
+            'department' => ['required', 'string', 'max:50'],
             'batch' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
             'session' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
             'profile_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
@@ -58,6 +59,7 @@ class RegisteredUserController extends Controller
             'role' => 'alumni',
             'status' => 'pending',
             'student_id' => $request->student_id,
+            'department' => $request->department,
             'batch' => $request->batch,
             'session' => $request->session,
             'profile_image' => $imagePath,

@@ -25,6 +25,7 @@
                                     <th class="column-title" style="padding: 10px;">Photo</th>
                                     <th class="column-title" style="padding: 10px;">Name</th>
                                     <th class="column-title" style="padding: 10px;">Student ID</th>
+                                    <th class="column-title" style="padding: 10px;">Department</th>
                                     <th class="column-title" style="padding: 10px;">Email</th>
                                     <th class="column-title" style="padding: 10px;">Batch</th>
                                     <th class="column-title" style="padding: 10px;">Session</th>
@@ -39,6 +40,7 @@
                                         </td>
                                         <td style="vertical-align: middle; font-weight: 600; color: #333;">{{ $member->name }}</td>
                                         <td style="vertical-align: middle;">{{ $member->student_id ?? 'N/A' }}</td>
+                                        <td style="vertical-align: middle; font-weight: bold; color: #4a6b82;">{{ $member->department ?? 'N/A' }}</td>
                                         <td style="vertical-align: middle;">{{ $member->email }}</td>
                                         <td style="vertical-align: middle;"><span class="badge bg-success" style="background-color: #26b99a;">{{ $member->batch ?? 'N/A' }}</span></td>
                                         <td style="vertical-align: middle;">{{ $member->session ?? 'N/A' }}</td>

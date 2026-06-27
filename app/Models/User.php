@@ -28,6 +28,7 @@ class User extends Authenticatable
         'status',
         'usertype',
         'student_id',
+        'department',
         'batch',
         'session',
         'profile_image',

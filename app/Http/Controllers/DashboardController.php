@@ -14,7 +14,9 @@ class DashboardController extends Controller
 
         $totalUsers = User::where('role', 'alumni')->count();
         $eventsCount = Event::count();
-        $departmentsCount = 15; 
+        $departmentsCount = \App\Models\User::whereNotNull('department')
+                                                ->distinct('department')
+                                                ->count('department');
 
 
         $totalGainedRaw = Event::sum('amount');

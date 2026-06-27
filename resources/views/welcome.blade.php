@@ -479,6 +479,18 @@
                                     <label class="form-label text-secondary small">Student ID</label>
                                     <input class="form-control form-control-sm" type="text" name="student_id" required placeholder="e.g. 180101" />
                                 </div>
+                                <div class="col-md-3">
+                                <label class="form-label text-secondary small">Department</label>
+                                <select class="form-control form-control-sm" name="department" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="CSE">CSE</option>
+                                    <option value="EEE">EEE</option>
+                                    <option value="SWE">SWE</option>
+                                    <option value="CE">CE</option>
+                                    <option value="ME">ME</option>
+
+                                </select>
+                            </div>
                                 <div class="col-md-4">
                                     <label class="form-label text-secondary small">Batch</label>
                                     <input class="form-control form-control-sm" type="text" name="batch" required placeholder="e.g. 45th" />
