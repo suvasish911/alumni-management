@@ -36,6 +36,16 @@ class AlumniApprovalController extends Controller
         return redirect()->back()->with('success', "Account for {$user->name} has been rejected");
     }
 
+    public function registry()
+    {
+        $members = User::where('role', 'alumni')
+                       ->where('status', 'active')
+                       ->latest()
+                       ->paginate(10) ;
+
+        return view('admin.alumni_registry', compact('members'));
+    }
+
     public function paymentIndex() 
     {
         $registrations = DB::table('event_registrations')

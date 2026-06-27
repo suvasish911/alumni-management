@@ -38,10 +38,14 @@ Route::middleware(['auth','isActive'])->group(function () {
 
 
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
-        
+
+    
+        //Alumni Control
         Route::get('/approvals', [AlumniApprovalController::class, 'index'])->name('approvals.index');
         Route::post('/approvals/{id}/approve', [AlumniApprovalController::class, 'approve'])->name('approvals.approve');
         Route::post('/approvals/{id}/reject', [AlumniApprovalController::class, 'reject'])->name('approvals.reject');
+        Route::get('/alumni-registry', [AlumniApprovalController::class, 'registry'])->name('alumni.registry');
+
 
         //Event Managemnet
         Route::resource('events',AdminEventController::class);

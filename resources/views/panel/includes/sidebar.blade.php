@@ -144,7 +144,7 @@
         <a><i class="fa fa-users"></i> Alumni Control <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="{{ route('admin.approvals.index') }}"><i class="fa fa-check-square-o"></i> Pending Approvals</a></li>
-          <li><a href="#">All Members Registry</a></li>
+          <li><a href="{{ route('admin.alumni.registry') }}">All Members Registry</a></li>
         </ul>
       </li>
     </ul>
