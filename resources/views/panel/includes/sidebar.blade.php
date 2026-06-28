@@ -159,6 +159,10 @@
         <a href="{{ route('alumni.events.index') }}"><i class="fa fa-ticket"></i> Join Events / RSVP</a>
       </li>
 
+      <li class="{{ Request::routeIs('alumni.events.my_events') ? 'active' : '' }}">
+        <a href="{{ route('alumni.events.my_events') }}"><i class="fa fa-calendar-check-o"></i> My Registered Events</a>
+      </li>
+
       <li class="{{ Request::routeIs('alumni.donations.index') ? 'active' : '' }}">
         <a href="{{ route('alumni.donations.index') }}"><i class="fa fa-heart"></i> Donations and Giving</a>
       </li>
@@ -167,8 +171,8 @@
         <a href="{{ route('alumni.contributions') }}"><i class="fa-solid fa-history"></i> My Contributions</a>
       </li>
 
-      <li>
-        <a href="#"><i class="fa fa-user"></i> Profile Settings</a>
+      <li class="{{ Request::routeIs('alumni.profile.edit') ? 'active' : '' }}">
+        <a href="{{ route('alumni.profile.edit') }}"><i class="fa fa-user"></i> Profile Settings</a>
       </li>
     </ul>
   </div>

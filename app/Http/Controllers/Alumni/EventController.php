@@ -25,12 +25,6 @@ class EventController extends Controller
     {
         $user = Auth::user();
 
-        $participatedEvents = $user->registeredEvents()
-            ->where('event_type', '!=', 'fundraiser')
-            ->with('category')
-            ->latest('event_registrations.created_at')
-            ->paginate(10, ['*'], 'participated_page');
-
         $upcomingEvents = Event::where('event_type', 'ticketed')
             ->whereDoesntHave('attendees', function ($subQ) use ($user) {
                 $subQ->where('user_id', $user->id);
@@ -41,9 +35,23 @@ class EventController extends Controller
             })
             ->with('category')
             ->latest()
-            ->paginate(10, ['*'], 'upcoming_page');
+            ->paginate(10);
 
-        return view('alumni.events.index', compact('upcomingEvents', 'participatedEvents'));
+        return view('alumni.events.index', compact('upcomingEvents'));
+    }
+
+    public function myEvents()
+    {
+        $user = Auth::user();
+
+        
+        $participatedEvents = $user->registeredEvents()
+            ->where('event_type', '!=', 'fundraiser')
+            ->with('category')
+            ->latest('event_registrations.created_at')
+            ->paginate(10);
+
+        return view('alumni.events.my_events', compact('participatedEvents'));
     }
 
     public function register(Request $request, $id)
@@ -86,6 +94,73 @@ class EventController extends Controller
         ]);
 
         $message = ($status === 'pending') ? 'Submission successful! Awaiting account officer approval.' : 'Successfully registered for the event!';
-        return redirect()->route('alumni.events.index')->with('success', $message);
+        return redirect()->route('alumni.events.my_events')->with('success', $message);
+    }
+
+    /**
+     * Show Profile Edit Form
+     */
+    public function profileEdit()
+    {
+        $user = Auth::user();
+        return view('alumni.profile.edit', compact('user'));
+    }
+
+    /**
+     * Update Profile Information
+     */
+    public function profileUpdate(Request $request)
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string',
+            
+            'student_id' => 'required|string|max:50',
+            'department' => 'required|string|max:50',
+            'batch' => 'required|string|max:50',
+            'session' => 'required|string|max:50',
+            
+            // Professional Info
+            'company' => 'nullable|string|max:255',
+            'designation' => 'nullable|string|max:255',
+            
+            // Image & Password
+            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->student_id = $request->student_id;
+        $user->department = $request->department;
+        $user->batch = $request->batch;
+        $user->session = $request->session;
+        
+        $user->company = $request->company;
+        $user->designation = $request->designation;
+
+        if ($request->hasFile('profile_image')) {
+            if ($user->profile_image) {
+                Storage::disk('public')->delete($user->profile_image);
+            }
+            $file = $request->file('profile_image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('profile_image', $filename, 'public');
+            $user->profile_image = 'profile_image/' . $filename;
+        }
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }

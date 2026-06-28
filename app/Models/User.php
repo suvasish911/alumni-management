@@ -32,6 +32,10 @@ class User extends Authenticatable
         'batch',
         'session',
         'profile_image',
+        'phone',
+        'address',
+        'company',
+        'designation',
 
     ];
 

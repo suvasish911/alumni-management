@@ -488,7 +488,6 @@
                                     <option value="SWE">SWE</option>
                                     <option value="CE">CE</option>
                                     <option value="ME">ME</option>
-
                                 </select>
                             </div>
                                 <div class="col-md-4">
@@ -498,6 +497,29 @@
                                 <div class="col-md-4">
                                     <label class="form-label text-secondary small">Session</label>
                                     <input class="form-control form-control-sm" type="text" name="session" required placeholder="e.g. 2018-19" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- নতুন সেকশন: যোগাযোগ ও প্রফেশনাল ইনফরমেশন -->
+                        <div class="p-3 bg-light rounded-3 mb-4 border">
+                            <span class="text-dark small d-block fw-bold mb-3"><i class="fa-solid fa-briefcase text-secondary me-2"></i>Contact & Professional Profile</span>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-secondary small">Phone Number</label>
+                                    <input class="form-control form-control-sm" type="text" name="phone" placeholder="e.g. 017XXXXXXXX" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-secondary small">Current Company / Institution</label>
+                                    <input class="form-control form-control-sm" type="text" name="company" placeholder="e.g. Tech Solutions Ltd." />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-secondary small">Designation</label>
+                                    <input class="form-control form-control-sm" type="text" name="designation" placeholder="e.g. Software Engineer" />
+                                }</div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-secondary small">Current Address</label>
+                                    <input class="form-control form-control-sm" type="text" name="address" placeholder="e.g. Dhaka, Bangladesh" />
                                 </div>
                             </div>
                         </div>

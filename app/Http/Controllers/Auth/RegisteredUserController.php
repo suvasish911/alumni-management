@@ -41,6 +41,12 @@ class RegisteredUserController extends Controller
             'batch' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
             'session' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
             'profile_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+
+            // নতুন ৪টি ফিল্ডের ভ্যালিডেশন যুক্ত করা হলো
+            'phone' => ['nullable', 'string', 'max:20'],
+            'address' => ['nullable', 'string'],
+            'company' => ['nullable', 'string', 'max:255'],
+            'designation' => ['nullable', 'string', 'max:255'],
         ]);
         // $status = ($request->role === 'alumni') ? 'pending' : 'active';
         $imagePath = null;
@@ -63,6 +69,11 @@ class RegisteredUserController extends Controller
             'batch' => $request->batch,
             'session' => $request->session,
             'profile_image' => $imagePath,
+
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'company' => $request->company,
+            'designation' => $request->designation,
         ]);
 
         event(new Registered($user));
