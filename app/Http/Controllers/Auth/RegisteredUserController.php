@@ -11,16 +11,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
-use Illuminate\View\View;
+// use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create(): RedirectResponse
     {
-        return view('auth.register');
+        return redirect('/');
     }
 
     /**
@@ -30,18 +30,50 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-       $request->validate([
+        $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'usertype' => ['required', 'string', 'in:alumni,accounts_officer'], 
+            // 'role' => ['required', 'string', 'in:alumni,account_officer'],
+
+            'student_id' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
+            'department' => ['required', 'string', 'max:50'],
+            'batch' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
+            'session' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
+            'profile_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+
+            // নতুন ৪টি ফিল্ডের ভ্যালিডেশন যুক্ত করা হলো
+            'phone' => ['nullable', 'string', 'max:20'],
+            'address' => ['nullable', 'string'],
+            'company' => ['nullable', 'string', 'max:255'],
+            'designation' => ['nullable', 'string', 'max:255'],
         ]);
+        // $status = ($request->role === 'alumni') ? 'pending' : 'active';
+        $imagePath = null;
+
+        if($request->hasFile('profile_image')){
+            $file = $request->file('profile_image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('profile_image', $filename, 'public');
+            $imagePath = 'profile_image/' . $filename;
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'usertype' => $request->usertype,
+            'role' => 'alumni',
+            'status' => 'pending',
+            'student_id' => $request->student_id,
+            'department' => $request->department,
+            'batch' => $request->batch,
+            'session' => $request->session,
+            'profile_image' => $imagePath,
+
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'company' => $request->company,
+            'designation' => $request->designation,
         ]);
 
         event(new Registered($user));

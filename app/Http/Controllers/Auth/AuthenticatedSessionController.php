@@ -28,6 +28,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if ($request->has('redirect_to') && !empty($request->input('redirect_to'))) {
+            return redirect($request->input('redirect_to'));
+        }
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
@@ -43,5 +47,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+
     }
 }

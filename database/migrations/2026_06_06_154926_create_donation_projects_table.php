@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('donation_projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('dascription')->nullable();
-            $table->decimal('goal_amount',15,2);
+            $table->text('description')->nullable();
+            $table->decimal('goal_amount',15,2)->default(0.00);
             $table->decimal('raised_amount',15,2)->default(0.00);
             $table->string('status')->default('Active');
             $table->timestamps();
