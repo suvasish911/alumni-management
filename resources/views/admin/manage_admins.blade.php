@@ -96,9 +96,9 @@
                         </button>
                         <style>
                         .admin-submit-btn:hover {
-                            background-color: #34495e !important; /* হালকা বাটন কালার */
+                            background-color: #34495e !important; 
                             color: #fff !important;
-                            box-shadow: 0 4px 12px rgba(42, 63, 84, 0.2); /* হালকা গ্লো ইফেক্ট */
+                            box-shadow: 0 4px 12px rgba(42, 63, 84, 0.2); 
                             opacity: 0.95;
                         }
                         </style>

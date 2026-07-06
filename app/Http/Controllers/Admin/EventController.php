@@ -120,7 +120,7 @@ class EventController extends Controller {
     {
         $events = Event::findOrFail($id);
         $events->delete();
-        return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully!');
+        return redirect()->back()->with('success', 'Event deleted successfully!');
     }
 
     public function donorlist(string $id)

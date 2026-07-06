@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* আপনার দেওয়া সাইডবারের হুবহু সিএসএস স্টাইল */
         .main_menu_side {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: #0f172a !important; 
@@ -250,7 +249,6 @@
 <body>
 
     <div class="wrapper">
-        <!-- ─── আপনার দেওয়া সাইডবার ডাইরেক্টরিভ লেআউট[cite: 3] ─── -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
           
           <div class="menu_section">
@@ -321,13 +319,11 @@
           @endif
         </div>
 
-        <!-- ─── ডানপাশের ফর্ম উইন্ডো ─── -->
         <div id="content">
             <div class="container-fluid p-0" style="max-width: 900px;">
                 
                 <h1 class="page-header-title">Profile Settings</h1>
 
-                <!-- ইরো ও সাকসেস মেসেজ হ্যান্ডলিং (image_07c8b9.png এর স্টাইল অনুযায়ী) -->
                 @if(session('success'))
                     <div class="alert alert-success border-0 shadow-sm rounded-3 mb-4 small" role="alert">
                         <i class="fa-solid fa-circle-check me-2"></i> {{ session('success') }}
@@ -348,7 +344,6 @@
                     @csrf
                     @method('PATCH')
 
-                    <!-- ১. প্রোфাইল ইমেজ কার্ড -->
                     <div class="config-card">
                         <div class="config-card-title text-dark"><i class="fa-solid fa-camera text-secondary"></i> Change Profile Photo</div>
                         <div class="d-flex align-items-center gap-4">
@@ -365,7 +360,6 @@
                         </div>
                     </div>
 
-                    <!-- ২. কন্টাক্ট এবং জেনারেল ফিল্ডস (ইমেইল ফিল্ডসহ ফিক্সড) -->
                     <div class="config-card">
                         <div class="config-card-title"><i class="fa-solid fa-address-book text-muted"></i> Personal Info & Contact</div>
                         <div class="row g-3">
@@ -388,7 +382,6 @@
                         </div>
                     </div>
 
-                    <!-- ৪. প্রফেশনাল ফিল্ডস -->
                     <div class="config-card">
                         <div class="config-card-title"><i class="fa-solid fa-briefcase text-muted"></i> Professional Matrix</div>
                         <div class="row g-3">
@@ -403,7 +396,6 @@
                         </div>
                     </div>
 
-                    <!-- ৫. রিড-অনলি academic ট্র্যাক -->
                     <div class="config-card bg-light-subtle">
                         <div class="config-card-title text-secondary"><i class="fa-solid fa-graduation-cap"></i> Academic Identity Registry</div>
                         <div class="row g-3">
@@ -426,7 +418,6 @@
                         </div>
                     </div>
 
-                    <!-- ৩. সিকিউরিটি / পাসওয়ার্ড ফিল্ডস -->
                     <div class="config-card">
                         <div class="config-card-title"><i class="fa-solid fa-lock text-muted"></i> Security & Credentials</div>
                         <div class="row g-3">
@@ -441,7 +432,6 @@
                         </div>
                     </div>
 
-                    <!-- সাবমিট বাটন -->
                     <div class="text-end mb-5">
                         <button type="submit" class="btn-update-submit shadow-sm">Save Profile Changes</button>
                     </div>
