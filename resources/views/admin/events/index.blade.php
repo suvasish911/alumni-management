@@ -102,9 +102,13 @@
                                                         <button class="btn btn-info btn-xs" style="border-radius: 3px; padding: 4px 8px; margin-right: 2px; opacity: 0.5;" disabled>
                                                             <i class="fa fa-pencil"></i> Edit
                                                         </button>
-                                                        <button class="btn btn-danger btn-xs" style="border-radius: 3px; padding: 4px 8px; opacity: 0.5;" disabled>
-                                                            <i class="fa fa-ban"></i> Closed
-                                                        </button>
+                                                        <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this event?');">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-xs" style="border-radius: 3px; padding: 4px 8px;">
+                                                                <i class="fa fa-trash-o"></i> Delete
+                                                            </button> 
+                                                        </form>
                                                     @else
                                                         <a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-info btn-xs" style="border-radius: 3px; padding: 4px 8px; margin-right: 2px;">
                                                             <i class="fa fa-pencil"></i> Edit
@@ -132,6 +136,11 @@
                                 </tbody>
                             </table>
                         </div> 
+                        @if(isset($events) && $events->count() > 0)
+                            <div class="custom-pagination" style="display: flex !important; justify-content: center !important; width: 100% !important; margin-top: 25px; text-align: center !important;">
+                                {!! $events->links() !!}
+                            </div>
+                        @endif
                     </div>
                 </div>
 

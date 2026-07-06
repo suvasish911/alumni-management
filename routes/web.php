@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Alumni\EventController as AlumniEventController;
 use App\Http\Controllers\Admin\DonationController as AdminDonationController;
 use App\Http\Controllers\Alumni\DonationController as AlumniDonationController;
+use App\Http\Controllers\Admin\AdminManagementController;
 use App\Http\Controllers\DonationHistoryController;
 use App\Http\Controllers\Admin\DonationProjectController as AdminDonationProjectController;
 use Illuminate\Support\Facades\Route;
@@ -77,7 +78,11 @@ Route::middleware(['auth','isActive'])->group(function () {
                         'destroy' => 'donations.destroy',
                     ]);
 
-
+        //Admin Mangement
+        Route::get('/manage-admins', [AdminManagementController::class, 'index'])->name('manage_admins');
+        Route::post('/manage-admins', [AdminManagementController::class, 'store']);
+        Route::delete('/manage-admins/{id}', [AdminManagementController::class, 'destroy']);
+        Route::patch('/make-admin/{id}', [AdminManagementController::class, 'promoteToAdmin']);
         
     });
 
@@ -103,7 +108,7 @@ Route::middleware(['auth','isActive'])->group(function () {
 
         // Profile Settings Routes
         Route::get('/profile', [AlumniEventController::class, 'profileEdit'])->name('profile.edit');
-        Route::put('/profile', [AlumniEventController::class, 'profileUpdate'])->name('profile.update');
+        Route::patch('/profile', [AlumniEventController::class, 'profileUpdate'])->name('profile.update');
     });
 
    

@@ -214,8 +214,8 @@
                                     aria-labelledby="navbarUserDropdown" 
                                     style="border-radius: 12px; min-width: 180px; font-size: 14px;">
                                     <li>
-                                        <a class="dropdown-item py-2 rounded d-flex align-items-center gap-2" href="#">
-                                            <i class="fa fa-th-large text-muted" style="width: 20px;"></i> Workspace
+                                        <a class="dropdown-item py-2 rounded d-flex align-items-center gap-2" href="{{ route('alumni.profile.edit') }}">
+                                            <i class="fa fa-user" style="width: 20px;"></i> Profile
                                         </a>
                                     </li>
                                     <li><hr class="dropdown-divider my-1" style="border-color: #f1f5f9;"></li>
@@ -233,7 +233,7 @@
                             </li>
                         @else
                             <li class="nav-item ms-2">
-                                <button class="btn btn-link nav-link text-white-50 px-3" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
+                                <button class="btn btn-link nav-link text-white-50 px-3 nav-signin-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
@@ -309,6 +309,13 @@
                             <div class="action-desc">Schedule, launch, or configure upcoming reunion meetups, formal dinners, or fund campaigns.</div>
                         </a>
                     </div>
+                    <div class="col-md-4">
+                        <a href="/admin/manage-admins" class="action-card">
+                            <div class="action-icon"><i class="fa-solid fa-user-shield"></i></div>
+                            <div class="action-title">Manage Admins</div>
+                            <div class="action-desc">Assign administrative roles, create new admin accounts, or manage current system moderators.</div>
+                        </a>
+                    </div>
                 </div>
 
             @elseif(auth()->user()->role === 'alumni' && strtolower(trim(auth()->user()->status)) === 'pending')
@@ -348,31 +355,54 @@
     @endauth
 
     <section class="container my-5 text-center">
-        <div class="row g-4 text-start">
-            <div class="col-6 col-md-3">
-                <div class="stat-box">
-                    <div class="stat-number">{{ $totalUsers ?? '0' }}</div>
-                    <div class="stat-label">Total Alumni</div>
+        <div class="row g-4 text-start justify-content-center">
+            
+            @if(auth()->check() && auth()->user()->role === 'admin')
+                <div class="col-6 col-md-3">
+                    <div class="stat-box">
+                        <div class="stat-number">{{ $totalUsers ?? '0' }}</div>
+                        <div class="stat-label">Total Alumni</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="stat-box">
-                    <div class="stat-number">{{ $eventsCount ?? 0 }}</div>
-                    <div class="stat-label">Events Hosted</div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-box">
+                        <div class="stat-number">{{ $eventsCount ?? 0 }}</div>
+                        <div class="stat-label">Events Hosted</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="stat-box">
-                    <div class="stat-number">{{ $departmentsCount ?? 15 }}</div>
-                    <div class="stat-label">Departments</div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-box">
+                        <div class="stat-number">{{ $departmentsCount ?? 15 }}</div>
+                        <div class="stat-label">Departments</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="stat-box">
-                    <div class="stat-number">{{ $totalGained ?? '0 TK' }}</div>
-                    <div class="stat-label">Total Gained (TK)</div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-box" style="border-color: #cbd5e1;">
+                        <div class="stat-number text-warning">{{ $totalGained ?? '0 TK' }}</div>
+                        <div class="stat-label">Total Gained (TK)</div>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="col-12 col-md-4">
+                    <div class="stat-box">
+                        <div class="stat-number">{{ $totalUsers ?? '0' }}</div>
+                        <div class="stat-label">Total Alumni</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="stat-box">
+                        <div class="stat-number">{{ $eventsCount ?? 0 }}</div>
+                        <div class="stat-label">Events Hosted</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="stat-box">
+                        <div class="stat-number">{{ $departmentsCount ?? 15 }}</div>
+                        <div class="stat-label">Departments</div>
+                    </div>
+                </div>
+            @endif
+
         </div>
     </section>
 
@@ -387,50 +417,71 @@
         <h3 class="section-title">Upcoming Association Events</h3>
         <div class="row g-4">
             @forelse($upcoming_events ?? [] as $event)
+                @php
+                    $isFundraiser = isset($event->event_type) && 
+                                    in_array(strtolower(trim($event->event_type)), ['fundraiser', 'donation', 'fund']);
+                    
+                    $targetUrl = $isFundraiser ? route('alumni.donations.index', ['event_id' => $event->id]) : route('alumni.events.index');
+                @endphp
                 <div class="col-md-4">
-                    <div class="event-card border shadow-sm p-4 text-start"
-                         style="border-radius: 12px;"
-                         @guest
-                         data-bs-toggle="modal" 
-                         data-bs-target="#loginModal"
-                         class="event-card event-card-clickable-guest border shadow-sm p-4 text-start"
-                         @endguest>
+                    <a href="{{ auth()->check() ? $targetUrl : 'javascript:void(0);' }}" 
+                    class="text-decoration-none event-card-link"
+                    @guest
+                        data-bs-toggle="modal" 
+                        data-bs-target="#loginModal"
+                        data-redirect-to="{{ $targetUrl }}"
+                    @endguest>
                         
-                        <h6 class="fw-bold text-dark mb-2" style="font-size: 17px; color: #1e293b;">
-                            {{ $event->name }}
-                        </h6>
-                        <p class="text-muted small m-0 mb-1">
-                            <i class="fa fa-map-marker text-danger me-1"></i> Venue: {{ $event->place }}
-                        </p>
-                        <p class="text-secondary small m-0 mb-3">
-                            Organized By: {{ $event->organized_by }}
-                        </p>
+                        <div class="event-card border shadow-sm p-4 text-start event-card-clickable-guest" style="border-radius: 12px; height: 100%;">
+                            
+                            <h6 class="fw-bold text-dark mb-2" style="font-size: 17px; color: #1e293b;">
+                                {{ $event->name }}
+                            </h6>
+                            <p class="text-muted small m-0 mb-1">
+                                <i class="fa fa-map-marker text-danger me-1"></i> Venue: {{ $event->place }}
+                            </p>
+                            <p class="text-secondary small m-0 mb-3">
+                                Organized By: {{ $event->organized_by }}
+                            </p>
 
-                        @guest
-                            @if(isset($event->amount) && $event->amount > 0)
+                            @if($isFundraiser)
+                                <div class="badge bg-warning text-dark mb-3" style="font-size: 11px; padding: 6px 10px; font-weight: 600;">
+                                    <i class="fa-solid fa-bullseye me-1"></i> {{ number_format($event->amount ?? 0) }} TK Target Goal
+                                </div>
+                            @elseif(isset($event->amount) && $event->amount > 0)
                                 <div class="badge bg-success mb-3" style="font-size: 11px; padding: 6px 10px; font-weight: 500;">
                                     {{ number_format($event->amount) }} TK Entry Fee
                                 </div>
                             @else
                                 <div class="badge bg-info text-white mb-3" style="font-size: 11px; padding: 6px 10px; font-weight: 500;">
-                                    Free Admission
+                                    Free Entry
                                 </div>
                             @endif
-                        @endguest
 
-                        <div class="text-secondary small pt-2 border-top d-flex justify-content-between align-items-center" style="font-weight: 500;">
-                            <span>
-                                <i class="fa-regular fa-calendar me-2 text-primary"></i>
-                                {{ $event->event_date ? \Carbon\Carbon::parse($event->event_date)->format('M d, Y') : 'TBD' }}
-                            </span>
-                            
-                            @guest
-                                <span class="text-primary small fw-bold">
-                                    Join <i class="fa-solid fa-angle-right ms-1"></i>
+                            <div class="text-secondary small pt-2 border-top d-flex justify-content-between align-items-center" style="font-weight: 500;">
+                                <span>
+                                    <i class="fa-regular fa-calendar me-2 text-primary"></i>
+                                    {{ $event->event_date ? \Carbon\Carbon::parse($event->event_date)->format('M d, Y') : 'TBD' }}
                                 </span>
-                            @endguest
+                                
+                                @if(auth()->check() && auth()->user()->role === 'admin')
+                                    <div>
+                                        <a href="/admin/events/{{ $event->id }}/edit" class="btn btn-sm btn-outline-secondary py-1 px-2 fw-bold d-flex align-items-center gap-1" style="font-size: 12px; border-radius: 6px;">
+                                            <i class="fa-regular fa-pen-to-square text-primary"></i> Edit
+                                        </a>
+                                    </div>
+                                @else
+                                    <span class="text-primary small fw-bold">
+                                        @if($isFundraiser)
+                                            Donate <i class="fa-solid fa-hand-holding-heart ms-1 text-danger"></i>
+                                        @else
+                                            Join <i class="fa-solid fa-angle-right ms-1"></i>
+                                        @endif
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @empty
                 <div class="col-12 text-center">
@@ -438,6 +489,28 @@
                 </div>
             @endforelse
         </div>
+
+        @guest
+        <script>
+            document.querySelectorAll('.event-card-link').forEach(card => {
+                card.addEventListener('click', function() {
+                    let redirectTo = this.getAttribute('data-redirect-to');
+                    if(redirectTo) {
+                        sessionStorage.setItem('pending_event_redirect', redirectTo);
+                    }
+                });
+            });
+
+            const navBtn = document.querySelector('.nav-signin-btn');
+            if(navBtn) {
+                navBtn.addEventListener('click', function() {
+                    sessionStorage.removeItem('pending_event_redirect');
+                    const redirectInput = document.getElementById('modalRedirectInput');
+                    if(redirectInput) redirectInput.value = '';
+                });
+            }
+        </script>
+        @endguest
     </section>
 
     <footer>
@@ -464,7 +537,7 @@
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label class="form-label text-secondary small fw-medium">Full Name</label>
-                                <input class="form-control" type="text" name="name" required placeholder="e.g. John Doe" />
+                                <input class="form-control" type="text" name="name" required placeholder="Enter your name" />
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label text-secondary small fw-medium">Email Address</label>
@@ -501,7 +574,6 @@
                             </div>
                         </div>
 
-                        <!-- নতুন সেকশন: যোগাযোগ ও প্রফেশনাল ইনফরমেশন -->
                         <div class="p-3 bg-light rounded-3 mb-4 border">
                             <span class="text-dark small d-block fw-bold mb-3"><i class="fa-solid fa-briefcase text-secondary me-2"></i>Contact & Professional Profile</span>
                             <div class="row g-3">
@@ -516,7 +588,7 @@
                                 <div class="col-md-6">
                                     <label class="form-label text-secondary small">Designation</label>
                                     <input class="form-control form-control-sm" type="text" name="designation" placeholder="e.g. Software Engineer" />
-                                }</div>
+                                </div>
                                 <div class="col-md-6">
                                     <label class="form-label text-secondary small">Current Address</label>
                                     <input class="form-control form-control-sm" type="text" name="address" placeholder="e.g. Dhaka, Bangladesh" />
@@ -563,13 +635,16 @@
                 <div class="modal-body p-4">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+                        
+                        <input type="hidden" name="redirect_to" id="modalRedirectInput" value="">
+
                         <div class="mb-3">
                             <label class="form-label text-secondary small fw-medium">Email Address</label>
-                            <input class="form-control" type="email" name="email" required placeholder="name@example.com" />
+                            <input class="form-control" type="email" name="email" required placeholder="name@example.com" autocomplete="off" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label text-secondary small fw-medium">Password</label>
-                            <input class="form-control" type="password" name="password" required placeholder="••••••••" />
+                            <input class="form-control" type="password" name="password" required placeholder="••••••••" autocomplete="off"/>
                         </div>
                         <button type="submit" class="btn btn-dark w-100 mt-2 py-2 rounded-3">Access Account</button>
                     </form>
@@ -577,6 +652,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const myModal = document.getElementById('loginModal');
+            if(myModal) {
+                myModal.addEventListener('show.bs.modal', function () {
+                    let savedUrl = sessionStorage.getItem('pending_event_redirect');
+                    if(savedUrl) {
+                        document.getElementById('modalRedirectInput').value = savedUrl;
+                    }
+                });
+            }
+        });
+    </script>
     @endguest
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

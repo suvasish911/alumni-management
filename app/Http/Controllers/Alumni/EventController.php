@@ -8,17 +8,20 @@ use App\Models\EventRegistration;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class EventController extends Controller
 {
     public function generalIndex()
     {
         $events = Event::with('category')->latest()->get();
-        // return response()->json([
-        //     'status' => 'success',
-        //     'data' => $events
-        // ]);
-        return view('general.events.index', compact('events'));
+        return response()->json([
+            'status' => 'success',
+            'data' => $events
+        ]);
+        // return view('general.events.index', compact('events'));
     }
 
     public function index()
@@ -119,10 +122,10 @@ class EventController extends Controller
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string',
             
-            'student_id' => 'required|string|max:50',
-            'department' => 'required|string|max:50',
-            'batch' => 'required|string|max:50',
-            'session' => 'required|string|max:50',
+            'student_id' => 'nullable|string|max:50',
+            'department' => 'nullable|string|max:50',
+            'batch' => 'nullable|string|max:50',
+            'session' => 'nullable|string|max:50',
             
             // Professional Info
             'company' => 'nullable|string|max:255',
@@ -137,10 +140,11 @@ class EventController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->address = $request->address;
-        $user->student_id = $request->student_id;
-        $user->department = $request->department;
-        $user->batch = $request->batch;
-        $user->session = $request->session;
+        
+        if ($request->has('student_id')) { $user->student_id = $request->student_id; }
+        if ($request->has('department')) { $user->department = $request->department; }
+        if ($request->has('batch')) { $user->batch = $request->batch; }
+        if ($request->has('session')) { $user->session = $request->session; }
         
         $user->company = $request->company;
         $user->designation = $request->designation;
@@ -161,6 +165,6 @@ class EventController extends Controller
 
         $user->save();
 
-        return redirect()->back()->with('success', 'Profile updated successfully!');
+        return redirect()->route('alumni.profile.edit')->with('success', 'Profile updated successfully!');
     }
 }

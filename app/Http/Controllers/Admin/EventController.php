@@ -13,7 +13,7 @@ class EventController extends Controller {
      */
     public function index()
     {
-        $events = Event::with('category')->latest()->get();
+        $events = Event::with('category')->latest()->paginate(5);
         return view('admin.events.index', compact('events'));
     }
 

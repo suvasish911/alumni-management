@@ -127,18 +127,22 @@
   <div class="menu_section">
     <h3>Administration <span class="role-indicator-badge">ADMIN</span></h3>
     <ul class="nav side-menu">
+
+      <li class="{{ Request::routeIs('admin.manage_admins') ? 'active' : '' }}">
+        <a href="{{ route('admin.manage_admins') }}"><i class="fa fa-user-shield"></i> Manage Admins</a>
+      </li>
+
+
       <li class="{{ Request::routeIs('admin.events.index') ? 'active' : '' }}">
         <a href="{{ route('admin.events.index') }}"><i class="fa fa-calendar"></i> Events Management</a>
       </li>
       
-      <li class="{{ request()->is('admin/donations*') || request()->is('admin/donation-projects*') ? 'active' : '' }}">
-        <a><i class="fa fa-hand-holding-usd"></i> Donations Control <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="{{ route('admin.projects.index') }}">Donation Projects</a></li>
-          <li><a href="{{ route('admin.donations.history') }}">History Logs</a></li>
-          <li><a href="{{ route('admin.donations.report') }}">Financial Reports</a></li>
-        </ul>
+
+      <li class="{{ Request::routeIs('admin.projects.index') ? 'active' : '' }}">
+      <a href="{{ route('admin.projects.index') }}"><i class="fa fa-hand-holding-usd"></i> Donation Projects</a>
       </li>
+
+
 
      <li class="{{ request()->is('admin/approvals*') ? 'active' : '' }}">
         <a><i class="fa fa-users"></i> Alumni Control <span class="fa fa-chevron-down"></span></a>
