@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+<x-guest-layout>
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
+<<<<<<< HEAD
+=======
+
+        <!-- Name -->
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
+        <div>
+            <x-input-label for="name" :value="__('Name')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +26,27 @@
         <div class="mb-8 text-center">
             <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Join Our Alumni Network</h2>
             <p class="text-sm text-gray-500 mt-2">Provide your credentials to register. Your account will remain pending until verified by administration.</p>
+>>>>>>> origin/dev_shabnam
         </div>
+<<<<<<< HEAD
+=======
 
+<<<<<<< HEAD
+        <!-- Email Address -->
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
+        <div class="mt-4">
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+<<<<<<< HEAD
+=======
+
+        <!-- Password -->
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+=======
         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" class="space-y-6">
             @csrf
 
@@ -23,6 +56,7 @@
                     <input id="name" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm p-2.5" type="text" name="name" :value="old('name')" required autofocus placeholder="John Doe" />
                     <x-input-error :messages="$errors->get('name')" class="mt-1" />
                 </div>
+>>>>>>> origin/dev_shabnam
 
                 <div>
                     <label for="email" class="block text-sm font-semibold text-gray-700">Email Address</label>
@@ -54,6 +88,30 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+<<<<<<< HEAD
+        <div class="mt-4">
+            <x-input-label for="role" :value="__('Register As')" />
+            <select id="role" name="role" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required>
+                <option value="" disabled selected>Choose your role</option>
+                <option value="alumni">Alumni</option>
+                <option value="accounts_officer">Accounts Officer</option>
+            </select>
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
+=======
+
+        <!-- Role Selection Dropdown -->
+        <div class="mt-4">
+            <label for="role" class="block font-medium text-sm text-gray-700">Register As:</label>
+            <select id="role" name="role" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
+                <option value="alumni">alumni</option>
+                <option value="account_officer">account officer</option>
+            </select>
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
+        </div>
+=======
             <div>
                 <label for="profile_image" class="block text-sm font-semibold text-gray-700">Profile Picture</label>
                 <div class="mt-1 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg px-6 py-4 bg-gray-50 hover:bg-gray-100 transition duration-150 relative">
@@ -77,6 +135,7 @@
                     <input id="password" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg shadow-sm p-2.5" type="password" name="password" required placeholder="••••••••" />
                     <x-input-error :messages="$errors->get('password')" class="mt-1" />
                 </div>
+>>>>>>> origin/dev_shabnam
 
                 <div>
                     <label for="password_confirmation" class="block text-sm font-semibold text-gray-700">Confirm Password</label>

@@ -14,7 +14,9 @@ use App\Http\Controllers\DonationHistoryController;
 use App\Http\Controllers\Admin\DonationProjectController as AdminDonationProjectController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', [DashboardController::class, 'index'])->name('welcome');
+
 
 
 

@@ -9,8 +9,6 @@
     <button type="submit">Filter Report</button>
 </form>
 
-
-
 <table class="table">
 
     <thead>

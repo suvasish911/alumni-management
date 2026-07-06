@@ -65,6 +65,9 @@
                             </div>
 
                             <div class="form-group">
+<<<<<<< HEAD
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="amount">
+=======
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="event_type">Event Type <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select name="event_type" id="event_type" class="form-control col-md-7 col-xs-12" required onchange="toggleAmountLabel()">
@@ -76,6 +79,7 @@
 
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" id="amount_label" for="amount">
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
                                     Registration Fee (TK) <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -85,7 +89,11 @@
                                             value="{{ isset($event) ? $event->amount : old('amount', '0.00') }}" 
                                             class="form-control col-md-7 col-xs-12" required>
                                     </div>
+<<<<<<< HEAD
+                                    <small class="text-muted">Set to 0.00 if this is a free event.</small>
+=======
                                     <small id="amount_help_text" class="text-muted">Set to 0.00 if this is a free event.</small>
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
                                 </div>
                             </div>
 
@@ -98,13 +106,19 @@
                                 </div>
                             </div>
 
+<<<<<<< HEAD
+                        </form> </div>
+=======
                         </form> 
                     </div>
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
                 </div>
             </div>
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
 
 <script>
     function toggleAmountLabel() {
@@ -126,4 +140,5 @@
         toggleAmountLabel();
     });
 </script>
+>>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
 @endsection

@@ -42,7 +42,6 @@ class RegisteredUserController extends Controller
             'session' => [$request->role === 'alumni' ? 'required' : 'nullable', 'string', 'max:50'],
             'profile_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
 
-            // নতুন ৪টি ফিল্ডের ভ্যালিডেশন যুক্ত করা হলো
             'phone' => ['nullable', 'string', 'max:20'],
             'address' => ['nullable', 'string'],
             'company' => ['nullable', 'string', 'max:255'],

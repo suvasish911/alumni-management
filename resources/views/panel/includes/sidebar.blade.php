@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+  
+  <div class="menu_section">
+    <h3>General</h3>
+    <ul class="nav side-menu">
+      <li><a href="{{ route('dashboard')}}"><i class="fa fa-home"></i> Dashboard</a></li>
+      <li><a href="{{ route('general.events.index') }}"><i class="fa fa-calendar"></i> Events List</a></li>
+    </ul>
+  </div>
+
+            <div class="clearfix"></div>
+=======
 <style>
     .main_menu_side {
         font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -108,6 +121,7 @@
         vertical-align: middle;
     }
 </style>
+>>>>>>> origin/dev_shabnam
 
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
   
@@ -121,6 +135,8 @@
         <a href="{{ route('general.events.index') }}"><i class="fa fa-calendar"></i> Events List</a>
       </li>
     </ul>
+
+  @if(Auth::user()->role === 'admin')
   </div>
 
   @if(Auth::user()?->role === 'admin')
