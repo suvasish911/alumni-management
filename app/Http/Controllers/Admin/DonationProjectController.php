@@ -14,7 +14,7 @@ class DonationProjectController extends Controller
     public function index() 
     { 
        
-        $projects = DonationProject::where('status', 'Active')->latest()->get(); 
+        $projects = DonationProject::where('status', 'Active')->latest()->paginate(3); 
         
         return view('admin.donation_projects', compact('projects')); 
     } 
