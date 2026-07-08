@@ -22,8 +22,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-=======
     @elseif (Auth::user()->role === 'alumni' && strtolower(trim(Auth::user()->status)) === 'rejected')
         <div class="row text-center" style="padding: 50px 20px;">
             <div class="x_content">
@@ -42,7 +40,6 @@
                 </form>
             </div>
         </div>
->>>>>>> 94b6e29863c11c24022e708633b5f8159caf365e
     @else
         <!-- top tiles --> 
         <div class="row tile_count"> 

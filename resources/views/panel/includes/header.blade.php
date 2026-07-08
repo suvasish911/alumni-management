@@ -85,16 +85,6 @@
     }
 </style>
 
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="{{asset('assets/build/images/image.jpg')}}" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>{{ Auth::user()->name ?? 'Guest' }}</h2>
-              </div>
-            </div>
-
 <div class="profile_container clearfix">
    <div class="profile profile_info_custom clearfix">
 
