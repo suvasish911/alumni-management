@@ -12,7 +12,7 @@ class AlumniApprovalController extends Controller
         $pendingAlumni = User::where('role', 'alumni')
                              ->where('status', 'pending')
                              ->latest()
-                             ->get();
+                             ->paginate(1);
 
         return view('admin.approvals', compact('pendingAlumni'));
     }
@@ -41,7 +41,7 @@ class AlumniApprovalController extends Controller
         $members = User::where('role', 'alumni')
                        ->where('status', 'active')
                        ->latest()
-                       ->paginate(10) ;
+                       ->paginate(2) ;
 
         return view('admin.alumni_registry', compact('members'));
     }

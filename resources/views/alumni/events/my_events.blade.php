@@ -1,6 +1,30 @@
 @extends('panel.layout')
 
 @section('content')
+<style>
+    .custom-pagination .pagination {
+        margin-bottom: 0;
+    }
+    .custom-pagination .page-item.active .page-link {
+        background-color: #2A3F54 !important;
+        border-color: #2A3F54 !important;
+        color: #fff !important;
+    }
+    .custom-pagination .page-link {
+        color: #2A3F54 !important;
+        padding: 6px 12px;
+        border: 1px solid #dee2e6;
+    }
+    .custom-pagination .page-link:hover {
+        background-color: #f1f5f9 !important;
+        border-color: #dee2e6 !important;
+    }
+    .custom-pagination .page-item.disabled .page-link {
+        color: #6c757d !important;
+        background-color: #fff !important;
+        border-color: #dee2e6 !important;
+    }
+</style>
 <div class="">
     <div class="page-title" style="margin-bottom: 20px;">
         <div class="title_left">
@@ -83,6 +107,7 @@
                 <div class="d-flex justify-content-center mt-3">
                     {!! $participatedEvents->links() !!}
                 </div>
+                
             </div>
         </div>
     </div>
