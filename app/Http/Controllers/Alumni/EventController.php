@@ -14,15 +14,7 @@ use Illuminate\Support\Facades\Hash;
 
 class EventController extends Controller
 {
-    public function generalIndex()
-    {
-        $events = Event::with('category')->latest()->get();
-        return response()->json([
-            'status' => 'success',
-            'data' => $events
-        ]);
-        // return view('general.events.index', compact('events'));
-    }
+
 
     public function index()
     {
@@ -38,7 +30,7 @@ class EventController extends Controller
             })
             ->with('category')
             ->latest()
-            ->paginate(10);
+            ->paginate(2);
 
         return view('alumni.events.index', compact('upcomingEvents'));
     }
@@ -52,7 +44,7 @@ class EventController extends Controller
             ->where('event_type', '!=', 'fundraiser')
             ->with('category')
             ->latest('event_registrations.created_at')
-            ->paginate(10);
+            ->paginate(5);
 
         return view('alumni.events.my_events', compact('participatedEvents'));
     }

@@ -31,13 +31,13 @@ class DonationController extends Controller
                 $query->where('event_type', 'fundraiser');
             })
             ->latest()
-            ->get();
+            ->paginate(5, ['*'], 'event_page');
 
         $myProjectDonations = \App\Models\Donation::with('category')
             ->where('user_id', Auth::id())
             ->whereNull('event_id')
             ->latest()
-            ->get();
+            ->paginate(5, ['*'], 'general_page');
         
         return view('alumni.my_contributions', compact('myEventDonations', 'myProjectDonations'));
     }

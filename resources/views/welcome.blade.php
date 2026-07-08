@@ -20,15 +20,29 @@
             padding: 15px 0;
         }
 
+        /* Update made here for background image and dynamic overlay */
         .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)),
-            url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 30%, rgba(15, 23, 42, 0.5) 100%),
+            url('{{ asset('assets/build/images/pexels-olia-danilevich-8093046.jpg') }}');
             background-size: cover;
-            background-position: center;
-            height: 35vh; 
+            background-position: center center;
+            height: 42vh; 
             color: white;
             display: flex;
             align-items: center;
+            padding: 20px 0;
+        }
+
+        .hero-guest {
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 20%, rgba(15, 23, 42, 0.4) 100%),
+            url('{{ asset('assets/build/images/pexels-olia-danilevich-8093046.jpg') }}');
+            background-size: cover;
+            background-position: center center;
+            height: 70vh; 
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 50px 0;
         }
 
         /* Dynamic Profile Widget */
@@ -160,7 +174,6 @@
             height: 100%;
         }
 
-        /* Custom Hover Zoom Handling For Interactive Event Cards */
         .event-card-clickable {
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
@@ -247,7 +260,7 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="{{ auth()->check() ? 'hero' : 'hero-guest' }}">
         <div class="container px-4">
             @auth
                 <div class="user-profile-widget">
@@ -259,9 +272,9 @@
                 </div>
             @else
                 <div class="text-center w-100">
-                    <h2>University Alumni Hub</h2>
-                    <p class="lead text-white-50 fs-6 mt-1">Reuniting generations, fostering collaborations, and supporting institutional progress.</p>
-                    <button class="btn btn-sm btn-light text-dark fw-medium mt-2 px-4 rounded-pill" data-bs-toggle="modal" data-bs-target="#registerModal">Get Started</button>
+                    <h2 style="font-size: 2.5rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">University Alumni Hub</h2>
+                    <p class="lead text-white-50 fs-5 mt-2" style="max-width: 600px; margin: 0 auto;">Reuniting generations, fostering collaborations, and supporting institutional progress.</p>
+                    <button class="btn btn-lg btn-light text-dark fw-medium mt-4 px-4 rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Get Started</button>
                 </div>
             @endauth
         </div>
@@ -288,28 +301,32 @@
 
             @if(auth()->user()->role === 'admin')
                 <div class="row g-4">
-                    <div class="col-md-4">
+                    <!-- Card 1 -->
+                    <div class="col-md-3">
                         <a href="/admin/approvals" class="action-card">
                             <div class="action-icon"><i class="fa-solid fa-user-check"></i></div>
                             <div class="action-title">Verify Accounts</div>
                             <div class="action-desc">Audit incoming registration records. There are currently <strong>{{ $pending_alumni_count ?? 0 }} requests</strong> awaiting moderation approval.</div>
                         </a>
                     </div>
-                    <div class="col-md-4">
+                    <!-- Card 2 -->
+                    <div class="col-md-3">
                         <a href="{{ route('admin.projects.index') }}" class="action-card">
                             <div class="action-icon"><i class="fa-solid fa-users-gear"></i></div>
                             <div class="action-title">Manage Donations</div>
                             <div class="action-desc">Review system credentials, network registries, and overall profile parameters (<strong>{{ $totalUsers ?? 0 }} profiles active</strong>).</div>
                         </a>
                     </div>
-                    <div class="col-md-4">
+                    <!-- Card 3 -->
+                    <div class="col-md-3">
                         <a href="/admin/events/create" class="action-card">
                             <div class="action-icon"><i class="fa-solid fa-calendar-plus"></i></div>
                             <div class="action-title">Create System Event</div>
                             <div class="action-desc">Schedule, launch, or configure upcoming reunion meetups, formal dinners, or fund campaigns.</div>
                         </a>
                     </div>
-                    <div class="col-md-4">
+                    <!-- Card 4 -->
+                    <div class="col-md-3">
                         <a href="/admin/manage-admins" class="action-card">
                             <div class="action-icon"><i class="fa-solid fa-user-shield"></i></div>
                             <div class="action-title">Manage Admins</div>
@@ -327,21 +344,32 @@
 
             @elseif(auth()->user()->role === 'alumni')
                 <div class="row g-4">
-                    <div class="col-md-4">
-                        <a href="/alumni/make-donation" class="action-card">
-                            <div class="action-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                            <div class="action-title">Contribute Funds</div>
-                            <div class="action-desc">Make a secure financial transaction supporting active institutional scholarship portfolios, initiatives, or welfare funds.</div>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
+                    <!-- Card 1 -->
+                    <div class="col-md-3">
                         <a href="/alumni/events" class="action-card">
                             <div class="action-icon"><i class="fa-solid fa-ticket"></i></div>
                             <div class="action-title">Join Active Events</div>
                             <div class="action-desc">Browse upcoming reunions, reserve your admission seats, and access logged RSVP verification vouchers.</div>
                         </a>
                     </div>
-                    <div class="col-md-4">
+                    <!-- Card 2 -->
+                    <div class="col-md-3">
+                        <a href="/alumni/my-events" class="action-card">
+                            <div class="action-icon"><i class="fa-regular fa-calendar-check"></i></div>
+                            <div class="action-title">Registered Events</div>
+                            <div class="action-desc">Track your approved RSVPs, event schedules, and personal invitation details.</div>
+                        </a>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="col-md-3">
+                        <a href="/alumni/make-donation" class="action-card">
+                            <div class="action-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                            <div class="action-title">Contribute Funds</div>
+                            <div class="action-desc">Make a secure financial transaction supporting active institutional scholarship portfolios, initiatives, or welfare funds.</div>
+                        </a>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="col-md-3">
                         <a href="/alumni/my_contributions" class="action-card">
                             <div class="action-icon"><i class="fa-solid fa-receipt"></i></div>
                             <div class="action-title">My Contributions</div>
@@ -412,6 +440,8 @@
             <p class="text-muted small">This is a modern networking platform serving as a bridge between university graduates and educational operations, simplifying profile workflows, event coordination, and transaction monitoring.</p>
         </div>
     </section>
+
+    
 
     <section id="events" class="container py-5">
         <h3 class="section-title">Upcoming Association Events</h3>
