@@ -12,6 +12,7 @@ use App\Http\Controllers\Alumni\DonationController as AlumniDonationController;
 use App\Http\Controllers\Admin\AdminManagementController;
 use App\Http\Controllers\DonationHistoryController;
 use App\Http\Controllers\Admin\DonationProjectController as AdminDonationProjectController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('welcome');
@@ -35,7 +36,7 @@ Route::middleware(['auth','isActive'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-
+    Route::get('/global-search', [SearchController::class, 'search'])->name('global.search');
 
 
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {

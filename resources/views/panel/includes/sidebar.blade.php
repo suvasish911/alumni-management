@@ -1,7 +1,7 @@
 <style>
     .main_menu_side {
         font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        background: #0f172a !important; /* Clean matching dark slate background */
+        background: #0f172a !important; 
         padding: 5px 10px;
     }
     
@@ -27,13 +27,17 @@
         position: relative;
     }
     
+    body.nav-md .side-menu > li > a {
+        display: flex !important;
+        align-items: center;
+    }
+    
     .side-menu > li > a {
         color: #94a3b8 !important;
         font-weight: 500;
         font-size: 0.88rem;
         padding: 12px 15px !important;
-        display: flex;
-        align-items: center;
+        display: block;
         border-radius: 8px;
         transition: all 0.25s ease;
         text-decoration: none;
@@ -45,7 +49,6 @@
         color: #f8fafc !important;
     }
     
-    /* Modern Route Highlighting Indicator */
     .side-menu > li.active > a,
     .side-menu > li > a:focus {
         background: rgba(255, 255, 255, 0.06) !important;
@@ -59,6 +62,12 @@
         width: 24px;
         color: #475569;
         transition: color 0.25s ease;
+    }
+    
+    body.nav-sm .side-menu i {
+        text-align: center;
+        width: 100% !important;
+        font-size: 18px;
     }
     
     .side-menu > li > a:hover i,
@@ -110,42 +119,25 @@
 </style>
 
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-  
-  <div class="menu_section">
-    <h3>General</h3>
-    <ul class="nav side-menu">
-      <li class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">
-        <a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Dashboard</a>
-      </li>
-      <li class="{{ Request::routeIs('general.events.index') ? 'active' : '' }}">
-        <a href="{{ route('general.events.index') }}"><i class="fa fa-calendar"></i> Events List</a>
-      </li>
-    </ul>
-  </div>
 
   @if(Auth::user()?->role === 'admin')
   <div class="menu_section">
     <h3>Administration <span class="role-indicator-badge">ADMIN</span></h3>
     <ul class="nav side-menu">
-
+      <li class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">
+        <a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+      </li>
       <li class="{{ Request::routeIs('admin.manage_admins') ? 'active' : '' }}">
-        <a href="{{ route('admin.manage_admins') }}"><i class="fa fa-user-shield"></i> Manage Admins</a>
+        <a href="{{ route('admin.manage_admins') }}"><i class="fa fa-user-shield"></i> <span>Manage Admins</span></a>
       </li>
-
-
       <li class="{{ Request::routeIs('admin.events.index') ? 'active' : '' }}">
-        <a href="{{ route('admin.events.index') }}"><i class="fa fa-calendar"></i> Events Management</a>
+        <a href="{{ route('admin.events.index') }}"><i class="fa fa-calendar"></i> <span>Events Management</span></a>
       </li>
-      
-
       <li class="{{ Request::routeIs('admin.projects.index') ? 'active' : '' }}">
-      <a href="{{ route('admin.projects.index') }}"><i class="fa fa-hand-holding-usd"></i> Donation Projects</a>
+        <a href="{{ route('admin.projects.index') }}"><i class="fa fa-hand-holding-usd"></i> <span>Donation Projects</span></a>
       </li>
-
-
-
      <li class="{{ request()->is('admin/approvals*') ? 'active' : '' }}">
-        <a><i class="fa fa-users"></i> Alumni Control <span class="fa fa-chevron-down"></span></a>
+        <a><i class="fa fa-users"></i> <span>Alumni Control</span> <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="{{ route('admin.approvals.index') }}"><i class="fa fa-check-square-o"></i> Pending Approvals</a></li>
           <li><a href="{{ route('admin.alumni.registry') }}">All Members Registry</a></li>
@@ -159,24 +151,23 @@
   <div class="menu_section">
     <h3>Alumni Desk <span class="role-indicator-badge">MEMBER</span></h3>
     <ul class="nav side-menu">
+      <li class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">
+        <a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+      </li>
       <li class="{{ Request::routeIs('alumni.events.index') ? 'active' : '' }}">
-        <a href="{{ route('alumni.events.index') }}"><i class="fa fa-ticket"></i> Join Events / RSVP</a>
+        <a href="{{ route('alumni.events.index') }}"><i class="fa fa-ticket"></i> <span>Join Events / RSVP</span></a>
       </li>
-
       <li class="{{ Request::routeIs('alumni.events.my_events') ? 'active' : '' }}">
-        <a href="{{ route('alumni.events.my_events') }}"><i class="fa fa-calendar-check-o"></i> My Registered Events</a>
+        <a href="{{ route('alumni.events.my_events') }}"><i class="fa fa-calendar-check-o"></i> <span>My Registered Events</span></a>
       </li>
-
       <li class="{{ Request::routeIs('alumni.donations.index') ? 'active' : '' }}">
-        <a href="{{ route('alumni.donations.index') }}"><i class="fa fa-heart"></i> Donations and Giving</a>
+        <a href="{{ route('alumni.donations.index') }}"><i class="fa fa-heart"></i> <span>Donations and Giving</span></a>
       </li>
-
       <li class="{{ Request::routeIs('alumni.contributions') ? 'active' : '' }}">
-        <a href="{{ route('alumni.contributions') }}"><i class="fa-solid fa-history"></i> My Contributions</a>
+        <a href="{{ route('alumni.contributions') }}"><i class="fa fa-history"></i> <span>My Contributions</span></a>
       </li>
-
       <li class="{{ Request::routeIs('alumni.profile.edit') ? 'active' : '' }}">
-        <a href="{{ route('alumni.profile.edit') }}"><i class="fa fa-user"></i> Profile Settings</a>
+        <a href="{{ route('alumni.profile.edit') }}"><i class="fa fa-user"></i> <span>Profile Settings</span></a>
       </li>
     </ul>
   </div>

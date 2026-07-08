@@ -20,15 +20,8 @@
     <link href="{{ asset('assets/build/css/custom.min.css')}}" rel="stylesheet">
 
     <style>
-        /* Force the parent container wrappers to match our exact dark slate theme color */
         html, body {
             background: #0f172a !important;
-        }
-        .nav-md .container.body .col-md-3.left_col {
-            background: #0f172a !important;
-            min-height: 100vh !important;
-            position: fixed;
-            height: 100%;
         }
         .left_col, .scroll-view {
             background-color: #0f172a !important;
@@ -46,11 +39,8 @@
             font-weight: 600 !important;
             letter-spacing: 0.5px;
         }
-        
-        /* Eliminate the trailing green footer block injected by standard Gentelella styling rules */
         .sidebar-footer {
             display: none !important;
-            background: transparent !important;
         }
     </style>
   </head>
@@ -70,7 +60,7 @@
             <br />
 
             @include('panel.includes.sidebar')
-            </div>
+          </div>
         </div>
 
         <div class="top_nav">
@@ -83,7 +73,7 @@
             @yield('content')
          </div>
         
-        <footer style="background: #ffffff; border-top: 1px solid #e2e8f0; color: #64748b; margin-left: 0;">
+        <footer style="background: #ffffff; border-top: 1px solid #e2e8f0; color: #64748b;">
           @include('panel.includes.footer')
           <div class="clearfix"></div>
         </footer>
