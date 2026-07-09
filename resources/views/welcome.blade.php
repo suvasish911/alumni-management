@@ -685,6 +685,22 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.event-card-link').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    sessionStorage.removeItem('pending_event_redirect');
+                    
+                    let redirectTo = this.getAttribute('data-redirect-to');
+                    if(redirectTo) {
+                        sessionStorage.setItem('pending_event_redirect', redirectTo);
+                        
+                        const redirectInput = document.getElementById('modalRedirectInput');
+                        if(redirectInput) {
+                            redirectInput.value = redirectTo;
+                        }
+                    }
+                });
+            });
+
             const myModal = document.getElementById('loginModal');
             if(myModal) {
                 myModal.addEventListener('show.bs.modal', function () {
@@ -692,6 +708,15 @@
                     if(savedUrl) {
                         document.getElementById('modalRedirectInput').value = savedUrl;
                     }
+                });
+            }
+            
+            const mainSignInBtn = document.querySelector('.nav-signin-btn');
+            if(mainSignInBtn) {
+                mainSignInBtn.addEventListener('click', function() {
+                    sessionStorage.removeItem('pending_event_redirect');
+                    const redirectInput = document.getElementById('modalRedirectInput');
+                    if(redirectInput) redirectInput.value = '';
                 });
             }
         });

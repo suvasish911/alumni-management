@@ -24,12 +24,17 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        if ($request->has('redirect_to') && !empty($request->input('redirect_to'))) {
+            session(['url.intended' => $request->input('redirect_to')]);
+        }
+
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        if ($request->has('redirect_to') && !empty($request->input('redirect_to'))) {
-            return redirect($request->input('redirect_to'));
+        if (session()->has('url.intended')) {
+            $redirectTo = session()->pull('url.intended'); // সেশন থেকে ডেটা নিয়ে ক্লিন করে দেবে
+            return redirect($redirectTo);
         }
 
         return redirect()->intended(route('dashboard', absolute: false));

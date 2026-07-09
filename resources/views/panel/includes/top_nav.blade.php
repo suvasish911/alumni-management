@@ -17,7 +17,7 @@
             </a>
             
             <ul class="dropdown-menu dropdown-usermenu pull-right" style="margin-top: 0; border-radius: 4px;">
-                <li><a href="#"><i class="fa fa-user" style="margin-right: 5px;"></i> Profile</a></li>
+                <li><a href="{{ route('alumni.profile.edit') }}"><i class="fa fa-user" style="margin-right: 5px;"></i> Profile</a></li>
                 <li>
                     <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fa fa-sign-out" style="margin-right: 5px;"></i> Logout
