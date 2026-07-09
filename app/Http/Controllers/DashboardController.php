@@ -25,6 +25,7 @@ class DashboardController extends Controller
 
         $upcoming_events = Event::where('event_date', '>=', now()->toDateString())
                                 ->orderBy('event_date', 'asc')
+                                ->take(3)
                                 ->get();
 
 
